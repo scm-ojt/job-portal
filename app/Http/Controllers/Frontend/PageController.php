@@ -19,7 +19,7 @@ class PageController extends Controller
 
     public function jobDetail($id)
     {
-
+        return view('frontend.job-detail');
     }
 
     public function allCompanies()

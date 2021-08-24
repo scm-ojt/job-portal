@@ -1,5 +1,5 @@
-@extends('layouts.app')
+@extends('admin.admin-layout.master')
 
-@section('content')
+@section('admin-content')
     <h1 class="text-center">Admin Dashboard</h1>
 @endsection
