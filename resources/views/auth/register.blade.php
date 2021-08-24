@@ -1,12 +1,11 @@
-@extends('layouts.app')
+@extends('frontend.frontend-layout.master')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
+@section('frontend-content')
+<div class="container py-5">
+    <h3 class="text-primary font-bold text-center"><i>Register</i></h3>
+    <div class="row justify-content-center my-3">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
+            <div class="card p-5 border border-dark">
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -61,11 +60,20 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
+                        <div class="form-group row mb-3">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary btn-block">
                                     {{ __('Register') }}
                                 </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-9 offset-md-4">
+                                Already have an account,
+                                <a class="" href="{{route('login')}}">
+                                Login Here!
+                                </a>
                             </div>
                         </div>
                     </form>
