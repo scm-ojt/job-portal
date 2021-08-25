@@ -9,9 +9,9 @@
 					<h4>New Category</h4>
 				</div>
 				<div class="card-body">
-					<form action="" method="post">
+					<form action="{{url('admin/categories')}}" method="post">
 						@csrf
-						
+
 						<div class="form-group">
 							<label for="">Job Category</label>
 							<input type="text" name="name" id="" class="form-control">

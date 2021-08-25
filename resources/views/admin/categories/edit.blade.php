@@ -9,12 +9,13 @@
 					<h4>Edit Category</h4>
 				</div>
 				<div class="card-body">
-					<form action="" method="post">
+					<form action="{{url('admin/categories/'.$category->id)}}" method="post">
 						@csrf
-						
+						@method('put')
+
 						<div class="form-group">
 							<label for="">Job Category</label>
-							<input type="text" name="name" id="" class="form-control">
+							<input type="text" name="name" id="" class="form-control" value="{{$category->name}}">
 						</div>
 						
 						<div class="form-group">
