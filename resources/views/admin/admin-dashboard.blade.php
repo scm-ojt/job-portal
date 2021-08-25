@@ -24,7 +24,13 @@
                                         <span class="badge badge-primary">{{$user->role->name}}</span>
                                     </td>
                                     <td>
-                                        <a href="#" class="btn btn-success">Active</a>
+                                        <form action="{{url('admin/'.$user->id)}}" method="post">
+                                            @csrf
+                                            @method('delete')
+
+                                            <a href="{{url('admin/'.$user->id.'/edit')}}" class="btn btn-warning">Edit</a>
+                                            <input type="submit" value="Del" class="btn btn-danger">
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

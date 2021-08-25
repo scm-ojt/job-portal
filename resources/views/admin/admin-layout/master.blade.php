@@ -27,6 +27,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
     </ul>
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto mr-5">
+        <li class="nav-item">
+            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                @csrf
+
+                <button type="submit" class="btn btn-secondary float-right">Logout</button>
+            </form>
+        </li>
+      </ul>
   </nav>
   <!-- /.navbar -->
 
@@ -47,7 +57,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
         <div class="info">
             @auth
-                <a href="#" class="d-block">{{Auth::user()->name}}</a>
+                <a href="{{url('admin/'.Auth::user()->id.'/edit')}}" class="d-block">{{Auth::user()->name}}</a>
             @endauth
         </div>
       </div>
