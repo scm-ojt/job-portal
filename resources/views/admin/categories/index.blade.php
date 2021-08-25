@@ -3,11 +3,11 @@
 @section('admin-content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <a href="{{url('admin/categories/create')}}" class="btn btn-primary float-right">+Add new</a>
                 <h4>All Categories</h4>
                 <div class="table-responsive mt-4">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered shadow-md bg-white">
                         <thead>
                             <tr>
                                 <th>ID</th>

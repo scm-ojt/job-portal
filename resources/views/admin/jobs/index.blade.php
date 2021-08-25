@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <h4>All Jobs</h4>
                 <div class="table-responsive mt-4">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered bg-white">
                         <thead>
                             <tr>
                                 <th>Job Title</th>

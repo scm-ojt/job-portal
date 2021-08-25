@@ -21,3 +21,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 include('admin.php');
 include('company.php');
 include('frontend.php');
+
+Route::get('admin/master', function() {
+    return view('admin.admin-layout.master');
+});
