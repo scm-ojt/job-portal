@@ -16,19 +16,22 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($categories as $category)
                             <tr>
-                                <td>1</td>
-                                <td>IT Jobs</td>
+                                <td>{{$category->id}}</td>
+                                <td>{{$category->name}}</td>
                                 <td>
-                                    <form action="" method="post">
+                                    <form action="{{url('admin/categories/'.$category->id)}}" method="post">
                                         @csrf
+                                        @method('delete')
 
-                                        <a href="#" class="btn btn-warning">Edit</a>
+                                        <a href="{{url('admin/categories/'.$category->id.'/edit')}}" class="btn btn-warning">Edit</a>
 
                                         <input type="submit" value="Delete" class="btn btn-danger">
                                     </form>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
