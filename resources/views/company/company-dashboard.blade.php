@@ -7,7 +7,7 @@
             <div class="d-flex justify-content-start">
                 <img src="{{asset('images/telenor.jfif')}}" alt="" class="rounded img-thumbnail">
                 <ul style="list-style: none;">
-                    <li><h2>Company Name</h2></li>
+                    <li><h2>{{Auth::user()->name}}</h2></li>
                     <li>Company Type: IT/Communication</li>
                     <li>No of Employee : 10</li>
                     <li><a href="{{url('/company/1/edit')}}" class="btn btn-primary mt-3">Edit Profile</a></li>
