@@ -1,24 +1,19 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\CompanyController;
-use App\Http\Controllers\Admin\JobController;
-use App\Http\Controllers\Admin\RoleController;
-use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
-    Route::get('admin/dashboard', [UserController::class, 'dashboard']);
+    Route::get('admin/dashboard', [App\Http\Controllers\Admin\UserController::class, 'dashboard']);
     //companies
-    Route::get('admin/companies', [CompanyController::class, 'index']);
-    Route::post('admin/companies/{id}/active', [CompanyController::class, 'active']);
+    Route::get('admin/companies', [App\Http\Controllers\Admin\CompanyController::class, 'index']);
+    Route::post('admin/companies/{id}/active', [App\Http\Controllers\Admin\CompanyController::class, 'active']);
 
     //categories
-    Route::resource('admin/categories', CategoryController::class);
+    Route::resource('admin/categories', App\Http\Controllers\Admin\CategoryController::class);
 
     //jobs
-    Route::get('admin/jobs', [JobController::class, 'index']);
+    Route::get('admin/jobs', [App\Http\Controllers\Admin\JobController::class, 'index']);
 
-    Route::post('admin/jobs/{id}/approve', [JobController::class, 'approve']);
+    Route::post('admin/jobs/{id}/approve', [App\Http\Controllers\Admin\JobController::class, 'approve']);
 
     //roles
-    Route::get('admin/roles', [RoleController::class, 'index']);
+    Route::get('admin/roles', [App\Http\Controllers\Admin\RoleController::class, 'index']);
