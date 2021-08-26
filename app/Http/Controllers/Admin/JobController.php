@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Job;
 use Illuminate\Http\Request;
 
 class JobController extends Controller
@@ -14,7 +15,8 @@ class JobController extends Controller
      */
     public function index()
     {
-        return view('admin.jobs.index');
+        $jobs = Job::all();
+        return view('admin.jobs.index', compact('jobs'));
     }
 
     /**
@@ -80,11 +82,25 @@ class JobController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $job = Job::findOrFail($id);
+        $job->delete();
+
+        return redirect('admin/jobs');
     }
 
-    public function approve($id)
+    public function approve(Request $request)
     {
+        $id = $request->job_id;
+        $job = Job::findOrFail($id);
+
+        if($job->approve_status == 1) {
+            $job->approve_status = 0;
+            $job->update();
+        }elseif($job->approve_status == 0) {
+            $job->approve_status = 1;
+            $job->update();
+        }
         
+        return redirect()->back();
     }
 }

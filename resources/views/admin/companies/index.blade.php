@@ -22,26 +22,44 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Logo</td>
-                                <td>Company Name</td>
-                                <td>Type</td>
-                                <td>Phone No</td>
-                                <td>Address</td>
-                                <td>Contact Information</td>
-                                <td>Histroy</td>
-                                <td>No of Employee</td>
-                                <td>
-                                    <a href="#" class="btn btn-success">Active</a>
-                                </td>
-                                <td>
-                                    <form action="" method="post">
-                                        @csrf
+                            @foreach ($companies as $company)
+                                <tr>
+                                    <td>
+                                        <img src="{{asset('images/'.$company->logo)}}" alt="">
+                                    </td>
+                                    <td>
+                                        @foreach ($company->users as $user)
+                                            {{$user->name}}
+                                        @endforeach
+                                    </td>
+                                    <td>{{$company->company_type}}</td>
+                                    <td>{{$company->phone_no}}</td>
+                                    <td>{{$company->address}}</td>
+                                    <td>{{$company->contact_information}}</td>
+                                    <td>{{$company->history}}</td>
+                                    <td>{{$company->no_of_employee}}</td>
+                                    <td>
+                                        <form action="{{url('admin/users/active')}}" method="post">
+                                            @csrf
 
-                                        <input type="submit" value="Delete" class="btn btn-danger">
-                                    </form>
-                                </td>
-                            </tr>
+                                            @foreach ($company->users as $user)
+                                                <input type="hidden" name="user_id" value="{{$user->id}}">
+                                                <input type="checkbox" class="form-control" name="active_status" id="" onchange="this.form.submit()" {{$user->active_status == 1 ? 'checked' : ''}}>
+                                                </div>
+                                            @endforeach
+                                            
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="{{url('admin/companies/'.$company->id)}}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            
+                                            <input type="submit" value="Delete" class="btn btn-danger">
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
