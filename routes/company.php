@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Company\CompanyController;
-use App\Http\Controllers\Company\JobController;
 use Illuminate\Support\Facades\Route;
 
     //company dashboard
