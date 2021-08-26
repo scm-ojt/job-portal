@@ -20,11 +20,11 @@
 						<div class="form-group">
 							<label for="">Job Category</label>
 							<select name="category_id" id="" class="form-control">
-                <option value="" disabled selected>Select Job Category</option>
-								@foreach ($categories as $category)
-									<option value="{{$category->id}}">{{$category->name}}</option>
-								@endforeach
-              </select>
+                				<option value="" disabled selected>Select Job Category</option>
+									@foreach ($categories as $category)
+										<option value="{{$category->id}}">{{$category->name}}</option>
+									@endforeach
+              				</select>
 						</div>
 
 						<div class="form-group">

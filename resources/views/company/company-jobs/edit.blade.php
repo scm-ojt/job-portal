@@ -13,24 +13,24 @@
 						@csrf
 						
             <div class="form-group">
-							<label for="">Job Title</label>
-							<input type="text" name="title" id="" class="form-control" placeholder="Enter Job Title" value="{{$company->title}}">
-						</div>
+				<label for="">Job Title</label>
+				<input type="text" name="title" id="" class="form-control" placeholder="Enter Job Title" value="{{$company->title}}">
+			</div>
 
-						<div class="form-group">
-							<label for="">Job Category</label>
-							<select name="" id="" class="form-control">
-                <option value="">Select Job Type</option>
-                <option value="">IT/Communication</option>
-                <option value="">Web Designer</option>
-             </select>
-						</div>
+			<div class="form-group">
+				<label for="">Job Category</label>
+				<select name="" id="" class="form-control">
+                	<option value="">Select Job Type</option>
+                	<option value="">IT/Communication</option>
+                	<option value="">Web Designer</option>
+             	</select>
+			</div>
 
             <div class="form-group">
-							<label for="">Employment Status</label>
-							<select name="" id="" class="form-control">
-                <option value="">Select Employment Status</option>
-                <option value="Full-Time">Full-Time</option>
+				<label for="">Employment Status</label>
+				<select name="" id="" class="form-control">
+                	<option value="">Select Employment Status</option>
+                	<option value="Full-Time">Full-Time</option>
                 <option value="Part-Time">Part-Time</option>
 								<option value="Internship">Internship</option>
 								<option value="Freelance">Freelance</option>
@@ -64,7 +64,7 @@
 
 						<div class="form-group">
 							<input type="submit" value="Update Job" class="btn btn-success">
-							<input type="submit" value="Reset" class="btn btn-primary">
+							<input type="reset" value="Reset" class="btn btn-primary">
 						</div>
 					</form>
 				</div>
