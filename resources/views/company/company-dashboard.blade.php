@@ -5,24 +5,22 @@
     <div class="row">
         <div class="col-md-12">
             <div class="d-flex justify-content-start">
-                <img src="{{asset('images/telenor.jfif')}}" alt="" class="rounded img-thumbnail">
+                <img src="{{asset('storage/company-logos/'.$company->logo)}}" alt="" class="rounded img-thumbnail" style="width:25%">
                 <ul style="list-style: none;">
                     <li><h2>{{Auth::user()->name}}</h2></li>
-                    <li>Company Type: IT/Communication</li>
-                    <li>No of Employee : 10</li>
-                    <li><a href="{{url('/company/1/edit')}}" class="btn btn-primary mt-3">Edit Profile</a></li>
+                    <li>Company Type: {{$company->company_type}}</li>
+                    <li>No of Employee : {{$company->no_of_employee}}</li>
+                    <li><a href="{{url('/company/'.Auth::user()->id.'/edit')}}" class="btn btn-primary mt-3">Edit Profile</a></li>
                 </ul>
             </div>
         </div>
     </div>
-    <hr>
+    <br>
     <div class="row">
         <div class="col-md-12">
             <h4>Histroy</h4>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam corrupti, vel aliquid hic animi porro aperiam eaque ea nemo laudantium. Maxime consectetur natus tempora quas quis itaque vero minima nemo. <br><br>
-                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam corrupti, vel aliquid hic animi porro aperiam eaque ea nemo laudantium. Maxime consectetur natus tempora quas quis itaque vero minima nemo. <br><br>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam corrupti, vel aliquid hic animi porro aperiam eaque ea nemo laudantium. Maxime consectetur natus tempora quas quis itaque vero minima nemo.
+               {{$company->history}}
             </p>
         </div>
     </div>
@@ -30,7 +28,7 @@
         <div class="col-md-12">
             <h4>Description</h4>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam corrupti, vel aliquid hic animi porro aperiam eaque ea nemo laudantium. Maxime consectetur natus tempora quas quis itaque vero minima nemo.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam corrupti, vel aliquid hic animi porro aperiam eaque ea nemo laudantium. Maxime consectetur natus tempora quas quis itaque vero minima nemo.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam corrupti, vel aliquid hic animi porro aperiam eaque ea nemo laudantium. Maxime consectetur natus tempora quas quis itaque vero minima nemo.
+                {{$company->description}}
             </p>
         </div>
     </div>
@@ -38,7 +36,7 @@
         <div class="col-md-12">
             <h4>Address</h4>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam corrupti, vel aliquid hic animi porro aperiam eaque ea nemo laudantium.Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam corrupti, vel aliquid hic animi porro aperiam eaque ea nemo laudantium.
+                {{$company->address}}
             </p>
         </div>
     </div>
@@ -46,7 +44,7 @@
         <div class="col-md-12">
             <h4>Contact Information</h4>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                {{$company->contact_information}}
             </p>
         </div>
     </div>

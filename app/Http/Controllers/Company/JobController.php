@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Job;
+use App\Models\Category;
+use Auth;
 class JobController extends Controller
 {
     /**
@@ -14,7 +16,8 @@ class JobController extends Controller
      */
     public function index()
     {
-        return view('company.company-jobs.index');
+        $jobs = Job::all();
+        return view('company.company-jobs.index',  compact('jobs'));
     }
 
     /**
@@ -24,7 +27,8 @@ class JobController extends Controller
      */
     public function create()
     {
-        return view('company.company-jobs.create');
+        $categories = Category::all();
+        return view('company.company-jobs.create', compact('categories'));
     }
 
     /**
@@ -35,7 +39,19 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $job = new Job;
+        $job->company_id = Auth::user()->id;
+        $job->category_id = $request->category_id;
+        $job->title = $request->title;
+        $job->employment_status = $request->employment_status;
+        $job->address = $request->address;
+        $job->salary = $request->salary;
+        $job->working_hour = $request->working_hour;
+        $job->requirement = $request->requirement;
+        $job->contact_information = $request->contact_information;
+        $job->save();
+
+        return redirect('company/'.Auth::user()->id.'/jobs');
     }
 
     /**
