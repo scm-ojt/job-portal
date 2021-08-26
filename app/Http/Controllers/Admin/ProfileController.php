@@ -11,11 +11,6 @@ use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
-    public function __construct()
-    {
-        return $this->middleware(['auth','admin']);
-    }
-
     public function dashboard()
     {
         return view('admin.admin-dashboard');
@@ -30,14 +25,22 @@ class ProfileController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,'.$id,
+            'password' => 'required|string|min:8',
+            'role_id' => 'required',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,jfif|max:2048',
+        ]);
+
         $user = User::findOrFail($id);
 
         if($request->hasFile('photo')){
             Storage::delete('/public/user-photos/'.$user->photo);
             $photo = $request->file('photo'); 
-            $photo_name = $photo->getClientOriginalName();
-            $path = $request->file('photo')->storeAs('public/user-photos',$photo_name);
-            $user->photo = $photo_name ;
+            $photoName = $photo->getClientOriginalName();
+            $path = $request->file('photo')->storeAs('public/user-photos',$photoName);
+            $user->photo = $photoName ;
         }
         $user->name = $request->name;
         $user->role_id = $request->role_id;

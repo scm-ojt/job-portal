@@ -15,38 +15,53 @@
 
 						<div class="form-group">
 							<label for="">Name</label>
-							<input type="text" name="name" id="" class="form-control" value="{{$user->name}}">
+							<input type="text" name="name" id="" class="form-control @error('name') is-invalid @enderror" value="{{$user->name}}">
+							@error('name')
+								<span class="text-danger text-bold">{{ $message }}</span>
+							@enderror
 						</div>
 
                         <div class="form-group">
 							<label for="">Email</label>
-							<input type="text" name="email" id="" class="form-control" readonly value="{{$user->email}}">
+							<input type="text" name="email" id="" class="form-control @error('email') is-invalid @enderror" readonly value="{{$user->email}}">
+							@error('email')
+								<span class="text-danger text-bold">{{ $message }}</span>
+							@enderror
 						</div>
 						
                         <div class="form-group">
 							<label for="">Password</label>
-							<input type="password" name="password" id="" class="form-control" value="{{$user->password}}">
+							<input type="password" name="password" id="" class="form-control @error('password') is-invalid @enderror" value="{{$user->password}}">
+							@error('password')
+								<span class="text-danger text-bold">{{ $message }}</span>
+							@enderror
 						</div>
 
                         <div class="form-group">
 							<label for="">Role</label>
-							<select name="role_id" id="" class="form-control">
+							<select name="role_id" id="" class="form-control @error('role_id') is-invalid @enderror">
                                 <option value="{{$user->role_id}}">{{$user->role->name}}</option>
                                 <option value="">Select Role</option>
                                 @foreach ($roles as $role)
                                     <option value="{{$role->id}}">{{$role->name}}</option>
                                 @endforeach
                             </select>
+							@error('role_id')
+								<span class="text-danger text-bold">{{ $message }}</span>
+							@enderror
 						</div>
 
 						<div class="form-group">
 							<label for="">Photo</label>
-							<input type="file" name="photo" id="" class="form-control">
+							<input type="file" name="photo" id="" class="form-control @error('photo') is-invalid @enderror">
+							@error('photo')
+								<span class="text-danger text-bold">{{ $message }}</span>
+							@enderror
 						</div>
 
 						<div class="form-group">
 							<input type="submit" value="Submit" class="btn btn-success">
-							<input type="submit" value="Reset" class="btn btn-primary">
+							<input type="reset" value="Reset" class="btn btn-primary">
 						</div>
 					</form>
 				</div>

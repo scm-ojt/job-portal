@@ -43,7 +43,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="{{url('admin/dashboard')}}" class="brand-link">
       <img src="{{ asset('images/jobs.jpg') }}" alt="Job Logo" class="brand-image img-rounded elevation-3">
       <span class="brand-text font-weight-light">Job Portal System</span>
     </a>

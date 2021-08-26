@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::middleware(['auth','company'])->group(function () {
     //company dashboard
     Route::get('company/dashboard', [App\Http\Controllers\Company\CompanyController::class, 'index']);
     Route::get('company/{id}/edit', [App\Http\Controllers\Company\CompanyController::class, 'edit']);
@@ -14,3 +15,4 @@ use Illuminate\Support\Facades\Route;
     Route::get('company/{company_id}/jobs/{job_id}/edit', [App\Http\Controllers\Company\JobController::class, 'edit']);
     Route::put('company/{company_id}/jobs/{job_id}', [App\Http\Controllers\Company\JobController::class, 'update']);
     Route::delete('company/{company_id}/jobs/{job_id}', [App\Http\Controllers\Company\JobController::class, 'destroy']);
+});

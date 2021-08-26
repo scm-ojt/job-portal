@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::middleware(['auth','admin'])->group(function () {
+
     Route::get('admin/dashboard', [App\Http\Controllers\Admin\ProfileController::class, 'dashboard']);
     Route::get('admin/{id}/edit', [App\Http\Controllers\Admin\ProfileController::class, 'edit']);
     Route::put('admin/{id}', [App\Http\Controllers\Admin\ProfileController::class, 'update']);
@@ -32,3 +34,4 @@ use Illuminate\Support\Facades\Route;
     //contact-us
     Route::get('admin/contacts', [App\Http\Controllers\Admin\ContactController::class, 'index']);
     Route::delete('admin/contacts/{id}', [App\Http\Controllers\Admin\ContactController::class, 'destroy']);
+});
