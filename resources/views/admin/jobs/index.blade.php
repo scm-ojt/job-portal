@@ -37,7 +37,13 @@
                                     <td>{{$job->contact_information}}</td>
                                     <td>{{$job->requirement}}</td>
                                     <td>
-                                        <a href="#" class="btn btn-primary">Approve</a>
+                                        <form action="{{url('admin/jobs/approve')}}" method="post">
+                                            @csrf
+
+                                                <input type="hidden" name="job_id" value="{{$job->id}}">
+                                                <input type="checkbox" class="form-control" name="approve_status" id="" onchange="this.form.submit()" {{$job->approve_status == 1 ? 'checked' : ''}}>
+                                            
+                                        </form>
                                     </td>
                                     <td>
                                         <form action="" method="post">

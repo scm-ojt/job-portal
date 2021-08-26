@@ -85,8 +85,19 @@ class JobController extends Controller
         //
     }
 
-    public function approve($id)
+    public function approve(Request $request)
     {
+        $id = $request->job_id;
+        $job = Job::findOrFail($id);
+
+        if($job->approve_status == 1) {
+            $job->approve_status = 0;
+            $job->update();
+        }elseif($job->approve_status == 0) {
+            $job->approve_status = 1;
+            $job->update();
+        }
         
+        return redirect()->back();
     }
 }

@@ -6,10 +6,10 @@
 		<div class="col-md-10">
 			<div class="card">
 				<div class="card-header">
-					<h4>My Profile</h4>
+					<h4>Edit User</h4>
 				</div>
 				<div class="card-body">
-					<form action="{{url('admin/'.$user->id)}}" method="post" enctype="multipart/form-data">
+					<form action="{{url('admin/users/'.$user->id)}}" method="post" enctype="multipart/form-data">
 						@csrf
                         @method('put')
 

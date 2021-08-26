@@ -39,7 +39,16 @@
                                     <td>{{$company->history}}</td>
                                     <td>{{$company->no_of_employee}}</td>
                                     <td>
-                                        <a href="#" class="btn btn-success">Active</a>
+                                        <form action="{{url('admin/users/active')}}" method="post">
+                                            @csrf
+
+                                            @foreach ($company->users as $user)
+                                                <input type="hidden" name="user_id" value="{{$user->id}}">
+                                                <input type="checkbox" class="form-control" name="active_status" id="" onchange="this.form.submit()" {{$user->active_status == 1 ? 'checked' : ''}}>
+                                                </div>
+                                            @endforeach
+                                            
+                                        </form>
                                     </td>
                                     <td>
                                         <form action="{{url('admin/companies/'.$company->id)}}" method="post">
