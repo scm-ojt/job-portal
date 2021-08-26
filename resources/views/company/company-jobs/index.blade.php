@@ -11,6 +11,7 @@
                         <thead>
                             <tr>
                                 <th>Job Title</th>
+                                <th>Job Aprrove</th>
                                 <th>Job Type</th>
                                 <th>Salary</th>
                                 <th>Working Hour</th>
@@ -20,22 +21,31 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Job Title</td>
-                                <td>Job Type</td>
-                                <td>Salary</td>
-                                <td>Working Hour</td>
-                                <td>Contact Information</td>
-                                <td>Requirement</td>
-                                <td>
-                                    <form action="" method="post">
-                                        @csrf
+                            @foreach ($jobs as $job)
+                                <tr>
+                                    <td>{{$job->title}}</td>
+                                    <td>
+                                        @if($job->approve_status == 0)
+                                            <span class="badge badge-primary">Waiting Approve</span>
+                                        @else
+                                            <span class="badge badge-primary">Approved</span>
+                                        @endif
+                                    </td>
+                                    <td>Job Type</td>
+                                    <td>Salary</td>
+                                    <td>Working Hour</td>
+                                    <td>Contact Information</td>
+                                    <td>Requirement</td>
+                                    <td>
+                                        <form action="" method="post">
+                                            @csrf
 
-                                        <a href="#" class="btn btn-warning">Edit</a>
-                                        <input type="submit" value="Delete" class="btn btn-danger">
-                                    </form>
-                                </td>
-                            </tr>
+                                            <a href="#" class="btn btn-warning">Edit</a>
+                                            <input type="submit" value="Delete" class="btn btn-danger">
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

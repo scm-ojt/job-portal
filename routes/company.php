@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth','company'])->group(function () {
     //company dashboard
-    Route::get('company/dashboard', [CompanyController::class, 'index']);
-    Route::get('company/{id}/edit', [CompanyController::class, 'edit']);
-    Route::put('company/{id}', [CompanyController::class, 'update']);
+    Route::get('company/dashboard', [App\Http\Controllers\Company\CompanyController::class, 'index']);
+    Route::get('company/{id}/edit', [App\Http\Controllers\Company\CompanyController::class, 'edit']);
+    Route::put('company/{id}', [App\Http\Controllers\Company\CompanyController::class, 'update']);
 
     //company post a job
     Route::get('company/{company_id}/jobs', [App\Http\Controllers\Company\JobController::class, 'index']);

@@ -9,7 +9,7 @@
 					<h4>Post Job</h4>
 				</div>
 				<div class="card-body">
-					<form action="" method="post">
+					<form action="{{url('company/'.Auth::user()->id.'/jobs')}}" method="post">
 						@csrf
 						
             <div class="form-group">
@@ -19,16 +19,17 @@
 
 						<div class="form-group">
 							<label for="">Job Category</label>
-							<select name="" id="" class="form-control">
+							<select name="category_id" id="" class="form-control">
                 <option value="" disabled selected>Select Job Category</option>
-                <option value="">IT/Communication</option>
-                <option value="">Web Designer</option>
+								@foreach ($categories as $category)
+									<option value="{{$category->id}}">{{$category->name}}</option>
+								@endforeach
               </select>
 						</div>
 
 						<div class="form-group">
 							<label for="">Employment Status</label>
-							<select name="" id="" class="form-control">
+							<select name="employment_status" id="" class="form-control">
                 <option value="">Select Employment Status</option>
                 <option value="Full-Time">Full-Time</option>
                 <option value="Part-Time">Part-Time</option>
@@ -64,7 +65,7 @@
 
 						<div class="form-group">
 							<input type="submit" value="Post Job" class="btn btn-success">
-							<input type="submit" value="Reset" class="btn btn-primary">
+							<input type="reset" value="Reset" class="btn btn-primary">
 						</div>
 					</form>
 				</div>
