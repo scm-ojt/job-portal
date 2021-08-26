@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Company;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Job;
+use App\Models\Company;
+use App\Models\User;
 use App\Models\Category;
 use Auth;
 class JobController extends Controller
@@ -16,8 +18,9 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = Job::all();
-        return view('company.company-jobs.index',  compact('jobs'));
+        $userId = Auth::user()->id;
+        $user = User::findOrFail($userId);
+        return view('company.company-jobs.index',  compact('user'));
     }
 
     /**
