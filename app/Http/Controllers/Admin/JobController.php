@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
@@ -95,12 +96,14 @@ class JobController extends Controller
 
         if($job->approve_status == 1) {
             $job->approve_status = 0;
+            $job->approved_user_id = Auth::user()->id;
             $job->update();
         }elseif($job->approve_status == 0) {
             $job->approve_status = 1;
+            $job->approved_user_id = Auth::user()->id;
             $job->update();
         }
-        
+
         return redirect()->back();
     }
 }
