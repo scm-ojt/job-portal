@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Company;
+use App\Models\User;
+use Auth;
+use Illuminate\Support\Facades\Storage;
 class CompanyController extends Controller
 {
     /**
@@ -19,7 +22,12 @@ class CompanyController extends Controller
 
     public function index()
     {
-        return view('company.company-dashboard');
+        $user = User::findOrFail(Auth::user()->id);
+        foreach($user->companies as $company){
+          $company_id = $company->id;
+        }
+        $company = Company::findOrFail($company_id);
+        return view('company.company-dashboard', compact('company'));
     }
 
     /**
@@ -29,7 +37,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+      //
     }
 
     /**
@@ -62,7 +70,12 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        return view('company.edit');
+        $user = User::findOrFail($id);
+        foreach($user->companies as $company){
+          $company_id = $company->id;
+        }
+        $company = Company::findOrFail($company_id);
+        return view('company.edit', compact('company'));
     }
 
     /**
@@ -74,7 +87,30 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $company = Company::findOrFail($id);
+      $company->company_type = $request->company_type;
+      $company->phone_no = $request->phone_no;
+      $company->address = $request->address;
+      $company->no_of_employee = $request->no_of_employee;
+      $company->history = $request->history;
+      $company->description = $request->description;
+      $company->contact_information = $request->contact_information;
+
+      if($request->hasFile('logo')){
+        Storage::delete('/public/company-logos/'.$company->logo);
+        $logo = $request->file('logo');
+        $logoName = $logo->getClientOriginalName();
+        $path = $request->file('logo')->storeAs('public/company-logos',$logoName);
+        $company->logo = $logoName;
+      }
+
+      $company->update();
+
+      foreach($company->users as $user){
+        $user->name = $request->name;
+        $user->update();
+      }
+      return redirect('company/dashboard');
     }
 
     /**
