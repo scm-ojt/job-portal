@@ -15,4 +15,9 @@ class Company extends Model
     {
         return $this->belongsToMany(User::class, 'company_user', 'company_id', 'user_id');
     }
+
+    public function jobs()
+    {
+        return $this->hasMany(Job::class);
+    }
 }

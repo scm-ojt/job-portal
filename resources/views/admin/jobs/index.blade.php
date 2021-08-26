@@ -12,6 +12,7 @@
                                 <th>Job Title</th>
                                 <th>Company Name</th>
                                 <th>Job Type</th>
+                                <th>Employment Status</th>
                                 <th>Salary</th>
                                 <th>Working Hour</th>
                                 <th>Contact Information</th>
@@ -21,27 +22,39 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Job Title</td>
-                                <td>
-                                    <span class="badge badge-success">Company Name</span>
-                                </td>
-                                <td>Job Type</td>
-                                <td>Salary</td>
-                                <td>Working Hour</td>
-                                <td>Contact Information</td>
-                                <td>Requirement</td>
-                                <td>
-                                    <a href="#" class="btn btn-primary">Approve</a>
-                                </td>
-                                <td>
-                                    <form action="" method="post">
-                                        @csrf
+                            @foreach ($jobs as $job)
+                                <tr>
+                                    <td>{{$job->title}}</td>
+                                    <td>
+                                        <span class="badge badge-success">
+                                           ABC Company
+                                        </span>
+                                    </td>
+                                <td>{{$job->category->name? $job->category->name : ''}}</td>
+                                    <td>{{$job->employment_status}}</td>
+                                    <td>{{$job->salary}}</td>
+                                    <td>{{$job->working_hour}}</td>
+                                    <td>{{$job->contact_information}}</td>
+                                    <td>{{$job->requirement}}</td>
+                                    <td>
+                                        <form action="{{url('admin/jobs/approve')}}" method="post">
+                                            @csrf
 
-                                        <input type="submit" value="Delete" class="btn btn-danger">
-                                    </form>
-                                </td>
-                            </tr>
+                                                <input type="hidden" name="job_id" value="{{$job->id}}">
+                                                <input type="checkbox" class="form-control" name="approve_status" id="" onchange="this.form.submit()" {{$job->approve_status == 1 ? 'checked' : ''}}>
+                                            
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="{{url('admin/jobs/'.$job->id)}}" method="post">
+                                            @csrf
+                                            @method('delete')
+
+                                            <input type="submit" value="Delete" class="btn btn-danger">
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
