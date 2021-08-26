@@ -10,6 +10,7 @@
                         <thead>
                             <tr>
                                 <th>Job Title</th>
+                                <th>Approve User</th>
                                 <th>Company Name</th>
                                 <th>Job Type</th>
                                 <th>Employment Status</th>
@@ -25,6 +26,7 @@
                             @foreach ($jobs as $job)
                                 <tr>
                                     <td>{{$job->title}}</td>
+                                    <th>{{$job->approveUser ? $job->approveUser->name : ''}}</th>
                                     <td>
                                         <span class="badge badge-success">
                                            ABC Company
