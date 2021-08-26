@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Company;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
-class CompanyController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = Company::all();
-        return view('admin.companies.index', compact('companies'));
+        $contacts = Contact::all();
+        return view('admin.contacts.index', compact('contacts'));
     }
 
     /**
@@ -82,11 +82,9 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        $company = Company::findOrFail($id);
-        $company->delete();
-        $company->users()->delete();
+        $contact = Contact::findOrFail($id);
+        $contact->delete();
 
-        return redirect('admin/companies');
+        return redirect('admin/contacts');
     }
-
 }

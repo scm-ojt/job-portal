@@ -15,12 +15,15 @@
 
 						<div class="form-group">
 							<label for="">Job Category</label>
-							<input type="text" name="name" id="" class="form-control" value="{{$category->name}}">
+							<input type="text" name="name" id="" class="form-control @error('name') is-invalid @enderror" value="{{$category->name}}">
+							@error('name')
+								<span class="text-danger text-bold">{{ $message }}</span>
+							@enderror
 						</div>
 						
 						<div class="form-group">
 							<input type="submit" value="Submit" class="btn btn-success">
-							<input type="submit" value="Reset" class="btn btn-primary">
+							<input type="reset" value="Reset" class="btn btn-primary">
 						</div>
 					</form>
 				</div>
