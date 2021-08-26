@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AdminMiddleware
+class CompanyAuth
 {
     /**
      * Handle an incoming request.
@@ -17,9 +17,9 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->role_id != 1) {
-            return redirect('/company/dashboard');
-        }else{
+        if(Auth::user()->role_id != 2) {
+            return back();
+        }else {
             return $next($request);
         }
     }

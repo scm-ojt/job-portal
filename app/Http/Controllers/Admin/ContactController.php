@@ -1,26 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Company;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
-class JobController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    
-    public function __construct()
-    {
-        return $this->middleware(['auth','company']);
-    }
-
     public function index()
     {
-        return view('company.company-jobs.index');
+        $contacts = Contact::all();
+        return view('admin.contacts.index', compact('contacts'));
     }
 
     /**
@@ -30,7 +26,7 @@ class JobController extends Controller
      */
     public function create()
     {
-        return view('company.company-jobs.create');
+        //
     }
 
     /**
@@ -63,7 +59,7 @@ class JobController extends Controller
      */
     public function edit($id)
     {
-        return view('company.company-jobs.edit');
+        //
     }
 
     /**
@@ -86,6 +82,9 @@ class JobController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contact = Contact::findOrFail($id);
+        $contact->delete();
+
+        return redirect('admin/contacts');
     }
 }

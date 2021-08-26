@@ -46,8 +46,9 @@
                                         </form>
                                     </td>
                                     <td>
-                                        <form action="" method="post">
+                                        <form action="{{url('admin/jobs/'.$job->id)}}" method="post">
                                             @csrf
+                                            @method('delete')
 
                                             <input type="submit" value="Delete" class="btn btn-danger">
                                         </form>

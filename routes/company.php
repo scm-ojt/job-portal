@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Company\CompanyController;
-use App\Http\Controllers\Company\JobController;
 use Illuminate\Support\Facades\Route;
 
     //company dashboard
@@ -10,7 +8,7 @@ use Illuminate\Support\Facades\Route;
     Route::put('company/{id}', [App\Http\Controllers\Company\CompanyController::class, 'update']);
 
     //company post a job
-    Route::get('company/{company_id}/jobs', [App\Http\Controllers\Company\App\Http\Controllers\Company\JobController::class, 'index']);
+    Route::get('company/{company_id}/jobs', [App\Http\Controllers\Company\JobController::class, 'index']);
     Route::get('company/{company_id}/jobs/create', [App\Http\Controllers\Company\JobController::class, 'create']);
     Route::post('company/{company_id}/jobs', [App\Http\Controllers\Company\JobController::class, 'store']);
     Route::get('company/{company_id}/jobs/{job_id}/edit', [App\Http\Controllers\Company\JobController::class, 'edit']);

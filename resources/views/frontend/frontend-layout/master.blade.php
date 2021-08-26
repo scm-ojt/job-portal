@@ -56,6 +56,9 @@
                         <li class="nav-item">
                             <a class="btn btn-light" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="btn btn-light ml-2" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
                         @endif
                         
                         @else
@@ -65,6 +68,17 @@
                             </a>
                             
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @if(Auth::user()->role_id == 1)
+                                    <a class="dropdown-item" href="{{ url('admin/dashboard') }}"
+                                    >
+                                    Admin Dashboard
+                                    </a>
+                                @else
+                                    <a class="dropdown-item" href="{{ url('company/dashboard') }}"
+                                    >
+                                    Company Dashboard
+                                    </a>
+                                @endif
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">

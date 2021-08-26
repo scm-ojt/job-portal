@@ -13,6 +13,11 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        return $this->middleware(['auth','admin']);
+    }
+    
     public function index()
     {
         $categories = Category::all();

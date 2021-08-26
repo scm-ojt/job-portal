@@ -12,6 +12,7 @@
                                 <th>ID</th>
                                 <th>Photo</th>
                                 <th>Name</th>
+                                <th>Email</th>
                                 <th>Role</th>
                                 <th>Active</th>
                                 <th>Action</th>
@@ -25,6 +26,7 @@
                                         <img src="{{asset('storage/user-photos/'.$user->photo)}}" alt="User Photo" style="width: 100px;  height: 100px">
                                     </td>
                                     <td>{{$user->name}}</td>
+                                    <td>{{$user->email}}</td>
                                     <td>
                                         <span class="badge badge-primary">{{$user->role->name}}</span>
                                     </td>

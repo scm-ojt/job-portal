@@ -13,6 +13,11 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        return $this->middleware(['auth','admin']);
+    }
+
     public function index()
     {
         $companies = Company::all();
@@ -89,8 +94,4 @@ class CompanyController extends Controller
         return redirect('admin/companies');
     }
 
-    public function active($id)
-    {
-
-    }
 }

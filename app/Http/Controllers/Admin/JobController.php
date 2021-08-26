@@ -13,6 +13,11 @@ class JobController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        return $this->middleware(['auth','admin']);
+    }
+
     public function index()
     {
         $jobs = Job::all();
@@ -82,7 +87,10 @@ class JobController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $job = Job::findOrFail($id);
+        $job->delete();
+
+        return redirect('admin/jobs');
     }
 
     public function approve(Request $request)

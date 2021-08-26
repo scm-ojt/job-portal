@@ -23,8 +23,12 @@ use Illuminate\Support\Facades\Route;
 
     //jobs
     Route::get('admin/jobs', [App\Http\Controllers\Admin\JobController::class, 'index']);
-
+    Route::delete('admin/jobs/{id}', [App\Http\Controllers\Admin\JobController::class, 'destroy']);
     Route::post('admin/jobs/approve', [App\Http\Controllers\Admin\JobController::class, 'approve']);
 
     //roles
     Route::get('admin/roles', [App\Http\Controllers\Admin\RoleController::class, 'index']);
+
+    //contact-us
+    Route::get('admin/contacts', [App\Http\Controllers\Admin\ContactController::class, 'index']);
+    Route::delete('admin/contacts/{id}', [App\Http\Controllers\Admin\ContactController::class, 'destroy']);

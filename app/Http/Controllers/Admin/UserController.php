@@ -16,6 +16,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        return $this->middleware(['auth','admin']);
+    }
+    
     public function index()
     {
         $users = User::all();
