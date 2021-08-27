@@ -10,6 +10,8 @@ Route::middleware(['auth','admin'])->group(function () {
 
     //user
     Route::get('admin/users', [App\Http\Controllers\Admin\UserController::class, 'index']);
+    Route::get('admin/users/create', [App\Http\Controllers\Admin\UserController::class, 'create']);
+    Route::post('admin/users', [App\Http\Controllers\Admin\UserController::class, 'store']);
     Route::get('admin/users/{id}/edit', [App\Http\Controllers\Admin\UserController::class, 'edit']);
     Route::put('admin/users/{id}', [App\Http\Controllers\Admin\UserController::class, 'update']);
     Route::delete('admin/users/{id}', [App\Http\Controllers\Admin\UserController::class, 'destroy']);

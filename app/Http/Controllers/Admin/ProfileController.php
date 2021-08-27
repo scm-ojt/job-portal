@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserUpdateRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -23,16 +24,8 @@ class ProfileController extends Controller
         return view('admin.profile', compact('user','roles'));
     }
 
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,'.$id,
-            'password' => 'required|string|min:8',
-            'role_id' => 'required',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,jfif|max:2048',
-        ]);
-
         $user = User::findOrFail($id);
 
         if($request->hasFile('photo')){
