@@ -4,6 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
+                <a href="{{url('admin/users/create')}}" class="btn btn-primary float-right">Create User</a>
                 <h4>All Users</h4>
                 <div class="table-responsive mt-4">
                     <table class="table table-bordered bg-white">

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
+use App\Models\Company;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -30,7 +33,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all();
+        return view('admin.users.create', compact('roles'));
     }
 
     /**
@@ -39,9 +43,28 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
-        //
+        $user = new User;
+        if($request->hasFile('photo')){
+            $photo = $request->file('photo'); 
+            $photoName = $photo->getClientOriginalName();
+            $path = $request->file('photo')->storeAs('public/user-photos',$photoName);
+            $user->photo = $photoName ;
+        }
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password); 
+        $user->role_id = $request->role_id;    
+        $user->save();
+
+        if($user->role_id == 2){
+            $company = new Company;
+            $company->save();
+            $user->companies()->attach($company->id);
+        }
+        
+        return redirect('admin/users');
     }
 
     /**
@@ -75,16 +98,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,'.$id,
-            'password' => 'required|string|min:8',
-            'role_id' => 'required',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,jfif|max:2048',
-        ]);
-
         $user = User::findOrFail($id);
         if($request->hasFile('photo')){
             Storage::delete('/public/user-photos/'.$user->photo);
