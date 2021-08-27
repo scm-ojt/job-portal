@@ -35,6 +35,7 @@
                         </tbody>
                     </table>
                 </div>
+                {{ $categories->links() }}
             </div>
         </div>
     </div>
