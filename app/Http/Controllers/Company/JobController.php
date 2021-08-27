@@ -9,6 +9,8 @@ use App\Models\Company;
 use App\Models\User;
 use App\Models\Category;
 use Auth;
+use App\Http\Requests\JobUpdateRequest;
+use App\Http\Requests\JobStoreRequest;
 class JobController extends Controller
 {
     /**
@@ -41,7 +43,7 @@ class JobController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(JobStoreRequest $request)
     {
         $job = new Job;
         $job->company_id = Auth::user()->id;
@@ -89,7 +91,7 @@ class JobController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(JobUpdateRequest $request, $id)
     {
         $job = Job::findOrFail($id);
         $job->company_id = Auth::user()->id;
