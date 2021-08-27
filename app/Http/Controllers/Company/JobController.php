@@ -30,8 +30,9 @@ class JobController extends Controller
      */
     public function create()
     {
+        $jobs = Job::all();
         $categories = Category::all();
-        return view('company.company-jobs.create', compact('categories'));
+        return view('company.company-jobs.create', compact('jobs','categories'));
     }
 
     /**
@@ -54,7 +55,7 @@ class JobController extends Controller
         $job->contact_information = $request->contact_information;
         $job->save();
 
-        return redirect('company/'.Auth::user()->id.'/jobs');
+        return redirect('company-jobs');
     }
 
     /**
@@ -75,8 +76,10 @@ class JobController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        return view('company.company-jobs.edit');
+    {   
+        $job = Job::findOrFail($id);
+        $categories = Category::all();
+        return view('company.company-jobs.edit', compact('job','categories'));
     }
 
     /**
@@ -88,7 +91,19 @@ class JobController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $job = Job::findOrFail($id);
+        $job->company_id = Auth::user()->id;
+        $job->category_id = $request->category_id;
+        $job->title = $request->title;
+        $job->employment_status = $request->employment_status;
+        $job->address = $request->address;
+        $job->salary = $request->salary;
+        $job->working_hour = $request->working_hour;
+        $job->requirement = $request->requirement;
+        $job->contact_information = $request->contact_information;
+        $job->update();
+
+        return redirect('company-jobs');
     }
 
     /**
@@ -99,6 +114,9 @@ class JobController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $job = Job::findOrFail($id);
+        $job->delete();
+
+        return redirect('company-jobs');
     }
 }
