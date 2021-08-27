@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <a href="{{url('company/'.Auth::user()->id.'/jobs/create')}}" class="btn btn-primary float-right">Post Job</a>
+                <a href="{{url('company-jobs/create')}}" class="btn btn-primary float-right">Post Job</a>
                 <h4>All Jobs</h4>
                 <div class="table-responsive mt-4">
                     <table class="table table-bordered">
@@ -39,10 +39,11 @@
                                     <td>{{$job->contact_information}}</td>
                                     <td>{{$job->requirement}}</td>
                                     <td>
-                                        <form action="" method="post">
+                                        <form action="{{url('company-jobs/'.$job->id)}}" method="post">
                                             @csrf
+                                            @method('delete')
 
-                                            <a href="#" class="btn btn-warning">Edit</a>
+                                            <a href="{{url('company-jobs/'.$job->id.'/edit')}}" class="btn btn-warning">Edit</a>
                                             <input type="submit" value="Delete" class="btn btn-danger">
                                         </form>
                                     </td>

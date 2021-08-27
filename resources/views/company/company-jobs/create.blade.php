@@ -9,7 +9,7 @@
 					<h4>Post Job</h4>
 				</div>
 				<div class="card-body">
-					<form action="{{url('company/'.Auth::user()->id.'/jobs')}}" method="post">
+					<form action="{{url('company-jobs')}}" method="post">
 						@csrf
 						
             <div class="form-group">
@@ -20,7 +20,7 @@
 						<div class="form-group">
 							<label for="">Job Category</label>
 							<select name="category_id" id="" class="form-control">
-                				<option value="" disabled selected>Select Job Category</option>
+                				<option value="">Select Job Category</option>
 									@foreach ($categories as $category)
 										<option value="{{$category->id}}">{{$category->name}}</option>
 									@endforeach
