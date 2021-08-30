@@ -9,7 +9,7 @@
 					<h4>Create User</h4>
 				</div>
 				<div class="card-body">
-					<form action="{{url('admin/users')}}" method="post" enctype="multipart/form-data" class="dropzone dz-clickable" id="my-dropzone">
+					<form action="{{url('admin/users')}}" method="post" enctype="multipart/form-data">
 						@csrf
 
 						<div class="form-group">
@@ -56,7 +56,7 @@
 								<span class="text-danger text-bold">{{ $message }}</span>
 							@enderror
 						</div>
-
+						
 						<div class="form-group">
 							<input type="submit" value="Submit" class="btn btn-success">
 							<input type="reset" value="Reset" class="btn btn-primary">
