@@ -5,9 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use Illuminate\Http\Request;
+use App\Services\Admin\CompanyService;
 
 class CompanyController extends Controller
 {
+    private $companyService;
+
+    public function __construct(CompanyService $companyService)
+    {   
+        $this->companyService = $companyService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +22,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = Company::all();
+        $companies = $this->companyService->index();
         return view('admin.companies.index', compact('companies'));
     }
 
@@ -82,11 +89,8 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        $company = Company::findOrFail($id);
-        $company->delete();
-        $company->users()->delete();
-
-        return redirect('admin/companies');
+        $this->companyService->destroy($id);
+        return redirect('admin/companies')->with('success', 'Company has been deleted successfully!');
     }
 
 }

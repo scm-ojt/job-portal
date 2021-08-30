@@ -7,6 +7,11 @@
                 <a href="{{url('admin/users/create')}}" class="btn btn-primary float-right">Create User</a>
                 <h4>All Users</h4>
                 <div class="table-responsive mt-4">
+                    @if($message = Session::get('success'))
+                        <div class="alert alert-info">
+                            <p>{{$message}}</p>
+                        </div>
+                    @endif
                     <table class="table table-bordered bg-white">
                         <thead>
                             <tr>
@@ -54,6 +59,7 @@
                         </tbody>
                     </table>
                 </div>
+                {{ $users->links() }}
             </div>
         </div>
     </div>
