@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-dark sticky-top shadow-sm" style="background-color: #44749E">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <h2>LOGO</h1>
+                    <img src="images/logo.png" width="100px" height="60px"alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
