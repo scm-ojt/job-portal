@@ -29,7 +29,15 @@
                                 <tr>
                                     <td>{{$user->id}}</td>
                                     <td>
-                                        <img src="{{asset('storage/user-photos/'.$user->photo)}}" alt="User Photo" style="width: 100px;  height: 100px">
+                                        @if($user->photo)
+                                            <img src="{{asset('storage/user-photos/'.$user->photo)}}" alt="User Photo" style="width: 100px;  height: 100px">
+                                        @else
+                                        <form action="{{url('admin/users/upload-photo/'.$user->id)}}" method="post" enctype="multipart/form-data" class="dropzone dz-clickable" id="my-dropzone">
+                                            @csrf
+                                            @method('put')
+
+                                        </form>
+                                        @endif
                                     </td>
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
@@ -50,8 +58,8 @@
                                             @csrf
                                             @method('delete')
 
-                                            <a href="{{url('admin/users/'.$user->id.'/edit')}}" class="btn btn-warning">Edit</a>
-                                            <input type="submit" value="Del" class="btn btn-danger">
+                                            <a href="{{url('admin/users/'.$user->id.'/edit')}}" class="btn btn-warning m-1">Edit</a>
+                                            <input type="submit" value="Del" class="btn btn-danger m-1">
                                         </form>
                                     </td>
                                 </tr>

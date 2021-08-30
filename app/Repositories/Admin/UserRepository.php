@@ -91,4 +91,17 @@ class UserRepository
 
         return $user;
     }
+
+    public function uploadFile($request, $id)
+    {
+        $user = User::findOrFail($id);
+        if($request->hasFile('file')){
+            $photo = $request->file('file'); 
+            $photoName = $photo->getClientOriginalName();
+            $path = $request->file('file')->storeAs('public/user-photos',$photoName);
+            $user->photo = $photoName;
+        }
+        $user->update();
+        return $user;
+    }
 }

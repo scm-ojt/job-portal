@@ -7,7 +7,7 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::get('admin/dashboard', [App\Http\Controllers\Admin\ProfileController::class, 'dashboard']);
     Route::get('admin/{id}/edit', [App\Http\Controllers\Admin\ProfileController::class, 'edit']);
     Route::put('admin/{id}', [App\Http\Controllers\Admin\ProfileController::class, 'update']);
-
+    Route::put('admin/users/upload-photo/{id}', [\App\Http\Controllers\Admin\UserController::class, 'uploadFile']);
     //user
     Route::get('admin/users', [App\Http\Controllers\Admin\UserController::class, 'index']);
     Route::get('admin/users/create', [App\Http\Controllers\Admin\UserController::class, 'create']);

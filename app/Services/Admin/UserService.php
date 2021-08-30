@@ -37,4 +37,9 @@ class UserService
     {
       return $this->userRepository->active($request);
     }
+
+    public function uploadFile($request, $id)
+    {
+        return $this->userRepository->uploadFile($request, $id);
+    }
 }

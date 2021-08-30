@@ -111,4 +111,10 @@ class UserController extends Controller
         $this->userService->active($request); 
         return redirect()->back();
     }
+
+    public function uploadFile(Request $request, $id)
+    {
+        $this->userService->uploadFile($request, $id);
+        return back()->with('success', 'User photo have been successfully uploaded!');
+    }
 }
