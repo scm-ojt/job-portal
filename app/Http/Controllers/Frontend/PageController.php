@@ -20,9 +20,8 @@ class PageController extends Controller
 
     public function allJobs()
     {   
-        $jobs = Job::where('approve_status',1)->get();
-        $companies = Company::all();
-        return view('frontend.all-jobs', compact('jobs','companies'));
+        $jobs = Job::where('approve_status',1)->paginate(10);
+        return view('frontend.all-jobs', compact('jobs'));
     }
 
     public function jobDetail($id)
@@ -32,7 +31,7 @@ class PageController extends Controller
     }
 
     public function allCompanies()
-    {   $companies = Company::paginate(5);
+    {   $companies = Company::paginate(10);
         return view('frontend.all-companies',compact('companies'));
     }
 
