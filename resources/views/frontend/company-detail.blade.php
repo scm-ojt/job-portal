@@ -1,18 +1,18 @@
 @extends('frontend.frontend-layout.master')
 
 @section('frontend-content')
-<div class="bg-primary p-5">
-    <h3 class="text-center text-uppercase text-white">Company Detail</h3>
-</div>
+
+    <img src="{{ asset('images/common_bnr.jpg') }}" alt="" style="width:100%;">
+
 <div class="container py-5 p-3 clearFix">
     <div class="row">
         <div class="col-md-12">
             <div class="d-flex justify-content-start">
-                <img src="{{asset('images/telenor.jfif')}}" alt="" class="rounded img-thumbnail">
+                <img src="{{asset('storage/company-logos/'.$company->logo)}}"   style="width:100px; height:100px;" alt="" class="rounded img-thumbnail">
                 <ul style="list-style: none;">
-                    <li><h2>Company Name</h2></li>
-                    <li>Company Type: IT/Communication</li>
-                    <li>No of Employee : 10</li>
+                    <li><h2>{{$user->name}}</h2></li>
+                    <li>Company Type: {{$company->company_type}}</li>
+                    <li>No of Employee : {{$company->no_of_employee}}</li>
                 </ul>
             </div>
         </div>
@@ -22,9 +22,7 @@
         <div class="col-md-12">
             <h4>Histroy</h4>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam corrupti, vel aliquid hic animi porro aperiam eaque ea nemo laudantium. Maxime consectetur natus tempora quas quis itaque vero minima nemo. <br><br>
-                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam corrupti, vel aliquid hic animi porro aperiam eaque ea nemo laudantium. Maxime consectetur natus tempora quas quis itaque vero minima nemo. <br><br>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam corrupti, vel aliquid hic animi porro aperiam eaque ea nemo laudantium. Maxime consectetur natus tempora quas quis itaque vero minima nemo.
+               {{$company->history}}
             </p>
         </div>
     </div>
@@ -32,7 +30,7 @@
         <div class="col-md-12">
             <h4>Description</h4>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam corrupti, vel aliquid hic animi porro aperiam eaque ea nemo laudantium. Maxime consectetur natus tempora quas quis itaque vero minima nemo.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam corrupti, vel aliquid hic animi porro aperiam eaque ea nemo laudantium. Maxime consectetur natus tempora quas quis itaque vero minima nemo.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam corrupti, vel aliquid hic animi porro aperiam eaque ea nemo laudantium. Maxime consectetur natus tempora quas quis itaque vero minima nemo.
+                {{$company->description}}
             </p>
         </div>
     </div>
@@ -40,7 +38,7 @@
         <div class="col-md-12">
             <h4>Address</h4>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam corrupti, vel aliquid hic animi porro aperiam eaque ea nemo laudantium.Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam corrupti, vel aliquid hic animi porro aperiam eaque ea nemo laudantium.
+                {{$company->address}}
             </p>
         </div>
     </div>
@@ -48,7 +46,7 @@
         <div class="col-md-12">
             <h4>Contact Information</h4>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                {{$company->contact_information}}
             </p>
         </div>
     </div>
@@ -73,39 +71,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Job Title</td>
-                                    <td>Job Type</td>
-                                    <td>Salary</td>
-                                    <td>Working Hour</td>
-                                    <td>Contact Information</td>
-                                    <td>Requirement</td>
-                                    <td>
-                                       <a href="" class="btn btn-outline-primary">View Job</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Job Title</td>
-                                    <td>Job Type</td>
-                                    <td>Salary</td>
-                                    <td>Working Hour</td>
-                                    <td>Contact Information</td>
-                                    <td>Requirement</td>
-                                    <td>
-                                       <a href="" class="btn btn-outline-primary">View Job</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Job Title</td>
-                                    <td>Job Type</td>
-                                    <td>Salary</td>
-                                    <td>Working Hour</td>
-                                    <td>Contact Information</td>
-                                    <td>Requirement</td>
-                                    <td>
-                                       <a href="" class="btn btn-outline-primary">View Job</a>
-                                    </td>
-                                </tr>
+                               @foreach ($user->jobs as $job)
+                                    <tr>
+                                        <td>{{$job->title}}</td>
+                                        <td>{{$job->category->name}}</td>
+                                        <td>{{$job->salary}} MMK</td>
+                                        <td>{{$job->working_hour}}</td>
+                                        <td>{{$job->contact_information}}</td>
+                                        <td>{{$job->requirement}}</td>
+                                        <td>
+                                        <a href="{{url('jobs/'.$job->id)}}" class="btn btn-outline-primary">View Job</a>
+                                        </td>
+                                    </tr>
+                               @endforeach
                             </tbody>
                         </table>
                     </div>
