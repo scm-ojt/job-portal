@@ -9,9 +9,16 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\Services\Admin\ProfileService;
 
 class ProfileController extends Controller
 {
+    private $profileService;
+
+    public function __construct(ProfileService $profileService)
+    {
+        $this->profileService = $profileService;
+    }
     public function dashboard()
     {
         return view('admin.admin-dashboard');
@@ -26,23 +33,7 @@ class ProfileController extends Controller
 
     public function update(UserUpdateRequest $request, $id)
     {
-        $user = User::findOrFail($id);
-
-        if($request->hasFile('photo')){
-            Storage::delete('/public/user-photos/'.$user->photo);
-            $photo = $request->file('photo'); 
-            $photoName = $photo->getClientOriginalName();
-            $path = $request->file('photo')->storeAs('public/user-photos',$photoName);
-            $user->photo = $photoName ;
-        }
-        $user->name = $request->name;
-        $user->role_id = $request->role_id;
-
-        if($request->password != $user->password){
-            $user->password = Hash::make($request->password);
-        }
-        $user->update();
-
+        $this->profileService->update($request, $id);
         return redirect('admin/dashboard');
     }
 

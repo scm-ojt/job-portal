@@ -7,17 +7,25 @@ use App\Http\Requests\CategoryStoreRequest;
 use App\Http\Requests\CategoryUpdateRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Services\Admin\CategoryService;
 
 class CategoryController extends Controller
 {
+    private $categoryService;
+
+    public function __construct(CategoryService $categoryService)
+    {
+        $this->categoryService = $categoryService;
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        $categories = Category::all();
+        $categories = $this->categoryService->index();
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -39,11 +47,8 @@ class CategoryController extends Controller
      */
     public function store(CategoryStoreRequest $request)
     {
-        $category = new Category;
-        $category->name = $request->name;
-        $category->save();
-
-        return redirect('admin/categories');
+        $this->categoryService->store($request);
+        return redirect('admin/categories')->with('success', 'Category created successfully!');
     }
 
     /**
@@ -63,9 +68,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        $category = Category::findOrFail($id);
         return view('admin.categories.edit', compact('category'));
     }
 
@@ -76,13 +80,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryUpdateRequest $request, $id)
+    public function update(CategoryUpdateRequest $request, Category $category)
     {
-        $category = Category::findOrFail($id);
-        $category->name = $request->name;
-        $category->update();
-
-        return redirect('admin/categories');
+        $this->categoryService->update($request, $category);
+        return redirect('admin/categories')->with('success', 'Category updated successfully!');
     }
 
     /**
@@ -91,11 +92,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        $category = Category::findOrFail($id);
-        $category->delete();
-
-        return redirect('admin/categories');
+        $this->categoryService->destroy($category);
+        return redirect('admin/categories')->with('success', 'Category deleted successfully!');
     }
 }
