@@ -8,6 +8,7 @@ use App\Models\Company;
 use App\Models\User;
 use Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\CompanyUpdateRequest;
 class CompanyController extends Controller
 {
     /**
@@ -80,7 +81,7 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CompanyUpdateRequest $request, $id)
     {
       $company = Company::findOrFail($id);
       $company->company_type = $request->company_type;
