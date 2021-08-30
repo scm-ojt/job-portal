@@ -2,7 +2,7 @@
 @section('frontend-content')
 
     
-        <img src="images/job-main-banner.jpg" alt="" style="width:1349px;" >
+        <img src="{{asset('images/banner.jpg')}}" alt="" style="width:100%;" >
     
     <div class="container py-5">
         <div class="section mb-5">
@@ -13,7 +13,7 @@
                     <div class="card p-3 my-3" style="background-color: #EAEAF1">
                         <div class="row px-3">
                             @foreach($job->user->companies as $key => $company)
-                            <img src="{{asset('storage/company-logos/'.$company->logo)}}" alt="" class="col-md-1 ">
+                            <img src="{{asset('storage/company-logos/'.$company->logo)}}" alt="" class="col-md-1 " style="width:100px; height:50px;">
                             @endforeach
                            
                             <div class="col-md-4">
@@ -41,13 +41,12 @@
                         <div class="card p-3 shadow-md border border-dark">
                         
                                 <img src="{{asset('storage/company-logos/'.$company->logo)}}" alt="" class="rounded" height="120">  
-
-                            
-                            <a href="{{url('/companies/'.$company->id)}}"><h5 class="font-weight-bold mt-3 text-center" style="color: #3490DC">
+                           
+                           
                             @foreach($company->users as $key => $user)
-                                {{$user->name}}
+                            <a href="{{url('/companies/'.$user->id)}}"><h5 class="font-weight-bold mt-3 text-center" style="color: #3490DC">{{$user->name}}</h5></a>
                             @endforeach
-                        </h5></a>
+                        
                         </div>
                     </div>
                 @endforeach
@@ -55,4 +54,4 @@
             </div>
         </div>
     </div>
-@endsection}
+@endsection
