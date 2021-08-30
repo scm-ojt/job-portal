@@ -6,6 +6,11 @@
             <div class="col-md-12">
                 <h4>All Jobs</h4>
                 <div class="table-responsive mt-4">
+                    @if($message = Session::get('success'))
+                        <div class="alert alert-info">
+                            <p>{{$message}}</p>
+                        </div>
+                    @endif
                     <table class="table table-bordered bg-white">
                         <thead>
                             <tr>
@@ -29,7 +34,7 @@
                                     <th>{{$job->approveUser ? $job->approveUser->name : ''}}</th>
                                     <td>
                                         <span class="badge badge-success">
-                                           ABC Company
+                                           {{$job->user->name? $job->user->name : ''}}
                                         </span>
                                     </td>
                                 <td>{{$job->category->name? $job->category->name : ''}}</td>
@@ -60,6 +65,7 @@
                         </tbody>
                     </table>
                 </div>
+                {{ $jobs->links() }}
             </div>
         </div>
     </div>

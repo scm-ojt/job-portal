@@ -6,6 +6,11 @@
             <div class="col-md-10">
                 <h4>Contact Message</h4>
                 <div class="table-responsive mt-4">
+                    @if($message = Session::get('success'))
+                        <div class="alert alert-info">
+                            <p>{{$message}}</p>
+                        </div>
+                    @endif
                     <table class="table table-bordered shadow-md bg-white">
                         <thead>
                             <tr>
@@ -41,6 +46,7 @@
                         </tbody>
                     </table>
                 </div>
+                {{ $contacts->links() }}
             </div>
         </div>
     </div>

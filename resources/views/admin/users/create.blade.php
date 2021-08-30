@@ -9,7 +9,7 @@
 					<h4>Create User</h4>
 				</div>
 				<div class="card-body">
-					<form action="{{url('admin/users')}}" method="post" enctype="multipart/form-data">
+					<form action="{{url('admin/users')}}" method="post" enctype="multipart/form-data" class="dropzone dz-clickable" id="my-dropzone">
 						@csrf
 
 						<div class="form-group">
@@ -51,7 +51,7 @@
 
 						<div class="form-group">
 							<label for="">Photo</label>
-							<input type="file" name="photo" id="" class="form-control @error('photo') is-invalid @enderror">
+							<input type="file" name="photo" id=""  class="form-control @error('photo') is-invalid @enderror">
 							@error('photo')
 								<span class="text-danger text-bold">{{ $message }}</span>
 							@enderror

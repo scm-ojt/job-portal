@@ -7,6 +7,11 @@
                 <a href="{{url('admin/categories/create')}}" class="btn btn-primary float-right">+Add new</a>
                 <h4>All Categories</h4>
                 <div class="table-responsive mt-4">
+                    @if($message = Session::get('success'))
+                        <div class="alert alert-info">
+                            <p>{{$message}}</p>
+                        </div>
+                    @endif
                     <table class="table table-bordered shadow-md bg-white">
                         <thead>
                             <tr>
