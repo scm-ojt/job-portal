@@ -1,117 +1,58 @@
 @extends('frontend.frontend-layout.master')
 @section('frontend-content')
 
-    <div class="bg-primary p-5">
-        <h3 class="text-center text-uppercase text-white">Banner</h3>
-    </div>
+    
+        <img src="images/job-main-banner.jpg" alt="" style="width:1349px;" >
+    
     <div class="container py-5">
         <div class="section mb-5">
             <h3>Top Jobs</h3>
             <div class="row mt-3">
                 <div class="col-md-12">
-                    <div class="card p-3" style="background-color: #EAEAF1">
+                @foreach($jobs as $job)
+                    <div class="card p-3 my-3" style="background-color: #EAEAF1">
                         <div class="row px-3">
-                            <img src="{{asset('images/mega.png')}}" alt="" class="col-md-1 rounded img-thumbnail">
+                            @foreach($job->user->companies as $key => $company)
+                            <img src="{{asset('storage/company-logos/'.$company->logo)}}" alt="" class="col-md-1 ">
+                            @endforeach
+                           
                             <div class="col-md-4">
-                                <a href="{{url('/jobs/1')}}"><h5 class="font-weight-bold" style="color: #3490DC">Job Title</h5></a>
-                                <span>Company Name</span>
+                                <a href="{{url('jobs/'.$job->id)}}"><h5 class="font-weight-bold" style="color: #3490DC">{{$job->title}}</h5></a>
+                                <a href="{{url('companies/'.$job->user->id)}}"><span>{{$job->user->name? $job->user->name : ''}}</span></a>
                             </div>
                             <div class="col-md-5">
-                                <h5 class="font-weight-bold">Working Address</h5>
+                                <h5 class="font-weight-bold">{{$job->address}}</h5>
                             </div>
                             <div class="col-md-2">
-                                <h5 class="font-weight-bold">Full-Time</h5>
+                                <h5 class="font-weight-bold">{{$job->employment_status}}</h5>
                             </div>
                         </div>
                     </div>
+                @endforeach
                 </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-md-12">
-                    <div class="card p-3" style="background-color: #EAEAF1">
-                        <div class="row px-3">
-                            <img src="{{asset('images/mega.png')}}" alt="" class="col-md-1 rounded img-thumbnail">
-                            <div class="col-md-4">
-                                <h5 class="font-weight-bold" style="color: #3490DC">Job Title</h5>
-                                <span>Company Name</span>
-                            </div>
-                            <div class="col-md-5">
-                                <h5 class="font-weight-bold">Working Address</h5>
-                            </div>
-                            <div class="col-md-2">
-                                <h5 class="font-weight-bold">Full-Time</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-md-12">
-                    <div class="card p-3" style="background-color: #EAEAF1">
-                        <div class="row px-3">
-                            <img src="{{asset('images/mega.png')}}" alt="" class="col-md-1 rounded img-thumbnail">
-                            <div class="col-md-4">
-                                <h5 class="font-weight-bold" style="color: #3490DC">Job Title</h5>
-                                <span>Company Name</span>
-                            </div>
-                            <div class="col-md-5">
-                                <h5 class="font-weight-bold">Working Address</h5>
-                            </div>
-                            <div class="col-md-2">
-                                <h5 class="font-weight-bold">Full-Time</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-md-12">
-                    <div class="card p-3" style="background-color: #EAEAF1">
-                        <div class="row px-3">
-                            <img src="{{asset('images/mega.png')}}" alt="" class="col-md-1 rounded img-thumbnail">
-                            <div class="col-md-4">
-                                <h5 class="font-weight-bold" style="color: #3490DC">Job Title</h5>
-                                <span>Company Name</span>
-                            </div>
-                            <div class="col-md-5">
-                                <h5 class="font-weight-bold">Working Address</h5>
-                            </div>
-                            <div class="col-md-2">
-                                <h5 class="font-weight-bold">Full-Time</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div>    
         </div>
+        
         <div class="section mb-5">
             <h3>Companies</h3>
             <div class="row mt-3">
-                <div class="col-md-3">
-                    <div class="card p-3 shadow-md border border-dark">
-                        <img src="{{asset('images/wave_money.png')}}" alt="" class="rounded" height="120">
-                        <a href="{{url('/companies/1')}}"><h5 class="font-weight-bold mt-3 text-center" style="color: #3490DC">Company Name</h5></a>
+                @foreach($companies as $company)
+                    <div class="col-md-3 my-3">
+                        <div class="card p-3 shadow-md border border-dark">
+                        
+                                <img src="{{asset('storage/company-logos/'.$company->logo)}}" alt="" class="rounded" height="120">  
+
+                            
+                            <a href="{{url('/companies/'.$company->id)}}"><h5 class="font-weight-bold mt-3 text-center" style="color: #3490DC">
+                            @foreach($company->users as $key => $user)
+                                {{$user->name}}
+                            @endforeach
+                        </h5></a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card p-3 shadow-md border border-dark">
-                        <img src="{{asset('images/wave_money.png')}}" alt="" class="rounded" height="120">
-                        <h5 class="font-weight-bold mt-3 text-center" style="color: #3490DC">Company Name</h5>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card p-3 shadow-md border border-dark">
-                        <img src="{{asset('images/wave_money.png')}}" alt="" class="rounded" height="120">
-                        <h5 class="font-weight-bold mt-3 text-center" style="color: #3490DC">Company Name</h5>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card p-3 shadow-md border border-dark">
-                        <img src="{{asset('images/wave_money.png')}}" alt="" class="rounded" height="120">
-                        <h5 class="font-weight-bold mt-3 text-center" style="color: #3490DC">Company Name</h5>
-                    </div>
-                </div>
+                @endforeach
+                
             </div>
         </div>
     </div>
-@endsection
+@endsection}
