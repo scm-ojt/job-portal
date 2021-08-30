@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-dark sticky-top shadow-sm" style="background-color: #44749E">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="images/logo.png" width="100px" height="60px"alt="">
+                    <img src="{{asset('images/logo03.png')}}" width="100%" height="55px"alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -103,54 +103,47 @@
         <footer class="page-footer font-small" style="background-color: #DEDEDE">
             <div class="container text-center text-md-left">
                 <div class="row">
-                    <div class="col-md-3 mx-auto">
-                        <h2 class="font-weight-bold text-uppercase mt-3 mb-4">Logo</h2>
+                    <div class="col-md-3 mx-auto mt-3">
+                        <img src="{{asset('images/logo03.png')}}" width="150px" height="80px"alt="">
                     </div>
                     
                     <div class="col-md-3 mx-auto">
-                        <h5 class="font-weight-bold text-uppercase text-primary mt-3 mb-4">Links</h5>
-                        <ul class="list-unstyled">
+                        <h5 class="font-weight-bold text-uppercase text-primary mt-3 mb-4">About</h5>
+                        <ul class="list-unstyled" style="font-size: 17px;">
                             <li>
-                                <a href="#" class="text-dark">link 1</a>
+                                <a href="{{url('/jobs')}}" class="text-dark">Jobs</a>
                             </li>
                             <li>
-                                <a href="#" class="text-dark">link 2</a>
+                                <a href="{{url('/companies')}}" class="text-dark">Companies</a>
                             </li>
                             <li>
-                                <a href="#" class="text-dark">link 3</a>
+                                <a href="/about-us" class="text-dark">About us</a>
                             </li>
                         </ul> 
                     </div>
 
                     <div class="col-md-3 mx-auto">
-                        <h5 class="font-weight-bold text-uppercase text-primary mt-3 mb-4">Links</h5>
-                        <ul class="list-unstyled">
+                        <h5 class="font-weight-bold text-uppercase text-primary mt-3 mb-4">CONTACT</h5>
+                        <ul class="list-unstyled" style="font-size: 17px;">
                             <li>
-                                <a href="#" class="text-dark">link 1</a>
+                                <a href="#" class="text-dark">No.111,Botahtaung Township,Yangon </a>
                             </li>
                             <li>
-                                <a href="#" class="text-dark">link 2</a>
+                                <a href="#" class="text-dark">jobportal@gmail.com</a>
                             </li>
                             <li>
-                                <a href="#" class="text-dark">link 3</a>
+                                <a href="#" class="text-dark">+01 234 432 455</a>
                             </li>
                         </ul> 
                     </div>
-                    
                     <div class="col-md-3 mx-auto">
-                        <h5 class="font-weight-bold text-uppercase text-primary mt-3 mb-4">Links</h5>
-                        <ul class="list-unstyled">
-                            <li>
-                                <a href="#" class="text-dark">link 1 </a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-dark">link 2</a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-dark">link 3</a>
-                            </li>
-                        </ul> 
-                    </div>
+                        <h5 class="font-weight-bold text-uppercase text-primary mt-3 mb-4">Follow us</h5>
+                        <div class="d-flex justify-content-start">
+                            <a href="#" class="text-dark"><img src="{{asset('images/fb-icon.png')}}" style="width: 50px; height:50px;" alt=""></a>
+                            <a href="#" class="text-dark"><img src="{{asset('images/twitter-icon.png')}}" style="width: 50px; height:50px;" alt=""></a>
+                            <a href="#" class="text-dark"><img src="{{asset('images/gmail-icon.png')}}" style="width: 50px; height:50px;" alt=""></a>
+                        </div>
+                    </div>    
                 </div> 
             </div>
             <hr>

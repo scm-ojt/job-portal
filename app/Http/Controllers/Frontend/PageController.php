@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\Company;
 use App\Models\User;
+use App\Models\Contact;
 
 class PageController extends Controller
 {
@@ -37,13 +38,29 @@ class PageController extends Controller
 
     public function companyDetail($id)
     {   
-        $company = Company::findOrFail($id);
-        return view('frontend.company-detail',compact('company'));
+        $user = User::findOrFail($id);
+        foreach($user->companies as $company){
+            $companyId = $company->id;
+        }
+        $company = Company::findOrFail($companyId);
+        return view('frontend.company-detail',compact('company','user'));
     }
 
     public function contact()
     {
         return view('frontend.contact-us');
+    }
+
+    public function contactStore(Request $request)
+    {
+        $contact = new Contact;
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->phone_no = $request->phone_no;
+        $contact->message = $request->message;
+        $contact->save();
+
+        return redirect('/contact-us')->with('success', 'You have been sent successfully!');
     }
 
     public function about()

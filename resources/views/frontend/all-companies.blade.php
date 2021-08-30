@@ -2,8 +2,11 @@
 @section('frontend-content')
 
     
-<img src="images/job-main-banner.jpg" alt="" style="width:1349px; ">
-
+<img src="{{ asset('images/common_bnr.jpg') }}" alt="" style="width:100%; height: 300px">
+<div class="carousel-caption text-left" style="padding-bottom: 400px">
+    <h1>All Companies</h1>
+    <a href="{{url('/')}}" class="text-white">HOME</a> > <a href="{{url('companies')}}" class="text-white">ALL COMPANIES</a>
+  </div>
     <div class="container py-5">
         <div class="section mb-5">
             <h3>All Companies</h3>
@@ -14,10 +17,10 @@
             
                             <img src="{{asset('storage/company-logos/'.$company->logo)}}" alt="" class="rounded" height="120"> 
     
-                        <a href="{{url('/companies/'.$company->id)}}"><h5 class="font-weight-bold mt-3 text-center" style="color: #3490DC">
+                          
                             @foreach($company->users as $key => $user)
-                            {{$user->name}}
-                        @endforeach</h5></a>
+                            <a href="{{url('/companies/'.$user->id)}}"><h5 class="font-weight-bold mt-3 text-center" style="color: #3490DC"> {{$user->name}}</h5></a>
+                            @endforeach
                     </div>
                 </div>
                 @endforeach   
