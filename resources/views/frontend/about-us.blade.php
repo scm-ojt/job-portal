@@ -1,35 +1,39 @@
 @extends('frontend.frontend-layout.master')
 @section('frontend-content')
 
-<img src="{{ asset('images/common_bnr.jpg') }}" alt="" style="width:100%; height: 300px">
-<div class="carousel-caption text-left" style="padding-bottom: 400px">
-    <h1>About Us</h1>
-    <a href="{{url('/')}}" class="text-white">HOME</a> >
-    <a href="{{url('about-us')}}" class="text-white">ABOUT US</a>
+<div style="position:relative">
+    <img src="{{ asset('images/common_bnr.jpg') }}" alt="" style="width:100%; height: 300px">
+</div>
+<div class="container">
+    <div style="position: absolute; top:150px; left: 150px" class="text-white">
+        <h1>About Us</h1>
+        <a href="{{url('/')}}" class="text-white">HOME</a> >
+        <a href="{{url('about-us')}}" class="text-white">ABOUT US</a>
+    </div>
 </div> 
     <div class="container py-5">
         <div class="section">
-            <h3>Vision</h3>
+            <h3>Our Vision</h3>
             <ul>
-                To be a leading Japan IT company in Myanmar.
+               <li> To be a leading Japan IT company in Myanmar.</li>
             </ul>
         </div>
         <div class="section">
-            <h3>Mission</h3>
+            <h3>Our Mission</h3>
             <ul>
-                To build strong teams with excellent IT engineers. <br>
-                To provide high-quality and cost-effective solutions. <br>
-                To develop IT products beneficial to our society. <br>
-                To build a solid trust with our customers and partners. <br>
+                <li>To build strong teams with excellent IT engineers. </li>
+                <li>To provide high-quality and cost-effective solutions. </li>
+                <li>To develop IT products beneficial to our society. </li>
+                <li>To build a solid trust with our customers and partners. </li>
             </ul>
         </div>
         <div class="section">
-            <h3>Value</h3>
+            <h3>Our Value</h3>
             <ul>
-                We respect diversity and make it our strength. <br>
-                We create comfortable work environment for every religion and ethnic background. <br>
-                We keep challenging to the latest IT technology. <br>
-                We promise not only low cost but also high-quality products. <br>
+                <li>We create comfortable work environment for every religion and ethnic background.</li>
+                <li>We respect diversity and make it our strength.</li> 
+                <li>We keep challenging to the latest IT technology. </li>
+                <li>We promise not only low cost but also high-quality products. </li>
             </ul>
         </div>
     </div>

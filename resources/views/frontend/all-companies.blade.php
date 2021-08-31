@@ -2,11 +2,16 @@
 @section('frontend-content')
 
     
-<img src="{{ asset('images/common_bnr.jpg') }}" alt="" style="width:100%; height: 300px">
-<div class="carousel-caption text-left" style="padding-bottom: 400px">
-    <h1>All Companies</h1>
-    <a href="{{url('/')}}" class="text-white">HOME</a> > <a href="{{url('companies')}}" class="text-white">ALL COMPANIES</a>
-  </div>
+<div style="position:relative">
+    <img src="{{ asset('images/common_bnr.jpg') }}" alt="" style="width:100%; height: 300px">
+</div>
+<div class="container">
+    <div style="position: absolute; top:150px; left: 150px" class="text-white">
+        <h1>All Companies</h1>
+        <a href="{{url('/')}}" class="text-white">HOME</a> >
+        <a href="{{url('/companies')}}" class="text-white">ALL COMPANIES</a>
+    </div>
+</div>
     <div class="container py-5">
         <div class="section mb-5">
             <h3>All Companies</h3>
@@ -25,7 +30,7 @@
                 </div>
                 @endforeach   
             </div>
-            {{ $companies->links() }}   
+            {{ $companies->links() }}  
         </div>
     </div>
 @endsection
