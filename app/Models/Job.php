@@ -20,4 +20,14 @@ class Job extends Model
     {
         return $this->belongsTo(Company::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'company_id');
+    }
+
+    public function approveUser()
+    {
+        return $this->belongsTo(User::class, 'approved_user_id');
+    }
 }

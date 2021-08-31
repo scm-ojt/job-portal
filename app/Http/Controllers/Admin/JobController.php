@@ -5,9 +5,17 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Services\Admin\JobService;
 
 class JobController extends Controller
 {
+    private $jobService;
+
+    public function __construct(JobService $jobService)
+    {
+        $this->jobService = $jobService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +23,7 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = Job::all();
+        $jobs = $this->jobService->index();
         return view('admin.jobs.index', compact('jobs'));
     }
 
@@ -82,25 +90,13 @@ class JobController extends Controller
      */
     public function destroy($id)
     {
-        $job = Job::findOrFail($id);
-        $job->delete();
-
-        return redirect('admin/jobs');
+        $this->jobService->destroy($id);
+        return redirect('admin/jobs')->with('success', 'Job deleted successfully!');
     }
 
     public function approve(Request $request)
     {
-        $id = $request->job_id;
-        $job = Job::findOrFail($id);
-
-        if($job->approve_status == 1) {
-            $job->approve_status = 0;
-            $job->update();
-        }elseif($job->approve_status == 0) {
-            $job->approve_status = 1;
-            $job->update();
-        }
-        
+        $this->jobService->approve($request);
         return redirect()->back();
     }
 }

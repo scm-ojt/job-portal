@@ -5,9 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use App\Services\Admin\RoleService;
 
 class RoleController extends Controller
 {
+    private $roleService;
+
+    public function __construct(RoleService $roleService)
+    {
+        $this->roleService = $roleService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +22,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::all();
+        $roles = $this->roleService->index();
         return view('admin.roles.index', compact('roles'));
     }
 

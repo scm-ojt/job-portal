@@ -34,7 +34,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="navbar-brand" href="{{ url('company/1/jobs') }}">
+                            <a class="navbar-brand" href="{{ url('company-jobs') }}">
                                 Post Jobs
                             </a>
                         </li>

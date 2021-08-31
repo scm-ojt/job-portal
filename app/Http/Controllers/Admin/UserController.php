@@ -3,14 +3,24 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
+use App\Models\Company;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\Services\Admin\UserService;
 
 class UserController extends Controller
 {
+    private $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +29,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::all();
+        $users = $this->userService->index();
         return view('admin.users.index', compact('users'));
     }
 
@@ -30,7 +40,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all();
+        return view('admin.users.create', compact('roles'));
     }
 
     /**
@@ -39,9 +50,11 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
-        //
+        
+        $this->userService->store($request);
+        return redirect('admin/users')->with('success', 'User created successfully!');
     }
 
     /**
@@ -75,34 +88,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,'.$id,
-            'password' => 'required|string|min:8',
-            'role_id' => 'required',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,jfif|max:2048',
-        ]);
-
-        $user = User::findOrFail($id);
-        if($request->hasFile('photo')){
-            Storage::delete('/public/user-photos/'.$user->photo);
-            $photo = $request->file('photo'); 
-            $photoName = $photo->getClientOriginalName();
-            $path = $request->file('photo')->storeAs('public/user-photos',$photoName);
-            $user->photo = $photoName ;
-        }
-        $user->name = $request->name;
-        $user->role_id = $request->role_id;
-
-        if($request->password != $user->password){
-            $user->password = Hash::make($request->password);
-        }
-
-        $user->update();
-
-        return redirect('admin/users');
+        $this->userService->update($request, $id);
+        return redirect('admin/users')->with('success', 'User updated successfully!');
     }
 
     /**
@@ -113,26 +102,19 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
-
-        $user->companies()->delete();
-        return redirect('admin/users');
+        $this->userService->destroy($id);
+        return redirect('admin/users')->with('success', 'User deleted successfully!');
     }
 
     public function active(Request $request)
     {
-        $id = $request->user_id;
-        $user = User::findOrFail($id);
-
-        if($user->active_status == 1) {
-            $user->active_status = 0;
-            $user->update();
-        }elseif($user->active_status == 0) {
-            $user->active_status = 1;
-            $user->update();
-        }
-        
+        $this->userService->active($request); 
         return redirect()->back();
+    }
+
+    public function uploadFile(Request $request, $id)
+    {
+        $this->userService->uploadFile($request, $id);
+        return back()->with('success', 'User photo have been successfully uploaded!');
     }
 }
