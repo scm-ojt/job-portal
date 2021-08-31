@@ -11,17 +11,23 @@ use App\Models\Category;
 use Auth;
 use App\Http\Requests\JobUpdateRequest;
 use App\Http\Requests\JobStoreRequest;
+use App\Services\Company\JobService;
 class JobController extends Controller
 {
+    private $jobService;
+
+    public function __construct(JobService $jobService)
+    {
+        $this->jobService = $jobService;
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $userId = Auth::user()->id;
-        $user = User::findOrFail($userId);
+    {   
+        $user = $this->jobService->index();
         return view('company.company-jobs.index',  compact('user'));
     }
 
@@ -44,19 +50,8 @@ class JobController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(JobStoreRequest $request)
-    {
-        $job = new Job;
-        $job->company_id = Auth::user()->id;
-        $job->category_id = $request->category_id;
-        $job->title = $request->title;
-        $job->employment_status = $request->employment_status;
-        $job->address = $request->address;
-        $job->salary = $request->salary;
-        $job->working_hour = $request->working_hour;
-        $job->requirement = $request->requirement;
-        $job->contact_information = $request->contact_information;
-        $job->save();
-
+    {   
+        $this->jobService->store($request);
         return redirect('company-jobs');
     }
 
@@ -79,7 +74,7 @@ class JobController extends Controller
      */
     public function edit($id)
     {   
-        $job = Job::findOrFail($id);
+        $job = $this->jobService->edit($id);   
         $categories = Category::all();
         return view('company.company-jobs.edit', compact('job','categories'));
     }
@@ -92,18 +87,8 @@ class JobController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(JobUpdateRequest $request, $id)
-    {
-        $job = Job::findOrFail($id);
-        $job->company_id = Auth::user()->id;
-        $job->category_id = $request->category_id;
-        $job->title = $request->title;
-        $job->employment_status = $request->employment_status;
-        $job->address = $request->address;
-        $job->salary = $request->salary;
-        $job->working_hour = $request->working_hour;
-        $job->requirement = $request->requirement;
-        $job->contact_information = $request->contact_information;
-        $job->update();
+    {   
+        $this->jobService->update($request, $id);
 
         return redirect('company-jobs');
     }
@@ -115,9 +100,8 @@ class JobController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        $job = Job::findOrFail($id);
-        $job->delete();
+    {   
+        $this->jobService->destroy($id);
 
         return redirect('company-jobs');
     }
