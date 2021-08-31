@@ -46,7 +46,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{url('admin/dashboard')}}" class="brand-link">
-      <img src="{{ asset('images/jobs.jpg') }}" alt="Job Logo" class="brand-image img-rounded elevation-3">
+      <img src="{{ asset('images/logo03.png') }}" alt="Job Logo" class="brand-image img-rounded elevation-3">
       <span class="brand-text font-weight-light">Job Portal System</span>
     </a>
 
@@ -171,7 +171,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- drop zone -->
 <script src="{{ asset('js/dropzone.js')}}"></script>
 <!-- chart js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+<script src="{{ asset('js/chart.min.js') }}"></script>
 <!-- custom js -->
 <script src="{{ asset('js/custom.js') }}"></script>
 </body>

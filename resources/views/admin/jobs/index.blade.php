@@ -48,7 +48,7 @@
                                             @csrf
 
                                                 <input type="hidden" name="job_id" value="{{$job->id}}">
-                                                <input type="checkbox" class="form-control" name="approve_status" id="" onchange="this.form.submit()" {{$job->approve_status == 1 ? 'checked' : ''}}>
+                                                <input type="checkbox" class="ml-3" name="approve_status" id="" onchange="this.form.submit()" {{$job->approve_status == 1 ? 'checked' : ''}}>
                                             
                                         </form>
                                     </td>

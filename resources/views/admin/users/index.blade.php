@@ -49,7 +49,7 @@
                                             @csrf
 
                                             <input type="hidden" name="user_id" value="{{$user->id}}">
-                                            <input type="checkbox" class="form-control" name="active_status" id="" onchange="this.form.submit()" {{$user->active_status == 1 ? 'checked' : ''}}>
+                                            <input type="checkbox" class="ml-3" name="active_status" id="" onchange="this.form.submit()" {{$user->active_status == 1 ? 'checked' : ''}}>
                                             
                                         </form>
                                     </td>
