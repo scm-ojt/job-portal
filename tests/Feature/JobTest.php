@@ -83,4 +83,26 @@ class JobTest extends TestCase
              ->assertSee($job->title);
     }
 
+    public function test_unauthenticated_users_cannot_create_a_job()
+    {
+        $job =Job::factory()->create();
+
+        $response = $this->post('/company-jobs',$job->toArray());
+
+        $this->get('/company-jobs')
+             ->assertRedirect('/login');
+    }
+
+    public function test_a_job_requires_a_title(){
+
+        $user = User::factory()->create();
+
+        $this->actingAs($user);
+
+        $job = Job::factory()->make(['title' => null]);
+
+        $this->post('/company-jobs', $job->toArray())
+                ->assertSessionHasErrors('title');
+    }
+
 }
