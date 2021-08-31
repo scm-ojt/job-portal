@@ -1,11 +1,15 @@
 @extends('frontend.frontend-layout.master')
 @section('frontend-content')
 
-<img src="{{ asset('images/common_bnr.jpg') }}" alt="" style="width:100%; height: 300px">
-<div class="carousel-caption text-left" style="padding-bottom: 400px">
-    <h1>Contact Us</h1>
-    <a href="{{url('/')}}" class="text-white">HOME</a> >
-    <a href="{{url('contact-us')}}" class="text-white">CONTACT US</a>
+<div style="position:relative">
+    <img src="{{ asset('images/common_bnr.jpg') }}" alt="" style="width:100%; height: 300px">
+</div>
+<div class="container">
+    <div style="position: absolute; top:150px; left: 150px" class="text-white">
+        <h1>Contact Us</h1>
+        <a href="{{url('/')}}" class="text-white">HOME</a> >
+        <a href="{{url('contact-us')}}" class="text-white">CONTACT US</a>
+    </div>
 </div> 
     <div class="container py-5">
         <div class="row justify-content-center">
