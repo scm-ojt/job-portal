@@ -22,10 +22,10 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark sticky-top shadow-sm" style="background-color: #44749E">
+        <nav class="navbar navbar-expand-md navbar-dark sticky-top shadow-sm" style="background-color: #E2EFF8">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{asset('images/logo03.png')}}" width="100%" height="55px"alt="">
+                    <img src="{{asset('images/logo.png')}}" width="100%" height="55px"alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -40,25 +40,28 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="navbar-brand" href="{{url('/jobs')}}">Jobs</a>
+                            <a class="navbar-brand " style="color: #0BA5A9" href="{{url('/jobs')}}">Jobs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navbar-brand" href="{{url('/companies')}}">Companies</a>
+                            <a class="navbar-brand" style="color: #0BA5A9"  href="{{url('/companies')}}">Companies</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navbar-brand" href="{{url('/about-us')}}">About Us</a>
+                            <a class="navbar-brand" style="color: #0BA5A9" href="{{url('/')}}">Category</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navbar-brand" href="{{url('/contact-us')}}">Contact Us</a>
+                            <a class="navbar-brand" style="color: #0BA5A9" href="{{url('/about-us')}}">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="navbar-brand" style="color: #0BA5A9" href="{{url('/contact-us')}}">Contact Us</a>
                         </li>
                         <!-- Authentication Links -->
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="btn btn-light" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="btn" style="background-color: #0BA5A9; color:white;" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-light ml-2" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="btn ml-2" style="background-color: #0BA5A9; color:white;" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                         @endif
                         
@@ -101,65 +104,65 @@
             @yield('frontend-content')
         </main>
     
-        <footer class="page-footer font-small" style="background-color: #DEDEDE">
+        <footer class="page-footer font-small" style="background-color: #E2EFF8">
             <div class="container text-center text-md-left">
                 <div class="row">
                     <div class="col-md-3 mx-auto mt-5">
-                       <a href="{{url('/')}}"><img src="{{asset('images/logo03.png')}}" width="150px" height="80px"alt=""></a> 
+                       <a href="{{url('/')}}"><img src="{{asset('images/logo.png')}}" width="150px" height="80px"alt=""></a> 
                     </div>
                     
                     <div class="col-md-3 mx-auto">
-                        <h5 class="pl-3 font-weight-bold text-uppercase text-primary mt-3 mb-4">Find Jobs</h5>
-                        <ul style="font-size: 17px;">
+                        <h5 class=" font-weight-bold text-uppercase mt-3 mb-4 " style="color: #0BA5A9;">Job Portal</h5>
+                        <ul style="font-size: 17px;" class="list-unstyled">
                             <li>
-                                <a href="{{url('/jobs')}}" class="text-dark">Jobs</a>
+                                <a href="{{url('/jobs')}}" class="" style="color: #0BA5A9;">Jobs</a>
                             </li>
                             <li>
-                                <a href="{{url('/companies')}}" class="text-dark">Companies</a>
+                                <a href="{{url('/companies')}}" class="" style="color: #0BA5A9;">Companies</a>
                             </li>
                             <li>
-                                <a href="/about-us" class="text-dark">About us</a>
+                                <a href="/about-us" class="" style="color: #0BA5A9;">About us</a>
                             </li>
                             <li>
-                                <a href="/contact-us" class="text-dark">Contact us</a>
+                                <a href="/contact-us" class="" style="color: #0BA5A9;">Contact us</a>
                             </li>
                         </ul> 
                     </div>
 
                     <div class="col-md-3 mx-auto">
-                        <h5 class="font-weight-bold text-uppercase text-primary mt-3 mb-4">CONTACT</h5>
+                        <h5 class="font-weight-bold text-uppercase  mt-3 mb-4" style="color: #0BA5A9;">CONTACT</h5>
                         <ul class="list-unstyled" style="font-size: 17px;">
                             <li>
-                                <p class="text-dark">
-                                    <i class="fa fa-map-marker pr-1"></i>
+                                <p class=""  style="color: #0BA5A9;">
+                                    <i class="fa fa-map-marker pr-1" style="color: #0BA5A9;"></i>
                                     No.111,Botahtaung <span class="pl-3">Township,Yangon</span> 
                                 </p>
                             </li>
                             <li>
-                                <p  class="text-dark">
-                                    <i class="fa fa-envelope-open pr-1"></i>
-                                    jobportal@gmail.com</p>
+                                <p  class="" style="color: #0BA5A9;">
+                                    <i class="fa fa-envelope-open pr-1" style="color: #0BA5A9;"></i>
+                                    jobportal@gmail.com</p> 
                             </li>
                             <li>
-                                <p  class="text-dark">
-                                    <i class="fa fa-phone pr-1"></i>
+                                <p  class="" style="color: #0BA5A9;">
+                                    <i class="fa fa-phone pr-1" style="color: #0BA5A9;"></i>
                                     +01 234 432 455</p>
                             </li>
                         </ul> 
                     </div>
                     <div class="col-md-3 mx-auto">
-                        <h5 class="font-weight-bold text-uppercase text-primary mt-3 mb-4">Follow us</h5>
+                        <h5 class="font-weight-bold text-uppercase mt-3 mb-4" style="color: #0BA5A9;">Follow us</h5>
                         <div class="d-flex justify-content-start">
-                            <a href="#" class="text-dark"><img src="{{asset('images/fb-icon.png')}}" style="width: 50px; height:50px;" alt=""></a>
-                            <a href="#" class="text-dark"><img src="{{asset('images/twitter-icon.png')}}" style="width: 50px; height:50px;" alt=""></a>
-                            <a href="#" class="text-dark"><img src="{{asset('images/gmail-icon.png')}}" style="width: 50px; height:50px;" alt=""></a>
+                            <a href="#" class="" style="color: #0BA5A9;"><img src="{{asset('images/fb-icon.png')}}" style="width: 50px; height:50px;" alt=""></a>
+                            <a href="#" class="" style="color: #0BA5A9;" ><img src="{{asset('images/twitter-icon.png')}}" style="width: 50px; height:50px;" alt=""></a>
+                            <a href="#" class="" style="color: #0BA5A9;"><img src="{{asset('images/gmail-icon.png')}}" style="width: 50px; height:50px;" alt=""></a>
                         </div>
                     </div>    
                 </div> 
             </div>
             <hr>
-            <div class="footer-copyright text-center py-2 ">© 2021 Copyright:
-                <a href="#" class="text-dark">jobportal@gmail.com</a>
+            <div class="footer-copyright text-center py-2  " style="color: #0BA5A9;">© 2021 Copyright:
+                <a href="{{url('/')}}" class="" style="color: #0BA5A9;">jobportal@gmail.com</a>
             </div> 
         </footer>
     </div>

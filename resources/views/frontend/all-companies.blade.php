@@ -3,13 +3,13 @@
 
     
 <div style="position:relative">
-    <img src="{{ asset('images/common_bnr.jpg') }}" alt="" style="width:100%; height: 300px">
+    <img src="{{ asset('images/bg.jpg') }}" alt="" style="width:100%; height: 350px">
 </div>
 <div class="container">
-    <div style="position: absolute; top:150px; left: 150px" class="text-white">
-        <h1>All Companies</h1>
-        <a href="{{url('/')}}" class="text-white">HOME</a> >
-        <a href="{{url('/companies')}}" class="text-white">ALL COMPANIES</a>
+    <div style="position: absolute; top:160px; left: 250px" class="text-white">
+        <h1 style="color: #0BA5A9;">All Companies</h1>
+        <a href="{{url('/')}}" class="" style="color: #0BA5A9;">HOME</a> >
+        <a href="{{url('/companies')}}" class="" style="color: #0BA5A9;">ALL COMPANIES</a>
     </div>
 </div>
     <div class="container py-5">
@@ -30,7 +30,7 @@
                 </div>
                 @endforeach   
             </div>
-            {{ $companies->links() }}  
+            <div class="row justify-content-center">{{ $companies->links() }}</div>  
         </div>
     </div>
 @endsection
