@@ -28,10 +28,6 @@ class profileRepository
         }
         $user->name = $request->name;
         $user->role_id = $request->role_id;
-
-        if($request->password != $user->password){
-            $user->password = Hash::make($request->password);
-        }
         $user->update();
         return $user;
     }   

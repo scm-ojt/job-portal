@@ -72,17 +72,6 @@ class JobTest extends TestCase
              ->assertSee($job->title);
     }
 
-    public function test_a_user_can_delete_job(){
-        $user = User::factory()->create();
-
-        $this->actingAs($user);
-
-        $job = Job::factory()->create();
-
-        $this->post('company-jobs/'.$job->id)
-             ->assertSee($job->title);
-    }
-
     public function test_unauthenticated_users_cannot_create_a_job()
     {
         $job =Job::factory()->create();

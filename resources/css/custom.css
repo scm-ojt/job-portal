@@ -1,0 +1,12 @@
+a.view {
+    color: #03A9F4;
+}
+a.edit {
+    color: #FFC107;
+}
+a.delete {
+    color: #E34724;
+}
+i {
+    font-size: 19px;
+}   

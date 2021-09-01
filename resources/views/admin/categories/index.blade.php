@@ -1,15 +1,15 @@
 @extends('admin.admin-layout.master')
 
 @section('admin-content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-10">
-                <a href="{{url('admin/categories/create')}}" class="btn btn-primary float-right">+Add new</a>
+            <div class="col-md-12">
+                <a href="{{url('admin/categories/create')}}" class="btn btn-primary float-right"><i class="fa fa-plus-circle mr-1"></i> Add New</a>
                 <h4>All Categories</h4>
                 <div class="table-responsive mt-4">
                     @if($message = Session::get('success'))
                         <div class="alert alert-info">
-                            <p>{{$message}}</p>
+                            {{$message}}
                         </div>
                     @endif
                     <table class="table table-bordered shadow-md bg-white">
@@ -30,9 +30,8 @@
                                         @csrf
                                         @method('delete')
 
-                                        <a href="{{url('admin/categories/'.$category->id.'/edit')}}" class="btn btn-warning">Edit</a>
-
-                                        <input type="submit" value="Delete" class="btn btn-danger">
+                                        <a href="{{url('admin/categories/'.$category->id.'/edit')}}"  class="btn btn-rounded btn-icon" title="Edit" data-toggle="tooltip" style="background-color: #FFC107;"><i class="fa fa-pen"></i></a>
+                                        <button type="submit" class="btn btn-danger btn-rounded btn-icon" ><i class="fa fa-trash-alt" style=" color: #fff;"></i></button>
                                     </form>
                                 </td>
                             </tr>

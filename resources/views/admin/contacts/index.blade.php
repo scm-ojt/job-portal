@@ -1,14 +1,14 @@
 @extends('admin.admin-layout.master')
 
 @section('admin-content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <h4>Contact Message</h4>
                 <div class="table-responsive mt-4">
                     @if($message = Session::get('success'))
                         <div class="alert alert-info">
-                            <p>{{$message}}</p>
+                            {{$message}}
                         </div>
                     @endif
                     <table class="table table-bordered shadow-md bg-white">
@@ -38,7 +38,7 @@
                                         @method('delete')
 
 
-                                        <input type="submit" value="Delete" class="btn btn-danger">
+                                        <button type="submit" class="btn btn-danger btn-rounded btn-icon" ><i class="fa fa-trash-alt" style=" color: #fff;"></i></button>
                                     </form>
                                 </td>
                             </tr>

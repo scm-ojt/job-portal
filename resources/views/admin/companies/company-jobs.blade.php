@@ -4,18 +4,13 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <h4>All Jobs</h4>
+                <a href="{{url('admin/companies')}}" class="btn btn-primary float-right"><i class="fa fa-arrow-circle-left mr-1"></i>Back</a>
+                <h4>{{$company->name}}'s Jobs</h4>
                 <div class="table-responsive mt-4">
-                    @if($message = Session::get('success'))
-                        <div class="alert alert-info">
-                            {{$message}}
-                        </div>
-                    @endif
-                    <table class="table table-bordered bg-white">
+                    <table class="table table-bordered bg-white text-center">
                         <thead>
                             <tr>
                                 <th>Job Title</th>
-                                <th>Company Name</th>
                                 <th>Job Type</th>
                                 <th>Employment Status</th>
                                 <th>Salary</th>
@@ -25,15 +20,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($jobs as $job)
+                            @foreach ($user->jobs as $job)
                                 <tr>
                                     <td>{{$job->title}}</td>
-                                    <td>
-                                        <span class="badge badge-success">
-                                           {{$job->user->name? $job->user->name : ''}}
-                                        </span>
-                                    </td>
-                                <td>{{$job->category->name? $job->category->name : ''}}</td>
+                                    <td>{{$job->category->name? $job->category->name : ''}}</td>
                                     <td>{{$job->employment_status}}</td>
                                     <td>{{$job->salary}}</td>
                                     <td>{{$job->working_hour}}</td>
@@ -42,12 +32,12 @@
                                             @csrf
 
                                                 <input type="hidden" name="job_id" value="{{$job->id}}">
-                                                <input type="checkbox" class="ml-3" name="approve_status" id="" onchange="this.form.submit()" {{$job->approve_status == 1 ? 'checked' : ''}}>
+                                                <input type="checkbox" name="approve_status" id="" onchange="this.form.submit()" {{$job->approve_status == 1 ? 'checked' : ''}}>
                                             
                                         </form>
                                     </td>
                                     <td>
-                                        <form action="{{url('admin/jobs/'.$job->id)}}" method="post">
+                                        <form action="{{url('admin/jobs/'.$job->id)}}" method="post" id="delete">
                                             @csrf
                                             @method('delete')
 
@@ -60,7 +50,6 @@
                         </tbody>
                     </table>
                 </div>
-                {{ $jobs->links() }}
             </div>
         </div>
     </div>

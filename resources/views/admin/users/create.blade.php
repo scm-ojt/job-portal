@@ -1,7 +1,7 @@
 @extends('admin.admin-layout.master')
 
 @section('admin-content')
-<div class="container">
+<div class="container-fluid">
 	<div class="row justify-content-center">
 		<div class="col-md-10">
 			<div class="card">
@@ -27,13 +27,18 @@
 								<span class="text-danger text-bold">{{ $message }}</span>
 							@enderror
 						</div>
-						
-                        <div class="form-group">
+
+						<div class="form-group">
 							<label for="">Password</label>
-							<input type="password" name="password" id="" class="form-control @error('password') is-invalid @enderror">
+							<input type="password" name="password" id="" class="form-control @error('password') is-invalid @enderror" >
 							@error('password')
 								<span class="text-danger text-bold">{{ $message }}</span>
 							@enderror
+						</div>
+
+						<div class="form-group">
+							<label for="">Confirm Password</label>
+							<input type="password" name="password_confirmation" required autocomplete="new-password" class="form-control" >
 						</div>
 
                         <div class="form-group">
@@ -51,7 +56,7 @@
 
 						<div class="form-group">
 							<label for="">Photo</label>
-							<input type="file" name="photo" id=""  class="form-control @error('photo') is-invalid @enderror">
+							<input type="file" name="photo" id=""  class="form-control-file @error('photo') is-invalid @enderror">
 							@error('photo')
 								<span class="text-danger text-bold">{{ $message }}</span>
 							@enderror
@@ -59,7 +64,7 @@
 						
 						<div class="form-group">
 							<input type="submit" value="Submit" class="btn btn-success">
-							<input type="reset" value="Reset" class="btn btn-primary">
+							<a href="{{url('admin/users')}}" class="btn btn-secondary float-right">Cancel</a>
 						</div>
 					</form>
 				</div>

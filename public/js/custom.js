@@ -93,3 +93,5 @@ var jobChart = new Chart(job, {
         }
     }
 });
+
+$('[data-toggle="tooltip"]').tooltip();
