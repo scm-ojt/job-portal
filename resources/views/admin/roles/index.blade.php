@@ -1,9 +1,9 @@
 @extends('admin.admin-layout.master')
 
 @section('admin-content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <h4>Role</h4>
                 <div class="table-responsive mt-4">
                     <table class="table table-bordered bg-white">
@@ -11,7 +11,6 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Role</th>
-                                <th>User Name</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -19,11 +18,6 @@
                                 <tr>
                                     <td>{{$role->id}}</td>
                                     <td>{{$role->name}}</td>
-                                    <td>
-                                        @foreach ($role->users as $user)
-                                            <span class="badge badge-primary">{{$user->name}}</span>
-                                        @endforeach
-                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

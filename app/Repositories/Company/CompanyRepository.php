@@ -39,6 +39,7 @@ class CompanyRepository
     public function update($request, $id)
     {   
         $company = Company::findOrFail($id);
+        $company->name = $request->name;
         $company->company_type = $request->company_type;
         $company->phone_no = $request->phone_no;
         $company->address = $request->address;

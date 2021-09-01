@@ -20,7 +20,10 @@ Route::middleware(['auth','admin'])->group(function () {
     //companies
     Route::get('admin/companies', [App\Http\Controllers\Admin\CompanyController::class, 'index']);
     Route::delete('admin/companies/{id}', [App\Http\Controllers\Admin\CompanyController::class, 'destroy']);
+    Route::get('admin/companies/{id}', [App\Http\Controllers\Admin\CompanyController::class, 'show']);
     Route::post('admin/companies/{id}/active', [App\Http\Controllers\Admin\CompanyController::class, 'active']);
+    Route::get('admin/companies/{id}/users', [App\Http\Controllers\Admin\CompanyController::class, 'companyUsers']);
+    Route::get('admin/companies/{id}/jobs', [App\Http\Controllers\Admin\CompanyController::class, 'companyJobs']);
 
     //categories
     Route::resource('admin/categories', App\Http\Controllers\Admin\CategoryController::class);

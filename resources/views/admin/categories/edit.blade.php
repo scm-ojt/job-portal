@@ -23,7 +23,7 @@
 						
 						<div class="form-group">
 							<input type="submit" value="Submit" class="btn btn-success">
-							<input type="reset" value="Reset" class="btn btn-primary">
+							<a href="{{url('admin/categories')}}" class="btn btn-secondary float-right">Cancel</a>
 						</div>
 					</form>
 				</div>

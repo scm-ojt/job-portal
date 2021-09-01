@@ -73,9 +73,14 @@ class RegisterController extends Controller
         ]);
 
         $company = new Company;
+        $company->name = $data['name'];
+        $company->company_type = $data['company_type'];
+        $company->phone_no = $data['phone_no'];
+        $company->address = $data['address'];
+        $company->no_of_employee = $data['no_of_employee'];
         $company->save();
 
-        $user->companies()->attach($company->id);
+        $company->users()->attach($user->id);
 
         return $user;
 

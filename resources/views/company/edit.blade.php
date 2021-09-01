@@ -64,14 +64,6 @@
 					</div>
 					
 					<div class="form-group">
-						<label for="">Password</label>
-						<input type="text" name="password" id="" class="form-control @error('password') is-invalid @enderror" placeholder="Enter password" value="{{Auth::user()->password}}">
-						@error('password')
-								<span class="text-danger text-bold">{{ $message }}</span>
-						@enderror
-					</div>
-					
-					<div class="form-group">
 						<label for="">Phone No</label>
 						<input type="text" name="phone_no" id="" class="form-control @error('phone_no') is-invalid @enderror" placeholder="Enter phone no" value="{{$company->phone_no}}">
 							@error('phone_no')

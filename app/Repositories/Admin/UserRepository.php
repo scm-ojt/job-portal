@@ -4,6 +4,7 @@ namespace App\Repositories\Admin;
 
 use App\Models\Company;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,7 +19,7 @@ class UserRepository
 
     public function index()
     {
-        $users = $this->user->paginate(10);
+        $users = $this->user->where('id', '!=', Auth::user()->id)->paginate(10);
         return $users;
     }
 
@@ -33,16 +34,17 @@ class UserRepository
         }
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password); 
+        $user->password = Hash::make($request->password);
         $user->role_id = $request->role_id;    
         $user->save();
 
-        if($user->role_id == 2){
+        if($user->role_id == 2)
+        {
             $company = new Company;
+            $company->name = $request->name;
             $company->save();
-            $user->companies()->attach($company->id);
+            $company->users()->attach($user->id);
         }
-
         return $user;
     }
 
@@ -58,12 +60,15 @@ class UserRepository
         }
         $user->name = $request->name;
         $user->role_id = $request->role_id;
-
-        if($request->password != $user->password){
-            $user->password = Hash::make($request->password);
-        }
-
         $user->update();
+
+        if($user->companies->count() < 1 && $user->role_id == 2)
+        {
+            $company = new Company;
+            $company->name = $request->name;
+            $company->save();
+            $company->users()->attach($user->id);
+        }
         return $user;
     }
 

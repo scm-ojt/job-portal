@@ -4,46 +4,25 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <a href="{{url('admin/users/create')}}" class="btn btn-primary float-right"><i class="fa fa-plus-circle"></i> Add New</a>
-                <h4>All Users</h4>
+                <a href="{{url('admin/companies')}}" class="btn btn-primary float-right"><i class="fa fa-arrow-circle-left mr-1"></i>Back</a>
+                <h4>{{$company->name}}'s User List</h4>
                 <div class="table-responsive mt-4">
-                    @if($message = Session::get('success'))
-                        <div class="alert alert-info">
-                            {{$message}}
-                        </div>
-                    @endif
                     <table class="table table-bordered bg-white">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Photo</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Role</th>
                                 <th>Active</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($users as $user)
+                            @foreach ($company->users as $user)
                                 <tr>
                                     <td>{{$user->id}}</td>
-                                    <td>
-                                        @if($user->photo)
-                                            <img src="{{asset('storage/user-photos/'.$user->photo)}}" alt="User Photo" style="width: 100px;  height: 100px">
-                                        @else
-                                        <form action="{{url('admin/users/upload-photo/'.$user->id)}}" method="post" enctype="multipart/form-data" class="dropzone dz-clickable" id="my-dropzone">
-                                            @csrf
-                                            @method('put')
-
-                                        </form>
-                                        @endif
-                                    </td>
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
-                                    <td>
-                                        <span class="badge badge-primary">{{$user->role->name}}</span>
-                                    </td>
                                     <td>
                                         <form action="{{url('admin/users/active')}}" method="post">
                                             @csrf
@@ -67,7 +46,6 @@
                         </tbody>
                     </table>
                 </div>
-                {{ $users->links() }}
             </div>
         </div>
     </div>

@@ -28,7 +28,7 @@ class JobRepository
     public function store($request)
     {   
         $job = new Job;
-        $job->company_id = Auth::user()->id;
+        $job->user_id = Auth::user()->id;
         $job->category_id = $request->category_id;
         $job->title = $request->title;
         $job->employment_status = $request->employment_status;
@@ -49,7 +49,7 @@ class JobRepository
     public function update($request, $id)
     {   
         $job = Job::findOrFail($id);
-        $job->company_id = Auth::user()->id;
+        $job->user_id = Auth::user()->id;
         $job->category_id = $request->category_id;
         $job->title = $request->title;
         $job->employment_status = $request->employment_status;

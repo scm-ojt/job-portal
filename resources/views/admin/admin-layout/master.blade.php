@@ -16,7 +16,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
   <link rel="stylesheet" href="{{ asset('css/dropzone.css') }}">
-
+  <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+  <style>
+    .btn.btn-rounded {
+    border-radius: 10px;
+    }
+  </style>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -35,7 +40,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <form id="logout-form" action="{{ route('logout') }}" method="POST">
                 @csrf
 
-                <button type="submit" class="btn btn-secondary float-right">Logout</button>
+                <button type="submit" class="btn btn-secondary float-right"><i class="fa fa-power-off"></i> Logout</button>
             </form>
         </li>
       </ul>

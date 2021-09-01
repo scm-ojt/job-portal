@@ -16,14 +16,9 @@ class Job extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function company()
-    {
-        return $this->belongsTo(Company::class);
-    }
-
     public function user()
     {
-        return $this->belongsTo(User::class, 'company_id');
+        return $this->belongsTo(User::class);
     }
 
     public function approveUser()
