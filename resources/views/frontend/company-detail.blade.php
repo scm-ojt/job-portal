@@ -2,13 +2,15 @@
 
 @section('frontend-content')
 
-    <img src="{{ asset('images/common_bnr.jpg') }}" alt="" style="width:100%;">
+    <img src="{{ asset('images/bg.jpg') }}" alt="" style="width:100%; height:350px;">
 
-<div class="container py-5 p-3 clearFix">
+<div class="container py-5 p-3 clearFix" style="font-size: 15px;">
     <div class="row">
         <div class="col-md-12">
             <div class="d-flex justify-content-start">
-                <img src="{{asset('storage/company-logos/'.$company->logo)}}"   style="width:100px; height:100px;" alt="" class="rounded img-thumbnail">
+                @if($company->logo)
+                    <img src="{{asset('storage/company-logos/'.$company->logo)}}"   style="width:100px; height:100px;" alt="" class="rounded img-thumbnail">
+                @endif
                 <ul style="list-style: none;">
                     <li><h2>{{$user->name}}</h2></li>
                     <li>Company Type: {{$company->company_type}}</li>
@@ -18,7 +20,7 @@
         </div>
     </div>
     <hr>
-    <div class="row">
+    <div class="row mb-2">
         <div class="col-md-12">
             <h4>Histroy</h4>
             <p>
@@ -26,7 +28,7 @@
             </p>
         </div>
     </div>
-    <div class="row">
+    <div class="row mb-2">
         <div class="col-md-12">
             <h4>Description</h4>
             <p>
@@ -34,7 +36,7 @@
             </p>
         </div>
     </div>
-    <div class="row">
+    <div class="row mb-2">
         <div class="col-md-12">
             <h4>Address</h4>
             <p>
@@ -42,7 +44,7 @@
             </p>
         </div>
     </div>
-    <div class="row">
+    <div class="row mb-2">
         <div class="col-md-12">
             <h4>Contact Information</h4>
             <p>
@@ -53,7 +55,7 @@
     <div class="row mt-3">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header bg-primary">
+                <div class="card-header" style="background-color:#0BA5A9">
                     <h4 class="text-white">Company's Jobs</h3>
                 </div>
                 <div class="card-body">
@@ -61,8 +63,8 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Job Title</th>
-                                    <th>Job Type</th>
+                                    <th>Position</th>
+                                    <th>Jobs Category</th>
                                     <th>Salary</th>
                                     <th>Working Hour</th>
                                     <th>Contact Information</th>
