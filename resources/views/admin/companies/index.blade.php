@@ -19,7 +19,6 @@
                                 <th>Phone No</th>
                                 <th>Address</th>
                                 <th>Active</th>
-                                <th>Users</th>
                                 <th>Jobs</th>
                                 <th>Action</th>
                             </tr>
@@ -44,9 +43,6 @@
                                         </form>
                                     </td>
                                     <td>
-                                        <a href="{{url('admin/companies/'.$company->id.'/users')}}" class="btn btn-outline-primary">View Users</a>
-                                    </td>
-                                    <td>
                                         <a href="{{url('admin/companies/'.$company->id.'/jobs')}}" class="btn btn-outline-success">View Jobs</a>
                                     </td>
                                     </td>
@@ -55,8 +51,8 @@
                                             @csrf
                                             @method('delete')
                                             
-                                            <a href="{{url('admin/companies/'.$company->id)}}"  class="btn btn-rounded btn-icon" title="Detail" data-toggle="tooltip" style="background-color: #0fcce6;"><i class="fa fa-eye"></i></a>
-                                            <button type="submit" class="btn btn-danger btn-rounded btn-icon" ><i class="fa fa-trash-alt" style=" color: #fff;"></i></button>
+                                            <a href="{{url('admin/companies/'.$company->id)}}"  class="btn btn-info" title="Detail" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')"><i class="fa fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>

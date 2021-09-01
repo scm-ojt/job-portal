@@ -2,6 +2,7 @@
 
 namespace App\Services\Admin;
 
+use App\Models\Category;
 use App\Repositories\Admin\CategoryRepository;
 
 class CategoryService
@@ -20,7 +21,7 @@ class CategoryService
 
     public function store($request)
     {
-        return $this->categoryRepository->store($request);
+        $result =  $this->categoryRepository->store($request);
     }
 
     public function update($request, $category)

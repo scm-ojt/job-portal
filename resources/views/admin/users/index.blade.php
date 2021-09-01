@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <a href="{{url('admin/users/create')}}" class="btn btn-primary float-right"><i class="fa fa-plus-circle"></i> Add New</a>
+                <a href="{{url('admin/users/create')}}" class="btn btn-primary float-right"><i class="fa fa-plus-circle mr-1"></i> Add New</a>
                 <h4>All Users</h4>
                 <div class="table-responsive mt-4">
                     @if($message = Session::get('success'))
@@ -58,8 +58,8 @@
                                             @csrf
                                             @method('delete')
 
-                                            <a href="{{url('admin/users/'.$user->id.'/edit')}}"  class="btn btn-rounded btn-icon" title="Edit" data-toggle="tooltip" style="background-color: #FFC107;"><i class="fa fa-pen"></i></a>
-                                            <button type="submit" class="btn btn-danger btn-rounded btn-icon" ><i class="fa fa-trash-alt" style=" color: #fff;"></i></button>
+                                            <a href="{{url('admin/users/'.$user->id.'/edit')}}"  class="btn btn-warning" title="Edit" data-toggle="tooltip"><i class="fa fa-pen"></i></a>
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')"><i class="fa fa-trash-alt" style=" color: #fff;"></i></button>
                                         </form>
                                     </td>
                                 </tr>

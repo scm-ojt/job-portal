@@ -51,8 +51,8 @@
                                             @csrf
                                             @method('delete')
 
-                                            <a href="#"  class="btn btn-rounded btn-icon" title="Edit" data-toggle="tooltip" style="background-color: #0fcce6;"><i class="fa fa-eye"></i></a>
-                                            <button type="submit" class="btn btn-danger btn-rounded btn-icon" ><i class="fa fa-trash-alt" style=" color: #fff;"></i></button>
+                                            <a href="{{url('admin/jobs/'.$job->id)}}"  class="btn btn-info" title="Detail" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')"><i class="fa fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>

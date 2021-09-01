@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserUpdateRequest;
+use App\Models\Company;
+use App\Models\Job;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -22,27 +24,48 @@ class ProfileController extends Controller
     }
     public function dashboard()
     {
-        $users = User::select('id', 'created_at')
+        $companies = Company::select('id', 'created_at')
         ->get()
         ->groupBy(function($date) {
             //return Carbon::parse($date->created_at)->format('Y'); // grouping by years
             return Carbon::parse($date->created_at)->format('m'); // grouping by months
         });
-        $usermcount = [];
-        $userArr = [];
+        $companymcount = [];
+        $companyArr = [];
 
-        foreach ($users as $key => $value) {
-            $usermcount[(int)$key] = count($value);
+        foreach ($companies as $key => $value) {
+            $companymcount[(int)$key] = count($value);
         }
 
         for($i = 1; $i <= 12; $i++){
-            if(!empty($usermcount[$i])){
-                $userArr[$i] = $usermcount[$i];    
+            if(!empty($companymcount[$i])){
+                $companyArr[$i] = $companymcount[$i];    
             }else{
-                $userArr[$i] = 0;    
+                $companyArr[$i] = 0;    
             }
         }
-        return view('admin.admin-dashboard', compact('userArr'));
+
+        $jobs = Job::select('id', 'created_at')
+        ->get()
+        ->groupBy(function($date) {
+            //return Carbon::parse($date->created_at)->format('Y'); // grouping by years
+            return Carbon::parse($date->created_at)->format('m'); // grouping by months
+        });
+        $jobmcount = [];
+        $jobArr = [];
+
+        foreach ($jobs as $key => $value) {
+            $jobmcount[(int)$key] = count($value);
+        }
+
+        for($i = 1; $i <= 12; $i++){
+            if(!empty($jobmcount[$i])){
+                $jobArr[$i] = $jobmcount[$i];    
+            }else{
+                $jobArr[$i] = 0;
+            }
+        }
+        return view('admin.admin-dashboard', compact('companyArr','jobArr'));
     }
 
     public function edit($id)

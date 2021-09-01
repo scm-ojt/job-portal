@@ -22,7 +22,6 @@ class ContactFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => 2,
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'phone_no' => rand(1111111, 9999999),
