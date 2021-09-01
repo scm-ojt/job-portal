@@ -95,12 +95,6 @@ class CompanyController extends Controller
         return redirect('admin/companies')->with('success', 'Company has been deleted successfully!');
     }
 
-    public function companyUsers($id)
-    {
-        $company = Company::findOrFail($id);
-        return view('admin.companies.company-users', compact('company'));
-    }
-
     public function companyJobs($id)
     {
         $company = Company::findOrFail($id);

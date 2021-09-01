@@ -30,8 +30,8 @@
                                         @csrf
                                         @method('delete')
 
-                                        <a href="{{url('admin/categories/'.$category->id.'/edit')}}"  class="btn btn-rounded btn-icon" title="Edit" data-toggle="tooltip" style="background-color: #FFC107;"><i class="fa fa-pen"></i></a>
-                                        <button type="submit" class="btn btn-danger btn-rounded btn-icon" ><i class="fa fa-trash-alt" style=" color: #fff;"></i></button>
+                                        <a href="{{url('admin/categories/'.$category->id.'/edit')}}"  class="btn btn-warning" title="Edit" data-toggle="tooltip"><i class="fa fa-pen"></i></a>
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')"><i class="fa fa-trash-alt"></i></button>
                                     </form>
                                 </td>
                             </tr>

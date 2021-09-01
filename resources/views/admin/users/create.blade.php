@@ -56,7 +56,8 @@
 
 						<div class="form-group">
 							<label for="">Photo</label>
-							<input type="file" name="photo" id=""  class="form-control-file @error('photo') is-invalid @enderror">
+							<img src="{{asset('images/avatar_01.png')}}" alt="" width="100" height="100" class="mb-2 ml-3" id="preview-img">
+							<input type="file" name="photo" id="profile" class="form-control-file @error('photo') is-invalid @enderror">
 							@error('photo')
 								<span class="text-danger text-bold">{{ $message }}</span>
 							@enderror

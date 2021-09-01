@@ -29,16 +29,14 @@
                                 <td>{{$contact->name}}</td>
                                 <td>{{$contact->email}}</td>
                                 <td>{{$contact->phone_no}}</td>
-                                <td>
-                                    <textarea name="" id="" cols="30" rows="5">{{$contact->message}}</textarea>
-                                </td>
+                                <td>{{Str::limit($contact->message, 50, '...')}}</td>
                                 <td>
                                     <form action="{{url('admin/contacts/'.$contact->id)}}" method="post">
                                         @csrf
                                         @method('delete')
 
 
-                                        <button type="submit" class="btn btn-danger btn-rounded btn-icon" ><i class="fa fa-trash-alt" style=" color: #fff;"></i></button>
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')"><i class="fa fa-trash-alt"></i></button>
                                     </form>
                                 </td>
                             </tr>

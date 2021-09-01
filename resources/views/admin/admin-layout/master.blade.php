@@ -40,7 +40,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <form id="logout-form" action="{{ route('logout') }}" method="POST">
                 @csrf
 
-                <button type="submit" class="btn btn-secondary float-right"><i class="fa fa-power-off"></i> Logout</button>
+                <button type="submit" class="btn btn-secondary float-right">Logout<i class="fa fa-power-off ml-2"></i> </button>
             </form>
         </li>
       </ul>
@@ -178,6 +178,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- chart js -->
 <script src="{{ asset('js/chart.min.js') }}"></script>
 <!-- custom js -->
-<script src="{{ asset('js/custom.js') }}"></script>
+<script src="{{ asset('js/chart.js') }}"></script>
+<!-- preview js -->
+<script src="{{ asset('js/previewImage.js') }}"></script>
 </body>
 </html>

@@ -22,7 +22,6 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::delete('admin/companies/{id}', [App\Http\Controllers\Admin\CompanyController::class, 'destroy']);
     Route::get('admin/companies/{id}', [App\Http\Controllers\Admin\CompanyController::class, 'show']);
     Route::post('admin/companies/{id}/active', [App\Http\Controllers\Admin\CompanyController::class, 'active']);
-    Route::get('admin/companies/{id}/users', [App\Http\Controllers\Admin\CompanyController::class, 'companyUsers']);
     Route::get('admin/companies/{id}/jobs', [App\Http\Controllers\Admin\CompanyController::class, 'companyJobs']);
 
     //categories
@@ -31,6 +30,7 @@ Route::middleware(['auth','admin'])->group(function () {
     //jobs
     Route::get('admin/jobs', [App\Http\Controllers\Admin\JobController::class, 'index']);
     Route::delete('admin/jobs/{id}', [App\Http\Controllers\Admin\JobController::class, 'destroy']);
+    Route::get('admin/jobs/{id}', [App\Http\Controllers\Admin\JobController::class, 'show']);
     Route::post('admin/jobs/approve', [App\Http\Controllers\Admin\JobController::class, 'approve']);
 
     //roles
