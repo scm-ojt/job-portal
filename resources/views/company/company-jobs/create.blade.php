@@ -5,8 +5,8 @@
 	<div class="row justify-content-center">
 		<div class="col-md-10">
 			<div class="card">
-				<div class="card-header">
-					<h4>Post Job</h4>
+				<div class="card-header" style="background-color: #4BA3EB;">
+					<h4 class="text-center text-white mt-2">Post Job</h4>
 				</div>
 				<div class="card-body">
 					<form action="{{url('company-jobs')}}" method="post">
@@ -88,8 +88,8 @@
 						</div>
 						
 						<div class="form-group">
-							<input type="submit" value="Post Job" class="btn btn-success">
-							<input type="reset" value="Reset" class="btn btn-primary">
+							<input class="btn btn-primary btn-rounded btn-icon text-white px-5 py-2" value="Post Job" type="submit" data-toggle="tooltip"><i class="fa fa-eye"></i>
+							<a href="{{url('company-jobs/')}}" class="px-3 py-2 btn btn-secondary btn-rounded btn-icon float-right" title="Cancel"><i class="fa fa-trash-alt" style=" color: #fff;">Cancel</i></a>
 						</div>
 					</form>
 				</div>
