@@ -31,7 +31,7 @@
                                 <td>{{$contact->phone_no}}</td>
                                 <td>{{Str::limit($contact->message, 50, '...')}}</td>
                                 <td>
-                                    <form action="{{url('admin/contacts/'.$contact->id)}}" method="post">
+                                    <form action="{{ route('admin.contacts.destroy', $contact->id) }}" method="post">
                                         @csrf
                                         @method('delete')
 

@@ -38,7 +38,7 @@
                                     <td>{{$job->salary}}</td>
                                     <td>{{$job->working_hour}}</td>
                                     <td>
-                                        <form action="{{url('admin/jobs/approve')}}" method="post">
+                                        <form action="{{ route('admin.jobs.approve', $job->id) }}" method="post">
                                             @csrf
 
                                                 <input type="hidden" name="job_id" value="{{$job->id}}">
@@ -47,11 +47,11 @@
                                         </form>
                                     </td>
                                     <td>
-                                        <form action="{{url('admin/jobs/'.$job->id)}}" method="post">
+                                        <form action="{{ route('admin.jobs.destroy', $job->id) }}" method="post">
                                             @csrf
                                             @method('delete')
 
-                                            <a href="{{url('admin/jobs/'.$job->id)}}"  class="btn btn-info" title="Detail" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                            <a href="{{ route('admin.jobs.show', $job->id) }}"  class="btn btn-info" title="Detail" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
                                             <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')"><i class="fa fa-trash-alt"></i></button>
                                         </form>
                                     </td>

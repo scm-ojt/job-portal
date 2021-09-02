@@ -40,8 +40,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::all();
-        return view('admin.users.create', compact('roles'));
+
     }
 
     /**
@@ -53,8 +52,6 @@ class UserController extends Controller
     public function store(UserStoreRequest $request)
     {
         
-        $this->userService->store($request);
-        return redirect('admin/users')->with('success', 'User created successfully!');
     }
 
     /**
