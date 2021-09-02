@@ -44,16 +44,10 @@
                                         <span class="badge badge-primary">{{$user->role->name}}</span>
                                     </td>
                                     <td>
-                                        <form action="{{ route('admin.users.active') }}" method="post">
+                                        <form action="{{ route('admin.users.active', $user->id) }}" method="post">
                                             @csrf
 
-                                            <input type="hidden" name="user_id" value="{{$user->id}}">
-                                            <input type="checkbox" name="active_status" id="" onchange="this.form.submit()" {{$user->active_status == 1 ? 'checked' : ''}}> <br>
-                                            {{-- @if($user->active_status == true)
-                                                <span class="badge badge-success"><i class="fa fa-user mr-1"></i> Active</span>
-                                            @else
-                                                <span class="badge badge-secondary"><i class="fa fa-ban mr-1"></i> Deactivate</span>
-                                            @endif --}}
+                                            <input type="checkbox" name="active_status" id="" onchange="this.form.submit()" {{$user->active_status == 1 ? 'checked' : ''}}>
                                         </form>
                                     </td>
                                     <td>

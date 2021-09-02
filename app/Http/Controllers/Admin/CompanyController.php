@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company;
-use App\Models\User;
 use Illuminate\Http\Request;
 use App\Services\Admin\CompanyService;
 
@@ -97,12 +96,8 @@ class CompanyController extends Controller
 
     public function companyJobs($id)
     {
-        $company = Company::findOrFail($id);
-        foreach($company->users as $user)
-        {
-            $userId = $user->id;
-        }
-        $user = User::findOrFail($userId);
+        $company = Company::findOrfail($id);
+        $user = $this->companyService->companyJobs($company);
         return view('admin.companies.company-jobs', compact('company','user'));
     }
 
