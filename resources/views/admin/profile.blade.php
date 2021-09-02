@@ -9,7 +9,7 @@
 					<h4>My Profile</h4>
 				</div>
 				<div class="card-body">
-					<form action="{{url('admin/'.$user->id)}}" method="post" enctype="multipart/form-data">
+					<form action="{{ route('admin.update', $user->id) }}" method="post" enctype="multipart/form-data">
 						@csrf
                         @method('put')
 

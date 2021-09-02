@@ -23,31 +23,6 @@ class UserRepository
         return $users;
     }
 
-    public function store($request)
-    {
-        $user = new User;
-        if($request->hasFile('photo')){
-            $photo = $request->file('photo'); 
-            $photoName = $photo->getClientOriginalName();
-            $path = $request->file('photo')->storeAs('public/user-photos',$photoName);
-            $user->photo = $photoName ;
-        }
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->role_id = $request->role_id;    
-        $user->save();
-
-        if($user->role_id == 2)
-        {
-            $company = new Company;
-            $company->name = $request->name;
-            $company->save();
-            $company->users()->attach($user->id);
-        }
-        return $user;
-    }
-
     public function update($request, $id)
     {
         $user = User::findOrFail($id);
@@ -61,14 +36,6 @@ class UserRepository
         $user->name = $request->name;
         $user->role_id = $request->role_id;
         $user->update();
-
-        if($user->companies->count() < 1 && $user->role_id == 2)
-        {
-            $company = new Company;
-            $company->name = $request->name;
-            $company->save();
-            $company->users()->attach($user->id);
-        }
         return $user;
     }
 

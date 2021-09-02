@@ -22,7 +22,7 @@ class CompanyFactory extends Factory
     public function definition()
     {
         return [
-            'company_name' => $this->faker->name(),
+            'name' => $this->faker->name(),
             'company_type' => $this->faker->name(),
             'logo' => $this->faker->imageUrl(200,200),
             'phone_no' => $this->faker->numberBetween(1,9),

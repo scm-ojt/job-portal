@@ -3,6 +3,7 @@
 namespace App\Repositories\Admin;
 
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryRepository 
 {
@@ -22,13 +23,27 @@ class CategoryRepository
     {
         $category = new Category;
         $category->name = $request->name;
+        if($request->hasFile('image')){
+            $image = $request->file('image'); 
+            $imageName = $image->getClientOriginalName();
+            $path = $request->file('image')->storeAs('public/category-images',$imageName);
+            $category->image = $imageName;
+        }
         $category->save();
 
         return $category;
     }
 
-    public function update($request, $category)
+    public function update($request, $id)
     {
+        $category = Category::findOrFail($id);
+        if($request->hasFile('image')){
+            Storage::delete('/public/category-images/'.$category->image);
+            $image = $request->file('image'); 
+            $imageName = $image->getClientOriginalName();
+            $path = $request->file('image')->storeAs('public/category-images',$imageName);
+            $category->image = $imageName ;
+        }
         $category->name = $request->name;
         $category->update();
 
