@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class UserTest extends TestCase
@@ -53,11 +52,13 @@ class UserTest extends TestCase
              ->assertSee($user->name);
     }
 
-    // public function test_an_admin_can_active_user()
-    // {
-    //     $user = User::factory()->create();
+    public function test_an_admin_can_active_user()
+    {
+        $user = User::factory()->create();
 
-    //     $this->post(route('admin.users.active'))
-    //          ->assertSee($user->name);
-    // }
+        $this->post(route('admin.users.active', $user->id));
+            
+        $this->get(route('admin.users'))
+            ->assertSee($user->name);
+    }
 }

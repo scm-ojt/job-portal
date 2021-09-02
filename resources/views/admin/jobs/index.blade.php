@@ -41,7 +41,6 @@
                                         <form action="{{ route('admin.jobs.approve', $job->id) }}" method="post">
                                             @csrf
 
-                                                <input type="hidden" name="job_id" value="{{$job->id}}">
                                                 <input type="checkbox" class="ml-3" name="approve_status" id="" onchange="this.form.submit()" {{$job->approve_status == 1 ? 'checked' : ''}}>
                                             
                                         </form>

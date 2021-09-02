@@ -3,6 +3,7 @@
 namespace App\Repositories\Admin;
 
 use App\Models\Company;
+use App\Models\User;
 
 class CompanyRepository 
 {
@@ -15,14 +16,19 @@ class CompanyRepository
 
     public function index()
     {
-        return $this->company->paginate(10);
+        return $this->company->orderBy('id', 'DESC')->paginate(10);
     }
 
-    public function destroy($id)
+    public function destroy($company)
     {
-        $company = Company::findOrFail($id);
         $company->delete();
         $company->users()->delete();
-        return $company;
+    }
+
+    public function companyJobs($company)
+    {
+        $userId = $company->users()->where('company_id', $company->id)->first()->id;
+        $user = User::findOrFail($userId);
+        return $user;
     }
 }

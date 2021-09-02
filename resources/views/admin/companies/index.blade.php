@@ -31,16 +31,14 @@
                                     <td>{{$company->phone_no}}</td>
                                     <td>{{$company->address}}</td>
                                     <td>
-                                        <form action="{{ route('admin.users.active') }}" method="post">
-                                            @csrf
-
-                                            @foreach ($company->users as $user)
-                                                <input type="hidden" name="user_id" value="{{$user->id}}">
-                                                <input type="checkbox" name="active_status" id="" onchange="this.form.submit()" {{$user->active_status == 1 ? 'checked' : ''}}>
-                                                </div>
-                                            @endforeach
-                                            
-                                        </form>
+                                        @foreach ($company->users as $user)
+                                            <form action="{{ route('admin.users.active', $user->id) }}" method="post">
+                                                @csrf
+                                                
+                                                    <input type="checkbox" name="active_status" id="" onchange="this.form.submit()" {{$user->active_status == 1 ? 'checked' : ''}}>
+                                                    </div>
+                                            </form>
+                                        @endforeach
                                     </td>
                                     <td>
                                         <a href="{{ route('admin.companies.jobs', $company->id) }}" class="btn btn-outline-success">View Jobs</a>
@@ -51,8 +49,8 @@
                                             @csrf
                                             @method('delete')
                                             
-                                            <a href="{{ route('admin.companies.show', $company->id) }}"  class="btn btn-info" title="Detail" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')"><i class="fa fa-trash-alt"></i></button>
+                                            <a href="{{ route('admin.companies.show', $company->id) }}"  class="btn btn-info m-1" title="Detail" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                            <button type="submit" class="btn btn-danger m-1" onclick="return confirm('Are you sure want to delete?')"><i class="fa fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>

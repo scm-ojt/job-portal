@@ -38,12 +38,14 @@ class AdminJobTest extends TestCase
              ->assertSee($job->title);
     }
 
-    // public function test_an_admin_can_approve_job()
-    // {
-    //     $job = Job::factory()->create();
+    public function test_an_admin_can_approve_job()
+    {
+        $job = Job::factory()->create();
 
-    //     $this->post(route('admin.jobs.approve'))
-    //          ->assertStatus(200);
-    // }
+        $this->post(route('admin.jobs.approve', $job->id));
+        
+        $this->get(route('admin.jobs'))
+             ->assertStatus(200);
+    }
 
 }
