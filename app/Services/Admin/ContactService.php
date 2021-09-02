@@ -2,6 +2,7 @@
 
 namespace App\Services\Admin;
 
+use App\Models\Contact;
 use App\Repositories\Admin\ContactRepository;
 
 class ContactService
@@ -20,6 +21,7 @@ class ContactService
 
     public function destroy($id)
     {
-        return $this->contactRepository->destroy($id);
+        $contact = Contact::findOrFail($id);
+        return $this->contactRepository->destroy($contact);
     }
 }

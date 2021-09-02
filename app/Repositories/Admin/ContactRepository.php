@@ -15,13 +15,11 @@ class ContactRepository
 
     public function index()
     {
-        return $this->contact->paginate(10);
+        return $this->contact->orderBy('id', 'DESC')->paginate(10);
     }
 
-    public function destroy($id)
+    public function destroy($contact)
     {
-        $contact = Contact::findOrFail($id);
         $contact->delete();
-        return $contact;
     }
 }

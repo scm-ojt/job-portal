@@ -5,12 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
-use App\Models\Company;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 use App\Services\Admin\UserService;
 
 class UserController extends Controller
@@ -103,9 +100,9 @@ class UserController extends Controller
         return redirect('admin/users')->with('success', 'User deleted successfully!');
     }
 
-    public function active(Request $request)
+    public function active($id)
     {
-        $this->userService->active($request); 
+        $this->userService->active($id); 
         return redirect()->back();
     }
 

@@ -2,11 +2,8 @@
 
 namespace App\Repositories\Admin;
 
-use App\Models\Company;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 
 class UserRepository 
 {
@@ -19,40 +16,23 @@ class UserRepository
 
     public function index()
     {
-        $users = $this->user->where('id', '!=', Auth::user()->id)->paginate(10);
-        return $users;
+       return $this->user->where('id', '!=', Auth::user()->id)->orderBy('id', 'DESC')->paginate(10);
     }
 
-    public function update($request, $id)
+    public function update($user, $company)
     {
-        $user = User::findOrFail($id);
-        if($request->hasFile('photo')){
-            Storage::delete('/public/user-photos/'.$user->photo);
-            $photo = $request->file('photo'); 
-            $photoName = $photo->getClientOriginalName();
-            $path = $request->file('photo')->storeAs('public/user-photos',$photoName);
-            $user->photo = $photoName;
-        }
-        $user->name = $request->name;
-        $user->role_id = $request->role_id;
-        $user->update();
-        return $user;
+       $user->update();
+       $company->update();
     }
 
-    public function destroy($id)
+    public function destroy($user)
     {
-        $user = User::findOrFail($id);
         $user->delete();
-
         $user->companies()->delete();
-        return $user;
     }
 
-    public function active($request)
+    public function active($user)
     {
-        $id = $request->user_id;
-        $user = User::findOrFail($id);
-
         if($user->active_status == 1) {
             $user->active_status = 0;
             $user->update();
@@ -60,20 +40,10 @@ class UserRepository
             $user->active_status = 1;
             $user->update();
         }
-
-        return $user;
     }
 
-    public function uploadFile($request, $id)
+    public function uploadFile($user)
     {
-        $user = User::findOrFail($id);
-        if($request->hasFile('file')){
-            $photo = $request->file('file'); 
-            $photoName = $photo->getClientOriginalName();
-            $path = $request->file('file')->storeAs('public/user-photos',$photoName);
-            $user->photo = $photoName;
-        }
-        $user->update();
-        return $user;
+        return $user->update();
     }
 }
