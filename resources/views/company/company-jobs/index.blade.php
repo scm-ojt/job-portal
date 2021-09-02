@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <a href="{{url('company-jobs/create')}}" class="px-5 py-2 btn btn-primary float-right">Post Job</a>
+                <a href="{{route('jobs.create')}}" class="px-5 py-2 btn btn-primary float-right">Post Job</a>
                 <h4>All Jobs</h4>
                 <div class="table-responsive mt-4">
                     <table class="table table-bordered">
@@ -12,12 +12,12 @@
                             <tr>
                                 <th>Job Title</th>
                                 <th>Company</th>
-                                <th>Job Aprrove</th>
-                                <th>Job Type</th>
+                                <th>Approve</th>
+                                <th>Category</th>
                                 <th>Salary</th>
                                 <th>Working Hour</th>
                                 <th>Contact Information</th>
-                                <th>Requirement</th>
+                                <th>Employment Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -37,14 +37,16 @@
                                     <td>{{$job->salary}}</td>
                                     <td>{{$job->working_hour}}</td>
                                     <td>{{$job->contact_information}}</td>
-                                    <td>{{$job->requirement}}</td>
+                                    <td>{{$job->employment_status}}</td>
                                     <td>
-                                        <form action="{{url('company-jobs/'.$job->id)}}" method="post">
+                                        <form action="{{route('jobs.destroy', $job->id)}}" method="post">
                                             @csrf
                                             @method('delete')
 
-                                            <a href="{{url('company-jobs/'.$job->id.'/edit')}}"  class="btn btn-rounded btn-icon" title="Edit" data-toggle="tooltip" style="background-color: #FFC107;"><i class="fa fa-pen">Edit</i></a>
-                                            <button type="submit" class="btn btn-danger btn-rounded btn-icon" ><i class="fa fa-trash-alt" style=" color: #fff;">Delete</i></button>
+                                            <a href="{{ route('jobs.show', $job->id) }}"  class="btn btn-info" title="Detail" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+
+                                            <a href="{{ route('jobs.edit', $job->id) }}"  class="btn btn-warning" title="Edit" data-toggle="tooltip"><i class="fa fa-pen"></i></a>
+                                            <button type="submit" class="mt-1 btn btn-danger" onclick="return confirm('Are you sure want to delete?')"><i class="fa fa-trash-alt" style=" color: #fff;"></i></button>
 
                                         </form>
                                     </td>

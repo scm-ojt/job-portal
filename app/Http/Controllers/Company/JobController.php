@@ -63,7 +63,8 @@ class JobController extends Controller
      */
     public function show($id)
     {
-        //
+        $job = Job::findOrFail($id);
+        return view('company.company-jobs.jobs-detail', compact('job'));
     }
 
     /**

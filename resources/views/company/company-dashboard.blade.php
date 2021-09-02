@@ -10,7 +10,7 @@
                     <li><h2>{{$company->name}}</h2></li>
                     <li>Company Type: {{$company->company_type}}</li>
                     <li>No of Employee : {{$company->no_of_employee}}</li>
-                    <li><a href="{{url('/company/'.$company->id.'/edit')}}" class="btn btn-primary mt-3">Edit Profile</a></li>
+                    <li><a href="{{ route('company.edit', $company->id) }}" class="btn btn-primary mt-3">Edit Profile</a></li>
                 </ul>
             </div>
         </div>

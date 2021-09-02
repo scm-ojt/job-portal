@@ -29,34 +29,10 @@ class CompanyRepository
         return $company;
     }
 
-    public function update($request, $id)
+    public function update($company, $user)
     {   
-        $company = Company::findOrFail($id);
-        $company->name = $request->name;
-        $company->company_type = $request->company_type;
-        $company->phone_no = $request->phone_no;
-        $company->address = $request->address;
-        $company->no_of_employee = $request->no_of_employee;
-        $company->history = $request->history;
-        $company->description = $request->description;
-        $company->contact_information = $request->contact_information;
-
-        if($request->hasFile('logo')){
-            Storage::delete('/public/company-logos/'.$company->logo);
-            $logo = $request->file('logo');
-            $logoName = $logo->getClientOriginalName();
-            $path = $request->file('logo')->storeAs('public/company-logos',$logoName);
-            $company->logo = $logoName;
-        }
-
         $company->update();
-
-        foreach($company->users as $user){
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->update();
-        }
-        return $company;
+        $user->update();
     }
 
     public function destroy($company)

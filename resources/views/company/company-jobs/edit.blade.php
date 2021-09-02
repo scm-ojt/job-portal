@@ -9,7 +9,7 @@
 					<h4 class="text-white text-center">Edit Job</h4>
 				</div>
 				<div class="card-body">
-					<form action="{{url('company-jobs/'.$job->id)}}" method="post">
+					<form action="{{route('jobs.update', $job->id)}}" method="post">
 						@csrf
 						@method('put')
 						
@@ -91,9 +91,8 @@
 						</div>
 
 						<div class="form-group">
-							<input class="btn btn-rounded btn-icon text-white px-5 py-2" value="Update Profile" type="submit" data-toggle="tooltip" style="background-color: #0fcce6;"><i class="fa fa-eye"></i>
-							<a href="{{ url('company-jobs')}}" class="px-3 py-2 btn btn-secondary btn-rounded btn-icon float-right" ><i class="fa fa-trash-alt" style=" color: #fff;">Cancel</i></a>
-
+							<input class="btn btn-rounded btn-icon text-white px-5 py-2" value="Update Profile" type="submit" data-toggle="tooltip" style="background-color: #0fcce6;">
+							<a href="{{route('jobs.index')}}" class="px-3 py-2 btn btn-secondary btn-rounded btn-icon float-right" ><i class="fa fa-trash-alt" style=" color: #fff;">Cancel</i></a>
 						</div>
 					</form>
 				</div>

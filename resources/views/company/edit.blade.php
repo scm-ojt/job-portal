@@ -9,7 +9,7 @@
 					<h4 class="text-white text-center mt-2">Company Profile Edit</h4>
 				</div>
 				<div class="card-body">
-					<form action="{{url('company/'.$company->id)}}" method="POST" enctype="multipart/form-data">
+					<form action="{{ route('company.update', $company->id) }}" method="POST" enctype="multipart/form-data">
 						@csrf
 						@method('put')
 						
@@ -118,8 +118,8 @@
 					</div>
 					
 					<div class="form-group">
-						<input class="btn btn-primary btn-rounded btn-icon text-white px-5 py-2" value="Update Profile" type="submit" data-toggle="tooltip"><i class="fa fa-eye"></i>
-						<a href="{{ url('company/dashboard')}}" class="px-3 py-2 btn btn-secondary btn-rounded btn-icon float-right" ><i class="fa fa-trash-alt" style=" color: #fff;">Cancel</i></a>
+						<input type="submit" value="Update Profile" class="btn btn-primary">
+						<a href="{{ route('company.dashboard') }}" class="btn btn-secondary float-right">Cancel</a>
 					</div>
 				</form>
 			</div>
