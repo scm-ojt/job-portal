@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Job;
-use App\Models\Company;
+use App\Models\Category;
 
-class JobController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +15,9 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = Job::where('approve_status',1)->orderBy('created_at','DESC')->paginate(8);
-        return view('frontend.all-jobs', compact('jobs'));
+        //
     }
-   
+
     /**
      * Show the form for creating a new resource.
      *
@@ -49,9 +47,8 @@ class JobController extends Controller
      */
     public function show($id)
     {
-        $job = Job::findOrFail($id);
-        $company = $job->user->companies()->where('user_id', $job->user->id)->first();
-        return view('frontend.job-detail', compact('job','company'));
+        $category = Category::findOrFail($id);
+        return view('frontend.category-detail',compact('category'));
     }
 
     /**
@@ -87,5 +84,4 @@ class JobController extends Controller
     {
         //
     }
-    
 }

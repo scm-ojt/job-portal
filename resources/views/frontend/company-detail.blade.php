@@ -10,9 +10,11 @@
             <div class="d-flex justify-content-start">
                 @if($company->logo)
                     <img src="{{asset('storage/company-logos/'.$company->logo)}}"   style="width:100px; height:100px;" alt="" class="rounded img-thumbnail">
+                @else
+                    <img src="{{asset('images/default-company-logo.png')}}"   style="width:100px; height:100px;" alt="" class="rounded img-thumbnail">
                 @endif
                 <ul style="list-style: none;">
-                    <li><h2>{{$user->name}}</h2></li>
+                    <li><h2>{{$company->name}}</h2></li>
                     <li>Company Type: {{$company->company_type}}</li>
                     <li>No of Employee : {{$company->no_of_employee}}</li>
                 </ul>

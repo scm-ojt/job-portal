@@ -56,9 +56,8 @@
                                  <span class="text-danger text-bold">{{ $message }}</span>  
                                @enderror
                             </div>
-                            <div class="form-group text-center">
-                                <input type="submit" value="Submit" class="btn btn-primary">
-                                <input type="reset" value="Reset" class="btn btn-secondary">
+                            <div class="form-group ml-3">
+                                <input type="submit" value="Submit" class="btn" style="background-color: #0BA5A9; color:white;">
                             </div>
                         </form>
                     </div>

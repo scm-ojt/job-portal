@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model\Contact;
+use App\Http\Requests\ContactStoreRequest;
+use App\Models\Contact;
 
 class ContactController extends Controller
 {
@@ -18,10 +19,6 @@ class ContactController extends Controller
         return view('frontend.contact-us');
     }
 
-    public function contactStore(ContactStoreRequest $request)
-    {
-        //
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -38,7 +35,7 @@ class ContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContactStoreRequest $request)
     {
         $contact = new Contact;
         $contact->name = $request->name;

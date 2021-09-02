@@ -6,23 +6,28 @@
     
     <div class="container py-5">
         <div class="section mb-5">
-            <h3>Top Jobs</h3>
             <div class="row mt-3">
-                <div class="col-md-12">
+                <div class="col-md-8">
+                <h3>Top Jobs</h3>
                 @foreach($jobs as $job)
-                    <div class="card p-3 my-3" style="background-color: #EAEAF1">
+                    <div class="card py-3 my-3" style="background-color: #EAEAF1">
                         <div class="row px-3">
                             @foreach($job->user->companies as $key => $company)
                                 @if($company->logo)
-                                    <img src="{{asset('storage/company-logos/'.$company->logo)}}" alt="" class="col-md-1 " style="width:100px; height:50px;">
+                                    <img src="{{asset('storage/company-logos/'.$company->logo)}}" alt="" class="col-md-2" style="width:100px; height:70px;">
+                                @else
+                                <img src="{{asset('images/default-company-logo.png')}}" alt="" class="col-md-2" style="width:100px; height:70px;">
                                 @endif
                             @endforeach
                            
-                            <div class="col-md-4">
-                                <a href="{{url('jobs/'.$job->id)}}"><h5 class="font-weight-bold" style="color: #3490DC">{{$job->title}}</h5></a>
-                                <a href="{{url('companies/'.$job->user->id)}}"><span>{{$job->user->name? $job->user->name : ''}}</span></a>
-                            </div>
                             <div class="col-md-5">
+                                <a href="{{url('jobs/'.$job->id)}}"><h5 class="font-weight-bold" style="color: #3490DC">{{$job->title}}</h5></a>
+                                @foreach($job->user->companies as $key => $company)
+                                    <a href="{{url('companies/'.$company->id)}}"><span>{{$company->name? $company->name : ''}}</span></a>
+                                @endforeach
+                                
+                            </div>
+                            <div class="col-md-3">
                                 <h5 class="font-weight-bold">{{$job->address}}</h5>
                             </div>
                             <div class="col-md-2">
@@ -31,26 +36,52 @@
                         </div>
                     </div>
                 @endforeach
+                <div class="row justify-content-center">{{ $jobs->links() }}</div>
+                    <div class="mt-5">
+                        <h3>Companies</h3>
+                        <div class="row mt-3">
+                            @foreach($companies as $company)
+                                <div class="col-md-3 my-3">
+                                    <div class="card p-3 shadow-md border">
+                                        @if($company->logo)
+                                            <img src="{{asset('storage/company-logos/'.$company->logo)}}" alt="" class="rounded" height="120px">
+                                        @else
+                                            <img src="{{asset('images/default-company-logo.png')}}" alt="" class="rounded" height="120px">
+                                        @endif
+                                         
+                                        <a href="{{url('/companies/'.$company->id)}}"><h5 class="font-weight-bold mt-3 text-center" style="color: #3490DC">{{$company->name}}</h5></a>
+                                    </div>
+                                </div>
+                            @endforeach   
+                        </div>
+                        <div class="row justify-content-center">{{ $companies->links() }}</div> 
+                    </div>
                 </div>
+
+                <div class="col-md-4">
+                    <h3> Categories </h3>
+                    <div class="card shadow-md border mt-3" >
+                        
+                        <ul class="list-group list-group-flush px-4">
+                            @foreach($categories as $key => $category)
+                            <li class="list-group-item list-group-item-action">
+                                <a href="{{url('/categories/'.$category->id)}}" >
+                                <div class="row">
+                                    <img src="{{asset('storage/category-images/'.$category->image)}}" alt="" class="col-md-3 rounded" >
+                                    <h5 class="font-weight-bold col-md-9" style="color: #3490DC">{{$category->name}}</h5>
+                                </div>
+                                </a>
+                            </li>
+                            @endforeach
+                        </ul>
+                         
+                    </div>   
+                </div>
+                
             </div>
-            <div class="row justify-content-center">{{ $jobs->links() }}</div>    
+                
         </div>
         
-        <div class="section mb-5">
-            <h3>Companies</h3>
-            <div class="row mt-3">
-                @foreach($companies as $company)
-                    <div class="col-md-3 my-3">
-                        <div class="card p-3 shadow-md border border-dark">
-                            <img src="{{asset('storage/company-logos/'.$company->logo)}}" alt="" class="rounded" height="120"> 
-                            @foreach($company->users as $key => $user)
-                            <a href="{{url('/companies/'.$user->id)}}"><h5 class="font-weight-bold mt-3 text-center" style="color: #3490DC">{{$user->name}}</h5></a>
-                            @endforeach
-                        </div>
-                    </div>
-                @endforeach   
-            </div>
-            <div class="row justify-content-center">{{ $companies->links() }}</div> 
-        </div>
+        
     </div>
 @endsection

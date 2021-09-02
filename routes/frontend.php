@@ -15,3 +15,5 @@ Route::get('about-us', [App\Http\Controllers\Frontend\AboutController::class, 'i
 
 Route::get('contact-us', [App\Http\Controllers\Frontend\ContactController::class, 'index']);
 Route::post('contact-us', [App\Http\Controllers\Frontend\ContactController::class, 'store']);
+
+Route::get('categories/{id}', [App\Http\Controllers\Frontend\CategoryController::class, 'show']);

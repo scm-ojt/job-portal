@@ -7,15 +7,13 @@
 </div>
 <div class="container">
     <div style="position: absolute; top:160px; left: 250px" class="text-white">
-        <h1 style="color: #0BA5A9;">All Jobs</h1>
-        <a href="{{url('/')}}" class="" style="color: #0BA5A9;">HOME</a> >
-        <a href="{{url('jobs')}}" class="" style="color: #0BA5A9;">ALL JOBS</a>
+        <h1 style="color: #0BA5A9;">{{$category->name}}'s Jobs</h1>
     </div>
 </div>           
 <div class="container py-5">
     <div class="section mb-5">
-        <h3>All Jobs</h3>
-        @foreach($jobs as $job)
+        <h3>{{$category->name}}'s Jobs</h3>
+        @foreach($category->jobs as $job)
         <div class="row mt-3">
             <div class="col-md-12">
                 <div class="card p-3" style="background-color: #EAEAF1">
@@ -27,9 +25,6 @@
                                     <img src="{{asset('images/default-company-logo.png')}}" alt="" class="col-md-1" style="height:60px;">
                                 @endif
                             @endforeach
-                        {{-- @foreach($job->user->companies as $key => $company)
-                            <img src="{{asset('storage/company-logos/'.$company->logo)}}" alt="" class="col-md-1 ">
-                        @endforeach --}}
                         <div class="col-md-5">
                             <a href="{{url('jobs/'.$job->id)}}">
                                 <h5 class="font-weight-bold" style="color: #3490DC">{{$job->title}}</h5>
@@ -52,6 +47,6 @@
         @endforeach 
         
     </div>
-    <div class="row justify-content-center">{{ $jobs->links() }}</div>   
+    {{-- <div class="row justify-content-center">{{ $cjobs->links() }}</div>    --}}
 </div>
 @endsection

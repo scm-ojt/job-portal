@@ -16,16 +16,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = Company::paginate(10);
+        $companies = Company::orderBy('created_at','DESC')->paginate(10);
         return view('frontend.all-companies',compact('companies'));
-    }
-    public function allCompanies()
-    {  
-    }
-
-    public function companyDetail($id)
-    {   
-        
     }
     /**
      * Show the form for creating a new resource.
@@ -56,11 +48,8 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
-        foreach($user->companies as $company){
-            $companyId = $company->id;
-        }
-        $company = Company::findOrFail($companyId);
+        $company = Company::findOrFail($id);
+        $user = $company->users()->where('company_id', $company->id)->first();
         return view('frontend.company-detail',compact('company','user'));
     }
 
