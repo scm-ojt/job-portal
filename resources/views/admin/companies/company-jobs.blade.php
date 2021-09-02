@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <a href="{{url('admin/companies')}}" class="btn btn-primary float-right"><i class="fa fa-arrow-circle-left mr-1"></i>Back</a>
+                <a href="{{ route('admin.companies') }}" class="btn btn-primary float-right"><i class="fa fa-arrow-circle-left mr-1"></i>Back</a>
                 <h4>{{$company->name}}'s Jobs</h4>
                 <div class="table-responsive mt-4">
                     <table class="table table-bordered bg-white text-center">
@@ -28,7 +28,7 @@
                                     <td>{{$job->salary}}</td>
                                     <td>{{$job->working_hour}}</td>
                                     <td>
-                                        <form action="{{url('admin/jobs/approve')}}" method="post">
+                                        <form action="{{ route('admin.jobs.approve', $job->id) }}" method="post">
                                             @csrf
 
                                                 <input type="hidden" name="job_id" value="{{$job->id}}">
@@ -37,11 +37,11 @@
                                         </form>
                                     </td>
                                     <td>
-                                        <form action="{{url('admin/jobs/'.$job->id)}}" method="post" id="delete">
+                                        <form action="{{ route('admin.jobs.destroy', $job->id) }}" method="post" id="delete">
                                             @csrf
                                             @method('delete')
 
-                                            <a href="{{url('admin/jobs/'.$job->id)}}"  class="btn btn-info" title="Detail" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                            <a href="{{ route('admin.jobs.show', $job->id) }}"  class="btn btn-info" title="Detail" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
                                             <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')"><i class="fa fa-trash-alt"></i></button>
                                         </form>
                                     </td>

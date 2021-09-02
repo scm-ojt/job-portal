@@ -19,20 +19,13 @@ class CompanyRepository
     public function index()
     {
         $user = User::findOrFail(Auth::user()->id);
-        foreach($user->companies as $company){
-          $companyId = $company->id;
-        }
-        $company = Company::findOrFail($companyId);
+        $company = $user->companies()->where('user_id', $user->id)->first();
         return $company;
     }
 
     public function edit($id)
     {   
-        $user = User::findOrFail($id);
-        foreach($user->companies as $company){
-        $companyId = $company->id;
-        }
-        $company = Company::findOrFail($companyId);
+        $company = Company::findOrFail($id);
         return $company;
     }
 
@@ -60,6 +53,7 @@ class CompanyRepository
 
         foreach($company->users as $user){
             $user->name = $request->name;
+            $user->email = $request->email;
             $user->update();
         }
         return $company;

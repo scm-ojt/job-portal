@@ -31,7 +31,7 @@
                                     <td>{{$company->phone_no}}</td>
                                     <td>{{$company->address}}</td>
                                     <td>
-                                        <form action="{{url('admin/users/active')}}" method="post">
+                                        <form action="{{ route('admin.users.active') }}" method="post">
                                             @csrf
 
                                             @foreach ($company->users as $user)
@@ -43,15 +43,15 @@
                                         </form>
                                     </td>
                                     <td>
-                                        <a href="{{url('admin/companies/'.$company->id.'/jobs')}}" class="btn btn-outline-success">View Jobs</a>
+                                        <a href="{{ route('admin.companies.jobs', $company->id) }}" class="btn btn-outline-success">View Jobs</a>
                                     </td>
                                     </td>
                                     <td>
-                                        <form action="{{url('admin/companies/'.$company->id)}}" method="post">
+                                        <form action="{{ route('admin.companies.destroy', $company->id) }}" method="post">
                                             @csrf
                                             @method('delete')
                                             
-                                            <a href="{{url('admin/companies/'.$company->id)}}"  class="btn btn-info" title="Detail" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                            <a href="{{ route('admin.companies.show', $company->id) }}"  class="btn btn-info" title="Detail" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
                                             <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')"><i class="fa fa-trash-alt"></i></button>
                                         </form>
                                     </td>

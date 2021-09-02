@@ -9,7 +9,7 @@
 					<h4>Edit User</h4>
 				</div>
 				<div class="card-body">
-					<form action="{{url('admin/users/'.$user->id)}}" method="post" enctype="multipart/form-data">
+					<form action="{{ route('admin.users.update', $user->id) }}" method="post" enctype="multipart/form-data">
 						@csrf
                         @method('put')
 
@@ -28,20 +28,14 @@
 								<span class="text-danger text-bold">{{ $message }}</span>
 							@enderror
 						</div>
-
-                        <div class="form-group">
+						<div class="form-group">
 							<label for="">Role</label>
-							<select name="role_id" id="" class="form-control @error('role_id') is-invalid @enderror">
-                                <option value="">Select Role</option>
-                                @foreach ($roles as $role)
-                                    <option value="{{$role->id}}" @if($user->role_id == $role->id) selected @endif>{{$role->name}}</option>
-                                @endforeach
-                            </select>
+							<input type="text" name="role_name" id="" class="form-control" readonly value="{{$user->role->name}}">
+							<input type="hidden" name="role_id" value="{{$user->role_id}}">
 							@error('role_id')
 								<span class="text-danger text-bold">{{ $message }}</span>
 							@enderror
 						</div>
-
 						<div class="form-group">
 							<label for="">Photo</label>
 							@if($user->photo)
@@ -57,7 +51,7 @@
 
 						<div class="form-group">
 							<input type="submit" value="Submit" class="btn btn-success">
-							<a href="{{url('admin/users')}}" class="btn btn-secondary float-right">Cancel</a>
+							<a href="{{ route('admin.users') }}" class="btn btn-secondary float-right">Cancel</a>
 						</div>
 					</form>
 				</div>

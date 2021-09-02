@@ -18,11 +18,6 @@ class UserService
         return $this->userRepository->index();
     }
 
-    public function store($request)
-    {
-        return $this->userRepository->store($request);
-    }
-
     public function update($request, $id)
     {
        return $this->userRepository->update($request, $id);

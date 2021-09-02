@@ -21,12 +21,12 @@ class CategoryService
 
     public function store($request)
     {
-        $result =  $this->categoryRepository->store($request);
+        return $this->categoryRepository->store($request);
     }
 
-    public function update($request, $category)
+    public function update($request, $id)
     {
-        return $this->categoryRepository->update($request, $category);
+        return $this->categoryRepository->update($request, $id);
     }
 
     public function destroy($category)

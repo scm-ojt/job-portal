@@ -3,8 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Category;
-use App\Models\Company;
 use App\Models\Job;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class JobFactory extends Factory
@@ -24,7 +24,7 @@ class JobFactory extends Factory
     public function definition()
     {
         return [
-            'company_id' => Company::factory()->create(),
+            'user_id' => User::factory()->create(),
             'approved_user_id' => 1,
             'category_id' => Category::factory()->create(),
             'title' => $this->faker->name(),

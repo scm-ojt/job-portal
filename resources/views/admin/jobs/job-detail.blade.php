@@ -2,7 +2,7 @@
 
 @section('admin-content')
 <div class="container-fluid">
-    <a href="{{url('admin/jobs')}}" class="btn btn-primary float-right mr-5"><i class="fa fa-arrow-circle-left mr-1"></i>Back</a>
+    <a href="{{ route('admin.jobs') }}" class="btn btn-primary float-right mr-5"><i class="fa fa-arrow-circle-left mr-1"></i>Back</a>
     <div class="row">
         <div class="col-md-12">
             <div class="d-flex justify-content-start">
