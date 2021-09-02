@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <a href="{{url('admin/categories/create')}}" class="btn btn-primary float-right"><i class="fa fa-plus-circle mr-1"></i> Add New</a>
+                <a href="{{ route('categories.create') }}" class="btn btn-primary float-right"><i class="fa fa-plus-circle mr-1"></i> Add New</a>
                 <h4>All Categories</h4>
                 <div class="table-responsive mt-4">
                     @if($message = Session::get('success'))
@@ -17,6 +17,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>NAME</th>
+                                <th>IMAGE</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -26,11 +27,16 @@
                                 <td>{{$category->id}}</td>
                                 <td>{{$category->name}}</td>
                                 <td>
-                                    <form action="{{url('admin/categories/'.$category->id)}}" method="post">
+                                    @if($category->image)
+                                        <img src="{{asset('storage/category-images/'.$category->image)}}" alt="category-img" width="100" height="100">
+                                    @endif
+                                </td>
+                                <td>
+                                    <form action="{{ route('categories.destroy', $category->id) }}" method="post">
                                         @csrf
                                         @method('delete')
 
-                                        <a href="{{url('admin/categories/'.$category->id.'/edit')}}"  class="btn btn-warning" title="Edit" data-toggle="tooltip"><i class="fa fa-pen"></i></a>
+                                        <a href="{{ route('categories.edit', $category->id) }}"  class="btn btn-warning" title="Edit" data-toggle="tooltip"><i class="fa fa-pen"></i></a>
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')"><i class="fa fa-trash-alt"></i></button>
                                     </form>
                                 </td>
