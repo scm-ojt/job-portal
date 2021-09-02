@@ -5,8 +5,8 @@
 	<div class="row justify-content-center">
 		<div class="col-md-10">
 			<div class="card">
-				<div class="card-header">
-					<h4>Edit Job</h4>
+				<div class="card-header" style="background-color: #4BA3EB;">
+					<h4 class="text-white text-center">Edit Job</h4>
 				</div>
 				<div class="card-body">
 					<form action="{{url('company-jobs/'.$job->id)}}" method="post">
@@ -91,8 +91,9 @@
 						</div>
 
 						<div class="form-group">
-							<input type="submit" value="Update Job" class="btn btn-success">
-							<input type="reset" value="Reset" class="btn btn-primary">
+							<input class="btn btn-rounded btn-icon text-white px-5 py-2" value="Update Profile" type="submit" data-toggle="tooltip" style="background-color: #0fcce6;"><i class="fa fa-eye"></i>
+							<a href="{{ url('company-jobs')}}" class="px-3 py-2 btn btn-secondary btn-rounded btn-icon float-right" ><i class="fa fa-trash-alt" style=" color: #fff;">Cancel</i></a>
+
 						</div>
 					</form>
 				</div>
