@@ -5,6 +5,7 @@ namespace App\Services\Company;
 use App\Repositories\Company\CompanyRepository;
 use App\Models\Company;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class CompanyService
 {

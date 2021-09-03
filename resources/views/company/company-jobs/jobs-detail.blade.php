@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="d-flex justify-content-start">
                 @foreach ($job->user->companies as $company)
-                    <img src="{{asset('storage/company-logos/'.$company->logo)}}" width="100" height="100" alt="">
+                    <img src="{{asset('storage/company-logos/'.$company->logo)}}" style="width: 25%" alt="">
                 @endforeach
                 <ul style="list-style: none;">
                     <li><h4><b>{{$job->title}}</b></h4></li>
