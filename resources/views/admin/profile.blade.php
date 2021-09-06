@@ -6,7 +6,8 @@
 		<div class="col-md-10">
 			<div class="card">
 				<div class="card-header">
-					<h4>My Profile</h4>
+					<a href="{{ route('admin.showPassword', $user->id) }}" class="btn btn-primary float-right"><i class="fa fa-key mr-2"></i>Change Password</a>
+					<h4>My Profile</h4> 
 				</div>
 				<div class="card-body">
 					<form action="{{ route('admin.update', $user->id) }}" method="post" enctype="multipart/form-data">

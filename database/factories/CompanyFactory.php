@@ -24,7 +24,6 @@ class CompanyFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'company_type' => $this->faker->name(),
-            'logo' => 'company.png',
             'phone_no' => $this->faker->numberBetween(11111111,99999999),
             'address' => $this->faker->text(100),
             'no_of_employee' => $this->faker->numberBetween(1,9),

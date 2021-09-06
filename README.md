@@ -66,4 +66,9 @@ Password : 12345678
 
 ## Admin
 Admin can manage the users, companies, and jobs. Admin part include `User Authentication`, `Active or Deactive Company`, `Approve job that post by companies ` , `Role and Permission between admin and company`.
+
+## Admin Dashboard
+
+![Admin Dashboard](./public/images/readme/admin.png)
+
     
