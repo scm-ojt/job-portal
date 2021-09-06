@@ -1,7 +1,7 @@
 @extends('admin.admin-layout.master')
 
 @section('admin-content')
-<div class="container">
+<div class="container-fluid">
 	<div class="row justify-content-center">
 		<div class="col-md-10">
 			<div class="card">
@@ -9,7 +9,7 @@
 					<h4>Edit User</h4>
 				</div>
 				<div class="card-body">
-					<form action="{{url('admin/users/'.$user->id)}}" method="post" enctype="multipart/form-data">
+					<form action="{{ route('admin.users.update', $user->id) }}" method="post" enctype="multipart/form-data">
 						@csrf
                         @method('put')
 
@@ -28,32 +28,22 @@
 								<span class="text-danger text-bold">{{ $message }}</span>
 							@enderror
 						</div>
-						
-                        <div class="form-group">
-							<label for="">Password</label>
-							<input type="password" name="password" id="" class="form-control @error('password') is-invalid @enderror" value="{{$user->password}}">
-							@error('password')
-								<span class="text-danger text-bold">{{ $message }}</span>
-							@enderror
-						</div>
-
-                        <div class="form-group">
+						<div class="form-group">
 							<label for="">Role</label>
-							<select name="role_id" id="" class="form-control @error('role_id') is-invalid @enderror">
-                                <option value="{{$user->role_id}}">{{$user->role->name}}</option>
-                                <option value="">Select Role</option>
-                                @foreach ($roles as $role)
-                                    <option value="{{$role->id}}">{{$role->name}}</option>
-                                @endforeach
-                            </select>
+							<input type="text" name="role_name" id="" class="form-control" readonly value="{{$user->role->name}}">
+							<input type="hidden" name="role_id" value="{{$user->role_id}}">
 							@error('role_id')
 								<span class="text-danger text-bold">{{ $message }}</span>
 							@enderror
 						</div>
-
 						<div class="form-group">
 							<label for="">Photo</label>
-							<input type="file" name="photo" id="" class="form-control @error('photo') is-invalid @enderror">
+							@if($user->photo)
+								<img src="{{asset('storage/user-photos/'.$user->photo)}}" alt="" width="100" height="100" class="mb-2 ml-3" id="preview-img">
+							@else
+								<img src="{{asset('images/avatar_01.png')}}" alt="" width="100" height="100" class="mb-2 ml-3" id="preview-img">
+							@endif
+							<input type="file" name="photo" id="profile" class="form-control-file @error('photo') is-invalid @enderror">
 							@error('photo')
 								<span class="text-danger text-bold">{{ $message }}</span>
 							@enderror
@@ -61,7 +51,7 @@
 
 						<div class="form-group">
 							<input type="submit" value="Submit" class="btn btn-success">
-							<input type="reset" value="Reset" class="btn btn-primary">
+							<a href="{{ route('admin.users') }}" class="btn btn-secondary float-right">Cancel</a>
 						</div>
 					</form>
 				</div>

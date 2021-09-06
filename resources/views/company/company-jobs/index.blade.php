@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <a href="{{url('company-jobs/create')}}" class="btn btn-primary float-right">Post Job</a>
+                <a href="{{url('company-jobs/create')}}" class="px-5 py-2 btn btn-primary float-right">Post Job</a>
                 <h4>All Jobs</h4>
                 <div class="table-responsive mt-4">
                     <table class="table table-bordered">
@@ -43,8 +43,9 @@
                                             @csrf
                                             @method('delete')
 
-                                            <a href="{{url('company-jobs/'.$job->id.'/edit')}}" class="btn btn-warning">Edit</a>
-                                            <input type="submit" value="Delete" class="btn btn-danger">
+                                            <a href="{{url('company-jobs/'.$job->id.'/edit')}}"  class="btn btn-rounded btn-icon" title="Edit" data-toggle="tooltip" style="background-color: #FFC107;"><i class="fa fa-pen">Edit</i></a>
+                                            <button type="submit" class="btn btn-danger btn-rounded btn-icon" ><i class="fa fa-trash-alt" style=" color: #fff;">Delete</i></button>
+
                                         </form>
                                     </td>
                                 </tr>

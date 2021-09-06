@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryStoreRequest;
 use App\Http\Requests\CategoryUpdateRequest;
 use App\Models\Category;
-use Illuminate\Http\Request;
 use App\Services\Admin\CategoryService;
 
 class CategoryController extends Controller
@@ -68,8 +67,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
+        $category = Category::findOrFail($id);
         return view('admin.categories.edit', compact('category'));
     }
 
@@ -80,9 +80,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryUpdateRequest $request, Category $category)
+    public function update(CategoryUpdateRequest $request, $id)
     {
-        $this->categoryService->update($request, $category);
+        $this->categoryService->update($request, $id);
         return redirect('admin/categories')->with('success', 'Category updated successfully!');
     }
 

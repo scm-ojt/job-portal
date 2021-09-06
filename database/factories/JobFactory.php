@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\Job;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class JobFactory extends Factory
@@ -22,9 +24,9 @@ class JobFactory extends Factory
     public function definition()
     {
         return [
-            'company_id' => 1,
+            'user_id' => User::factory()->create(),
             'approved_user_id' => 1,
-            'category_id' => 1,
+            'category_id' => Category::factory()->create(),
             'title' => $this->faker->name(),
             'employment_status' => $this->faker->name(),
             'address' => $this->faker->text(100),

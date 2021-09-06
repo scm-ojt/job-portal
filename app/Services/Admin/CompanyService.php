@@ -2,6 +2,7 @@
 
 namespace App\Services\Admin;
 
+use App\Models\Company;
 use App\Repositories\Admin\CompanyRepository;
 
 class CompanyService
@@ -20,6 +21,12 @@ class CompanyService
 
     public function destroy($id)
     {
-        return $this->companyRepository->destroy($id);
+        $company = Company::findOrFail($id);
+        return $this->companyRepository->destroy($company);
+    }
+
+    public function companyJobs($company)
+    {
+        return $this->companyRepository->companyJobs($company);
     }
 }

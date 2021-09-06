@@ -1,14 +1,14 @@
 @extends('admin.admin-layout.master')
 
 @section('admin-content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <h4>Contact Message</h4>
                 <div class="table-responsive mt-4">
                     @if($message = Session::get('success'))
                         <div class="alert alert-info">
-                            <p>{{$message}}</p>
+                            {{$message}}
                         </div>
                     @endif
                     <table class="table table-bordered shadow-md bg-white">
@@ -29,16 +29,14 @@
                                 <td>{{$contact->name}}</td>
                                 <td>{{$contact->email}}</td>
                                 <td>{{$contact->phone_no}}</td>
+                                <td>{{Str::limit($contact->message, 50, '...')}}</td>
                                 <td>
-                                    <textarea name="" id="" cols="30" rows="5">{{$contact->message}}</textarea>
-                                </td>
-                                <td>
-                                    <form action="{{url('admin/contacts/'.$contact->id)}}" method="post">
+                                    <form action="{{ route('admin.contacts.destroy', $contact->id) }}" method="post">
                                         @csrf
                                         @method('delete')
 
 
-                                        <input type="submit" value="Delete" class="btn btn-danger">
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')"><i class="fa fa-trash-alt"></i></button>
                                     </form>
                                 </td>
                             </tr>

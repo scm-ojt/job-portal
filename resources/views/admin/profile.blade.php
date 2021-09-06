@@ -9,7 +9,7 @@
 					<h4>My Profile</h4>
 				</div>
 				<div class="card-body">
-					<form action="{{url('admin/'.$user->id)}}" method="post" enctype="multipart/form-data">
+					<form action="{{ route('admin.update', $user->id) }}" method="post" enctype="multipart/form-data">
 						@csrf
                         @method('put')
 
@@ -28,32 +28,15 @@
 								<span class="text-danger text-bold">{{ $message }}</span>
 							@enderror
 						</div>
-						
-                        <div class="form-group">
-							<label for="">Password</label>
-							<input type="password" name="password" id="" class="form-control @error('password') is-invalid @enderror" value="{{$user->password}}">
-							@error('password')
-								<span class="text-danger text-bold">{{ $message }}</span>
-							@enderror
-						</div>
-
-                        <div class="form-group">
-							<label for="">Role</label>
-							<select name="role_id" id="" class="form-control @error('role_id') is-invalid @enderror">
-                                <option value="{{$user->role_id}}">{{$user->role->name}}</option>
-                                <option value="">Select Role</option>
-                                @foreach ($roles as $role)
-                                    <option value="{{$role->id}}">{{$role->name}}</option>
-                                @endforeach
-                            </select>
-							@error('role_id')
-								<span class="text-danger text-bold">{{ $message }}</span>
-							@enderror
-						</div>
-
+						<input type="hidden" name="role_id" value="{{$user->role_id}}">
 						<div class="form-group">
 							<label for="">Photo</label>
-							<input type="file" name="photo" id="" class="form-control @error('photo') is-invalid @enderror">
+							@if($user->photo)
+								<img src="{{asset('storage/user-photos/'.$user->photo)}}" alt="" width="100" height="100" class="mb-2 ml-3" id="preview-img">
+							@else
+								<img src="{{asset('images/avatar_01.png')}}" alt="" width="100" height="100" class="mb-2 ml-3" id="preview-img">
+							@endif
+							<input type="file" name="photo" id="profile" class="form-control-file @error('photo') is-invalid @enderror">
 							@error('photo')
 								<span class="text-danger text-bold">{{ $message }}</span>
 							@enderror
@@ -61,7 +44,6 @@
 
 						<div class="form-group">
 							<input type="submit" value="Submit" class="btn btn-success">
-							<input type="submit" value="Reset" class="btn btn-primary">
 						</div>
 					</form>
 				</div>

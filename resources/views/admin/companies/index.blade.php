@@ -1,66 +1,56 @@
 @extends('admin.admin-layout.master')
 
 @section('admin-content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <h4>All Companies</h4>
                 <div class="table-responsive mt-4">
                     @if($message = Session::get('success'))
                         <div class="alert alert-info">
-                            <p>{{$message}}</p>
+                            {{$message}}
                         </div>
                     @endif
-                    <table class="table table-bordered bg-white">
+                    <table class="table table-bordered bg-white text-center">
                         <thead>
                             <tr>
-                                <th>Logo</th>
                                 <th>Company Name</th>
                                 <th>Type</th>
                                 <th>Phone No</th>
                                 <th>Address</th>
-                                <th>Contact Information</th>
-                                <th>Histroy</th>
-                                <th>No of Employee</th>
                                 <th>Active</th>
+                                <th>Jobs</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($companies as $company)
                                 <tr>
-                                    <td>
-                                        <img src="{{asset('images/'.$company->logo)}}" alt="">
-                                    </td>
-                                    <td>
-                                        @foreach ($company->users as $user)
-                                            {{$user->name}}
-                                        @endforeach
-                                    </td>
+                                    <td>{{$company->name}}</td>
                                     <td>{{$company->company_type}}</td>
                                     <td>{{$company->phone_no}}</td>
                                     <td>{{$company->address}}</td>
-                                    <td>{{$company->contact_information}}</td>
-                                    <td>{{$company->history}}</td>
-                                    <td>{{$company->no_of_employee}}</td>
                                     <td>
-                                        <form action="{{url('admin/users/active')}}" method="post">
-                                            @csrf
-
-                                            @foreach ($company->users as $user)
-                                                <input type="hidden" name="user_id" value="{{$user->id}}">
-                                                <input type="checkbox" class="form-control" name="active_status" id="" onchange="this.form.submit()" {{$user->active_status == 1 ? 'checked' : ''}}>
-                                                </div>
-                                            @endforeach
-                                            
-                                        </form>
+                                        @foreach ($company->users as $user)
+                                            <form action="{{ route('admin.users.active', $user->id) }}" method="post">
+                                                @csrf
+                                                
+                                                    <input type="checkbox" name="active_status" id="" onchange="this.form.submit()" {{$user->active_status == 1 ? 'checked' : ''}}>
+                                                    </div>
+                                            </form>
+                                        @endforeach
                                     </td>
                                     <td>
-                                        <form action="{{url('admin/companies/'.$company->id)}}" method="post">
+                                        <a href="{{ route('admin.companies.jobs', $company->id) }}" class="btn btn-outline-success">View Jobs</a>
+                                    </td>
+                                    </td>
+                                    <td>
+                                        <form action="{{ route('admin.companies.destroy', $company->id) }}" method="post">
                                             @csrf
                                             @method('delete')
                                             
-                                            <input type="submit" value="Delete" class="btn btn-danger">
+                                            <a href="{{ route('admin.companies.show', $company->id) }}"  class="btn btn-info m-1" title="Detail" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                            <button type="submit" class="btn btn-danger m-1" onclick="return confirm('Are you sure want to delete?')"><i class="fa fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>

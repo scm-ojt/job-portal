@@ -16,7 +16,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
   <link rel="stylesheet" href="{{ asset('css/dropzone.css') }}">
-
+  <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -35,7 +35,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <form id="logout-form" action="{{ route('logout') }}" method="POST">
                 @csrf
 
-                <button type="submit" class="btn btn-secondary float-right">Logout</button>
+                <button type="submit" class="btn btn-secondary float-right">Logout<i class="fa fa-power-off ml-2"></i> </button>
             </form>
         </li>
       </ul>
@@ -45,8 +45,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{url('admin/dashboard')}}" class="brand-link">
-      <img src="{{ asset('images/jobs.jpg') }}" alt="Job Logo" class="brand-image img-rounded elevation-3">
+    <a href="{{ route('admin.dashboard') }}" class="brand-link">
+      <img src="{{ asset('images/logo.png') }}" alt="Job Logo" class="brand-image img-rounded elevation-3">
       <span class="brand-text font-weight-light">Job Portal System</span>
     </a>
 
@@ -63,7 +63,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
         <div class="info">
             @auth
-                <a href="{{url('admin/'.Auth::user()->id.'/edit')}}" class="d-block">{{Auth::user()->name}}</a>
+                <a href="{{ route('admin.edit', Auth::user()->id)}}" class="d-block">{{Auth::user()->name}}</a>
             @endauth
         </div>
       </div>
@@ -74,7 +74,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                with font-awesome or any other icon font library -->
             
           <li class="nav-item">
-            <a href="{{url('admin/users')}}" class="nav-link">
+            <a href="{{ route('admin.users') }}" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
                User
@@ -82,7 +82,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{url('admin/companies')}}" class="nav-link">
+            <a href="{{ route('admin.companies') }}" class="nav-link">
               <i class="nav-icon fas fa-building"></i>
               <p>
                Company
@@ -90,7 +90,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{url('admin/categories')}}" class="nav-link">
+            <a href="{{ route('categories.index') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                Categroy
@@ -98,7 +98,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{url('admin/jobs')}}" class="nav-link">
+            <a href="{{ route('admin.jobs') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                Job
@@ -106,7 +106,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{url('admin/contacts')}}" class="nav-link">
+            <a href="{{ route('admin.contacts') }}" class="nav-link">
               <i class="nav-icon fas fa-id-badge"></i>
               <p>
                Contact
@@ -114,7 +114,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{url('admin/roles')}}" class="nav-link">
+            <a href="{{ route('admin.roles') }}" class="nav-link">
               <i class="nav-icon fas fa-address-card"></i>
               <p>
                Role
@@ -171,8 +171,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- drop zone -->
 <script src="{{ asset('js/dropzone.js')}}"></script>
 <!-- chart js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+<script src="{{ asset('js/chart.min.js') }}"></script>
 <!-- custom js -->
-<script src="{{ asset('js/custom.js') }}"></script>
+<script src="{{ asset('js/chart.js') }}"></script>
+<!-- preview js -->
+<script src="{{ asset('js/previewImage.js') }}"></script>
+
+<script>
+  Dropzone.options.myDropzone = {
+    acceptedFiles: '.jpg, .jpeg, .png, .bmp',
+    init: function() {
+      this.on('success', function(){
+              location.reload();
+        });
+    }
+  };
+</script>
 </body>
 </html>

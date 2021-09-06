@@ -55,7 +55,8 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+        $company = Company::findOrFail($id);
+        return view('admin.companies.company-detail', compact('company'));
     }
 
     /**
@@ -91,6 +92,13 @@ class CompanyController extends Controller
     {
         $this->companyService->destroy($id);
         return redirect('admin/companies')->with('success', 'Company has been deleted successfully!');
+    }
+
+    public function companyJobs($id)
+    {
+        $company = Company::findOrfail($id);
+        $user = $this->companyService->companyJobs($company);
+        return view('admin.companies.company-jobs', compact('company','user'));
     }
 
 }

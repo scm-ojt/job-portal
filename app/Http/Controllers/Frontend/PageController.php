@@ -8,26 +8,31 @@ use App\Models\Job;
 use App\Models\Company;
 use App\Models\User;
 use App\Models\Contact;
+use App\Http\Requests\ContactStoreRequest;
 
 class PageController extends Controller
 {
     public function landing()
     {
-        $jobs = Job::where('approve_status',1)->get();
-        $companies = Company::all();
+        $jobs = Job::where('approve_status',1)->paginate(8);
+        $companies = Company::paginate(8);
         return view('frontend.top-page', compact('jobs','companies'));
     }
 
     public function allJobs()
     {   
-        $jobs = Job::where('approve_status',1)->paginate(10);
+        $jobs = Job::where('approve_status',1)->paginate(8);
         return view('frontend.all-jobs', compact('jobs'));
     }
 
     public function jobDetail($id)
     {
         $job = Job::findOrFail($id);
-        return view('frontend.job-detail', compact('job'));
+        foreach($job->user->companies as $company){
+            $companyId = $company->id;
+        }
+        $company = Company::findOrFail($companyId);
+        return view('frontend.job-detail', compact('job','company'));
     }
 
     public function allCompanies()
@@ -50,7 +55,7 @@ class PageController extends Controller
         return view('frontend.contact-us');
     }
 
-    public function contactStore(Request $request)
+    public function contactStore(ContactStoreRequest $request)
     {
         $contact = new Contact;
         $contact->name = $request->name;
@@ -59,7 +64,8 @@ class PageController extends Controller
         $contact->message = $request->message;
         $contact->save();
 
-        return redirect('/contact-us')->with('success', 'You have been sent successfully!');
+        return redirect('/contact-us')->with('success', 'Thank you!
+        Your message has been successfully sent.');
     }
 
     public function about()

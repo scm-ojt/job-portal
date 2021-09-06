@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Job;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Services\Admin\JobService;
 
 class JobController extends Controller
@@ -56,7 +55,8 @@ class JobController extends Controller
      */
     public function show($id)
     {
-        //
+        $job = Job::findOrFail($id);
+        return view('admin.jobs.job-detail', compact('job'));
     }
 
     /**
@@ -94,9 +94,9 @@ class JobController extends Controller
         return redirect('admin/jobs')->with('success', 'Job deleted successfully!');
     }
 
-    public function approve(Request $request)
+    public function approve($id)
     {
-        $this->jobService->approve($request);
+        $this->jobService->approve($id);
         return redirect()->back();
     }
 }

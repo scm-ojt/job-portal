@@ -1,18 +1,17 @@
 @extends('admin.admin-layout.master')
 
 @section('admin-content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-10">
-                <a href="{{url('admin/users/create')}}" class="btn btn-primary float-right">Create User</a>
+            <div class="col-md-12">
                 <h4>All Users</h4>
                 <div class="table-responsive mt-4">
                     @if($message = Session::get('success'))
                         <div class="alert alert-info">
-                            <p>{{$message}}</p>
+                            {{$message}}
                         </div>
                     @endif
-                    <table class="table table-bordered bg-white">
+                    <table class="table table-bordered bg-white text-center">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -32,7 +31,7 @@
                                         @if($user->photo)
                                             <img src="{{asset('storage/user-photos/'.$user->photo)}}" alt="User Photo" style="width: 100px;  height: 100px">
                                         @else
-                                        <form action="{{url('admin/users/upload-photo/'.$user->id)}}" method="post" enctype="multipart/form-data" class="dropzone dz-clickable" id="my-dropzone">
+                                        <form action="{{ route('admin.uploadPhoto', $user->id) }}" method="post" enctype="multipart/form-data" class="dropzone dz-clickable" id="myDropzone">
                                             @csrf
                                             @method('put')
 
@@ -45,21 +44,19 @@
                                         <span class="badge badge-primary">{{$user->role->name}}</span>
                                     </td>
                                     <td>
-                                        <form action="{{url('admin/users/active')}}" method="post">
+                                        <form action="{{ route('admin.users.active', $user->id) }}" method="post">
                                             @csrf
 
-                                            <input type="hidden" name="user_id" value="{{$user->id}}">
-                                            <input type="checkbox" class="form-control" name="active_status" id="" onchange="this.form.submit()" {{$user->active_status == 1 ? 'checked' : ''}}>
-                                            
+                                            <input type="checkbox" name="active_status" id="" onchange="this.form.submit()" {{$user->active_status == 1 ? 'checked' : ''}}>
                                         </form>
                                     </td>
                                     <td>
-                                        <form action="{{url('admin/users/'.$user->id)}}" method="post">
+                                        <form action="{{ route('admin.users.destroy', $user->id) }}" method="post">
                                             @csrf
                                             @method('delete')
 
-                                            <a href="{{url('admin/users/'.$user->id.'/edit')}}" class="btn btn-warning m-1">Edit</a>
-                                            <input type="submit" value="Del" class="btn btn-danger m-1">
+                                            <a href="{{ route('admin.users.edit', $user->id) }}"  class="btn btn-warning" title="Edit" data-toggle="tooltip"><i class="fa fa-pen"></i></a>
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')"><i class="fa fa-trash-alt" style=" color: #fff;"></i></button>
                                         </form>
                                     </td>
                                 </tr>

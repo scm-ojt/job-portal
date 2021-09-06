@@ -5,8 +5,8 @@
 	<div class="row justify-content-center">
 		<div class="col-md-10">
 			<div class="card">
-				<div class="card-header">
-					<h4>Company Profile Edit</h4>
+				<div class="card-header" style="background-color: #4ba3eb;">
+					<h4 class="text-white text-center mt-2">Company Profile Edit</h4>
 				</div>
 				<div class="card-body">
 					<form action="{{url('company/'.$company->id)}}" method="POST" enctype="multipart/form-data">
@@ -22,12 +22,18 @@
 						</div>
 						
 						<div class="form-group">
-							<label for="">Company Logo</label>
-							<input type="file" name="logo" id="" class="form-control @error('logo') is-invalid @enderror" value="{{$company->logo}}">
+							<label for="">Logo</label>
+							@if($company->logo)
+								<img src="{{asset('storage/company-logos/'.$company->logo)}}" alt="" width="100" height="100" class="mb-3 ml-3" id="preview-img">
+							@else
+								<img src="{{asset('images/avatar_01.png')}}" alt="" width="100" height="100" class="mb-2 ml-5" id="preview-img">
+							@endif
+							<input type="file" name="logo" id="profile" class="form-control-file @error('logo') is-invalid @enderror">
 							@error('logo')
-							<span class="text-danger text-bold">{{ $message }}</span>
+								<span class="text-danger text-bold">{{ $message }}</span>
 							@enderror
 						</div>
+
 					
 					<div class="form-group">
 						<label for="">Company Type</label>
@@ -60,14 +66,6 @@
 						<input type="text" name="email" id="" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email" readonly value="{{Auth::user()->email}}">
 						@error('logo')
 							<span class="text-danger text-bold">{{ $message }}</span>
-						@enderror
-					</div>
-					
-					<div class="form-group">
-						<label for="">Password</label>
-						<input type="text" name="password" id="" class="form-control @error('password') is-invalid @enderror" placeholder="Enter password" value="{{Auth::user()->password}}">
-						@error('password')
-								<span class="text-danger text-bold">{{ $message }}</span>
 						@enderror
 					</div>
 					
@@ -120,8 +118,8 @@
 					</div>
 					
 					<div class="form-group">
-						<input type="submit" value="Update Profile" class="btn btn-primary">
-						<input type="reset" value="Reset" class="btn btn-dark">
+						<input class="btn btn-primary btn-rounded btn-icon text-white px-5 py-2" value="Update Profile" type="submit" data-toggle="tooltip"><i class="fa fa-eye"></i>
+						<a href="{{ url('company/dashboard')}}" class="px-3 py-2 btn btn-secondary btn-rounded btn-icon float-right" ><i class="fa fa-trash-alt" style=" color: #fff;">Cancel</i></a>
 					</div>
 				</form>
 			</div>

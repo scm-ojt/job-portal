@@ -6,9 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\Role;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 use App\Services\Admin\ProfileService;
 
 class ProfileController extends Controller
@@ -21,7 +18,9 @@ class ProfileController extends Controller
     }
     public function dashboard()
     {
-        return view('admin.admin-dashboard');
+        $companyArr = $this->profileService->companyCount();
+        $jobArr = $this->profileService->jobCount();
+        return view('admin.admin-dashboard', compact('companyArr','jobArr'));
     }
 
     public function edit($id)
@@ -34,7 +33,7 @@ class ProfileController extends Controller
     public function update(UserUpdateRequest $request, $id)
     {
         $this->profileService->update($request, $id);
-        return redirect('admin/dashboard');
+        return redirect()->back();
     }
 
 }

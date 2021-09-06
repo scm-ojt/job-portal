@@ -2,27 +2,56 @@
 @section('frontend-content')
 
 <div style="position:relative">
-    <img src="{{ asset('images/common_bnr.jpg') }}" alt="" style="width:100%; height: 300px">
+    <img src="{{ asset('images/bg.jpg') }}" alt="" style="width:100%; height: 350px">
 </div>
 <div class="container">
-    <div style="position: absolute; top:150px; left: 150px" class="text-white">
-        <h1>About Us</h1>
-        <a href="{{url('/')}}" class="text-white">HOME</a> >
-        <a href="{{url('about-us')}}" class="text-white">ABOUT US</a>
+    <div style="position: absolute; top:160px; left: 250px" >
+        <h1 style="color: #0BA5A9;">About Us</h1>
+        <a href="{{url('/')}}" class="" style="color: #0BA5A9;">HOME</a> >
+        <a href="{{url('about-us')}}" class="" style="color: #0BA5A9;">ABOUT US</a>
     </div>
 </div> 
     <div class="container py-5">
-        <div class="section">
-            <h3>Our Vision</h3>
-            <ul>
-               <li> To be a leading Japan IT company in Myanmar.</li>
-            </ul>
+        <div class="row mb-4">
+            <div class="col-sm-6 offset-sm-3">
+              <div class="card" style="border-color:#196F92">
+                <div class="card-body" style="font-size: 15px;">
+                  <h5 class="card-title text-center font-weight-bold" style="color:#196F92">Our Vision</h5>
+                  <p class="card-text font-italic" style="color:#196F92">To be a leading Japan IT company in Myanmar.To build a solid trust with our customers and partners.
+                  </p>
+                </div>
+              </div>
+            </div>
         </div>
-        <div class="section">
+        <div class="row ">
+            <div class="col-sm-6 ">
+              <div class="card" style="border-color:#196F92">
+                <div class="card-body" style="font-size: 15px;">
+                  <h5 class="card-title text-center font-weight-bold" style="color:#196F92">Our Mission</h5>
+                  <p class="card-text font-italic" style="color:#196F92">To build strong teams with excellent IT engineers. 
+                    To provide high-quality and cost-effective solutions.  To develop IT products beneficial to our society. 
+                    To build a solid trust with our customers and partners. 
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card" style="border-color:#196F92">
+                <div class="card-body" style="font-size: 15px;">
+                  <h5 class="card-title text-center font-weight-bold" style="color:#196F92">Our Value</h5>
+                  <p class="card-text font-italic" style="color:#196F92">We create comfortable work environment for every religion and ethnic background.   
+                    We respect diversity and make it our strength.  To develop IT products beneficial to our society. 
+                     
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{-- <div class="section">
             <h3>Our Mission</h3>
             <ul>
                 <li>To build strong teams with excellent IT engineers. </li>
-                <li>To provide high-quality and cost-effective solutions. </li>
+                <li>To provide high-quality and cost-effective sol         utions. </li>
                 <li>To develop IT products beneficial to our society. </li>
                 <li>To build a solid trust with our customers and partners. </li>
             </ul>
@@ -35,6 +64,6 @@
                 <li>We keep challenging to the latest IT technology. </li>
                 <li>We promise not only low cost but also high-quality products. </li>
             </ul>
-        </div>
+        </div> --}}
     </div>
 @endsection

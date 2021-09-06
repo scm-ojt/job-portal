@@ -2,7 +2,10 @@
 
 namespace App\Services\Admin;
 
+use App\Models\Company;
+use App\Models\User;
 use App\Repositories\Admin\UserRepository;
+use Illuminate\Support\Facades\Storage;
 
 class UserService
 {
@@ -18,28 +21,52 @@ class UserService
         return $this->userRepository->index();
     }
 
-    public function store($request)
+    public function getUserId($id)
     {
-        return $this->userRepository->store($request);
+        return User::findOrFail($id);
     }
 
     public function update($request, $id)
     {
-       return $this->userRepository->update($request, $id);
+        $user = $this->getUserId($id);
+        if($request->hasFile('photo')){
+            Storage::delete('/public/user-photos/'.$user->photo);
+            $photo = $request->file('photo'); 
+            $photoName = $photo->getClientOriginalName();
+            $request->file('photo')->storeAs('public/user-photos',$photoName);
+            $user->photo = $photoName;
+        }
+        $user->name = $request->name;
+        $user->role_id = $request->role_id;
+
+        $companyId = $user->companies()->where('user_id',$user->id)->first()->id;
+        $company = Company::findOrFail($companyId);
+        $company->name = $request->name;
+        
+        return $this->userRepository->update($user, $company);
     }
 
     public function destroy($id)
     {
-        return $this->userRepository->destroy($id);
+        $user = User::findOrFail($id);
+        return $this->userRepository->destroy($user);
     }
 
-    public function active($request)
+    public function active($id)
     {
-      return $this->userRepository->active($request);
+        $user = $this->getUserId($id);
+        return $this->userRepository->active($user);
     }
 
     public function uploadFile($request, $id)
     {
-        return $this->userRepository->uploadFile($request, $id);
+        $user =  $this->getUserId($id);
+        if($request->hasFile('file')){
+            $photo = $request->file('file'); 
+            $photoName = $photo->getClientOriginalName();
+            $request->file('file')->storeAs('public/user-photos',$photoName);
+            $user->photo = $photoName;
+        }
+        return $this->userRepository->uploadFile($user);
     }
 }

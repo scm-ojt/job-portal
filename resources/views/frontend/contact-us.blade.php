@@ -2,10 +2,10 @@
 @section('frontend-content')
 
 <div style="position:relative">
-    <img src="{{ asset('images/common_bnr.jpg') }}" alt="" style="width:100%; height: 300px">
+    <img src="{{ asset('images/bg.jpg') }}" alt="" style="width:100%; height: 350px">
 </div>
 <div class="container">
-    <div style="position: absolute; top:150px; left: 150px" class="text-white">
+    <div style="position: absolute; top:160px; left: 250px" class="text-white">
         <h1>Contact Us</h1>
         <a href="{{url('/')}}" class="text-white">HOME</a> >
         <a href="{{url('contact-us')}}" class="text-white">CONTACT US</a>
@@ -26,19 +26,35 @@
     
                             <div class="form-group">
                                 <label for="">Name</label>
-                                <input type="text" name="name" class="form-control" id="">
+                                <input type="text" name="name" class="form-control @error('name') is-invalid
+                                    @enderror" id="" >
+                                    @error('name')
+                                        <span class="text-danger text-bold">{{ $message }}</span>
+                                    @enderror
                             </div>
                             <div class="form-group">
                                 <label for="">Email</label>
-                                <input type="email" name="email" class="form-control" id="">
+                                <input type="email" name="email" class="form-control @error('email')
+                                    is-invalid @enderror" id="" >
+                                    @error('email')
+                                        <span class="text-danger text-bold">{{ $message }}</span>
+                                    @enderror
                             </div>
                             <div class="form-group">
                                 <label for="">Phone No</label>
-                                <input type="text" name="phone_no" class="form-control" id="">
+                                <input type="text" name="phone_no" class="form-control @error('phone_no')
+                                is-invalid @enderror" id="">
+                                @error('phone_no')
+                                 <span class="text-danger text-bold">{{ $message }}</span>   
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="">Message</label>
-                               <textarea name="message" id="" cols="30" rows="5" class="form-control"></textarea>
+                               <textarea name="message" id="" cols="30" rows="5" class="form-control @error('message')
+                               is-invalid @enderror"></textarea>
+                               @error('message')
+                                 <span class="text-danger text-bold">{{ $message }}</span>  
+                               @enderror
                             </div>
                             <div class="form-group text-center">
                                 <input type="submit" value="Submit" class="btn btn-primary">
