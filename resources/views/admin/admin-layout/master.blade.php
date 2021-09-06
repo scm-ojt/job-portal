@@ -35,7 +35,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <form id="logout-form" action="{{ route('logout') }}" method="POST">
                 @csrf
 
-                <button type="submit" class="btn btn-secondary float-right">Logout<i class="fa fa-power-off ml-2"></i> </button>
+                <button type="submit" class="btn btn-secondary float-right"><i class="fa fa-power-off mr-2"></i> Logout</button>
             </form>
         </li>
       </ul>

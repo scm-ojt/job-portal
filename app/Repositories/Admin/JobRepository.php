@@ -38,4 +38,9 @@ class JobRepository
 
         return $job;
     }
+
+    public function search($searchData)
+    {
+        return Job::where('title', 'Like', "%$searchData%")->paginate(10);
+    }
 }

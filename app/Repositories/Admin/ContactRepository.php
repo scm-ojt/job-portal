@@ -22,4 +22,9 @@ class ContactRepository
     {
         $contact->delete();
     }
+
+    public function search($searchData)
+    {
+        return Contact::where('name', 'Like', "%$searchData%")->paginate(10);
+    }
 }

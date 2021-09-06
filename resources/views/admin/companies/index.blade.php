@@ -4,6 +4,15 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-12">
+                <form action="{{ route('admin.companies.search') }}" method="get" class="form-inline float-right">
+                    @csrf
+                    <div class="input-group">
+                        <input name="search_data" class="form-control" type="search" placeholder="Search" aria-label="Search" value="{{ isset($searchData) ? $searchData : '' }}">
+                        <div class="input-group-append">
+                            <button class="btn btn-success" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
                 <h4>All Companies</h4>
                 <div class="table-responsive mt-4">
                     @if($message = Session::get('success'))

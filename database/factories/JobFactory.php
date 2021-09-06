@@ -35,6 +35,7 @@ class JobFactory extends Factory
             'requirement' => $this->faker->text(50),
             'contact_information' => $this->faker->text(50),
             'approve_status' => $this->faker->numberBetween(0,1),
+            'created_at' => $this->faker->dateTimeThisYear(),
         ];
     }
 }
