@@ -63,7 +63,7 @@
 					
 					<div class="form-group">
 						<label for="">Email</label>
-						<input type="text" name="email" id="" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email" readonly value="{{Auth::user()->email}}">
+						<input type="email" name="email" id="" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email" readonly value="{{Auth::user()->email}}">
 						@error('logo')
 							<span class="text-danger text-bold">{{ $message }}</span>
 						@enderror
@@ -87,7 +87,7 @@
 					
 					<div class="form-group">
 						<label for="">Address</label>
-						<input type="text" name="address" id="" class="form-control @error('address') is-invalid @enderror" placeholder="Enter address" value="{{$company->address}}">
+						<textarea name="address" id="" cols="3" rows="3" placeholder="Enter address" class="form-control @error('address') is-invalid @enderror">{{$company->address}}</textarea>
 						@error('address')
 								<span class="text-danger text-bold">{{ $message }}</span>
 						@enderror

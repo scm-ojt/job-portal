@@ -76,7 +76,8 @@
 
             <div class="form-group">
 							<label for="">Address</label>
-							<input type="text" name="address" id="" class="form-control @error('address') is-invalid @enderror" placeholder="Enter address" value="{{$job->address}}">
+							<textarea name="address" id="" cols="3" rows="3"  placeholder="Enter address" class="form-control @error('address') is-invalid @enderror">{{$job->address}}</textarea>
+
 							@error('address')
 							 	<span class="text-danger text-bold">{{ $message }}</span>
 							@enderror

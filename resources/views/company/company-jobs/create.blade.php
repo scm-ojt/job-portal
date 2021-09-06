@@ -73,7 +73,7 @@
 						
 						<div class="form-group">
 							<label for="">Address</label>
-							<input type="text" name="address" id="" class="form-control @error('address') is-invalid @enderror" placeholder="Enter address">
+							<textarea name="address" id="" cols="3" rows="2"  placeholder="Enter address" class="form-control @error('address') is-invalid @enderror"></textarea>
 							@error('address')
 							<span class="text-danger text-bold">{{ $message }}</span>
 							@enderror
