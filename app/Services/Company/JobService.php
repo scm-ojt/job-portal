@@ -3,6 +3,8 @@
 namespace App\Services\Company;
 
 use App\Repositories\Company\JobRepository;
+use App\Models\Job;
+use Auth;
 
 class JobService
 {
@@ -25,12 +27,34 @@ class JobService
 
     public function store($request)
     {
-        return $this->jobRepository->store($request);
+        $job = new Job;
+        $job->user_id = Auth::user()->id;
+        $job->category_id = $request->category_id;
+        $job->title = $request->title;
+        $job->employment_status = $request->employment_status;
+        $job->address = $request->address;
+        $job->salary = $request->salary;
+        $job->working_hour = $request->working_hour;
+        $job->requirement = $request->requirement;
+        $job->contact_information = $request->contact_information;
+
+        return $this->jobRepository->store($job);
     }
 
-    public function update($request, $job)
+    public function update($request, $id)
     {
-        return $this->jobRepository->update($request, $job);
+        $job = Job::findOrFail($id);
+        $job->user_id = Auth::user()->id;
+        $job->category_id = $request->category_id;
+        $job->title = $request->title;
+        $job->employment_status = $request->employment_status;
+        $job->address = $request->address;
+        $job->salary = $request->salary;
+        $job->working_hour = $request->working_hour;
+        $job->requirement = $request->requirement;
+        $job->contact_information = $request->contact_information;
+
+        return $this->jobRepository->update($job);
     }
 
     public function destroy($job)

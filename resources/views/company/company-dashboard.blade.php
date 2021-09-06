@@ -5,12 +5,16 @@
     <div class="row">
         <div class="col-md-12">
             <div class="d-flex justify-content-start">
-                <img src="{{asset('storage/company-logos/'.$company->logo)}}" alt="" class="rounded img-thumbnail" style="width:25%">
+                @if($company->logo)
+                    <img src="{{asset('storage/company-logos/'.$company->logo)}}" alt="" width="300" height="200" class="mb-3 ml-3" id="preview-img">
+                @else
+                    <img src="{{asset('images/avatar_01.png')}}" alt="" width="300" height="200" class="mb-2 ml-5" id="preview-img">
+                @endif
                 <ul style="list-style: none;">
                     <li><h2>{{$company->name}}</h2></li>
                     <li>Company Type: {{$company->company_type}}</li>
                     <li>No of Employee : {{$company->no_of_employee}}</li>
-                    <li><a href="{{url('/company/'.$company->id.'/edit')}}" class="btn btn-primary mt-3">Edit Profile</a></li>
+                    <li><a href="{{ route('company.edit', $company->id) }}" class="btn btn-primary mt-3">Edit Profile</a></li>
                 </ul>
             </div>
         </div>

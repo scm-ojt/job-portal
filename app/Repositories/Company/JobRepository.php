@@ -25,42 +25,18 @@ class JobRepository
         return $user;
     }
 
-    public function store($request)
+    public function store($job)
     {   
-        $job = new Job;
-        $job->user_id = Auth::user()->id;
-        $job->category_id = $request->category_id;
-        $job->title = $request->title;
-        $job->employment_status = $request->employment_status;
-        $job->address = $request->address;
-        $job->salary = $request->salary;
-        $job->working_hour = $request->working_hour;
-        $job->requirement = $request->requirement;
-        $job->contact_information = $request->contact_information;
         $job->save();
-
-        return $job;
     }
     public function edit($id) {
         $job = Job::findOrFail($id);
         return $job;
     }
 
-    public function update($request, $id)
+    public function update($job)
     {   
-        $job = Job::findOrFail($id);
-        $job->user_id = Auth::user()->id;
-        $job->category_id = $request->category_id;
-        $job->title = $request->title;
-        $job->employment_status = $request->employment_status;
-        $job->address = $request->address;
-        $job->salary = $request->salary;
-        $job->working_hour = $request->working_hour;
-        $job->requirement = $request->requirement;
-        $job->contact_information = $request->contact_information;
         $job->update();
-
-        return $job;
     }
 
     public function destroy($id)

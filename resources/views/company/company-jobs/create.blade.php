@@ -9,7 +9,7 @@
 					<h4 class="text-center text-white mt-2">Post Job</h4>
 				</div>
 				<div class="card-body">
-					<form action="{{url('company-jobs')}}" method="post">
+					<form action="{{route('jobs.store')}}" method="post">
 						@csrf
 						
 						<div class="form-group">
@@ -73,7 +73,7 @@
 						
 						<div class="form-group">
 							<label for="">Address</label>
-							<input type="text" name="address" id="" class="form-control @error('address') is-invalid @enderror" placeholder="Enter address">
+							<textarea name="address" id="" cols="3" rows="2"  placeholder="Enter address" class="form-control @error('address') is-invalid @enderror"></textarea>
 							@error('address')
 							<span class="text-danger text-bold">{{ $message }}</span>
 							@enderror
@@ -88,8 +88,8 @@
 						</div>
 						
 						<div class="form-group">
-							<input class="btn btn-primary btn-rounded btn-icon text-white px-5 py-2" value="Post Job" type="submit" data-toggle="tooltip"><i class="fa fa-eye"></i>
-							<a href="{{url('company-jobs/')}}" class="px-3 py-2 btn btn-secondary btn-rounded btn-icon float-right" title="Cancel"><i class="fa fa-trash-alt" style=" color: #fff;">Cancel</i></a>
+							<input class="btn btn-primary btn-rounded btn-icon text-white px-5 py-2" value="Post Job" type="submit" data-toggle="tooltip">
+							<a href="{{route('jobs.index')}}" class="px-3 py-2 btn btn-secondary btn-rounded btn-icon float-right" title="Cancel"><i class="fa fa-trash-alt" style=" color: #fff;">Cancel</i></a>
 						</div>
 					</form>
 				</div>

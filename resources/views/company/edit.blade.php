@@ -9,7 +9,7 @@
 					<h4 class="text-white text-center mt-2">Company Profile Edit</h4>
 				</div>
 				<div class="card-body">
-					<form action="{{url('company/'.$company->id)}}" method="POST" enctype="multipart/form-data">
+					<form action="{{ route('company.update', $company->id) }}" method="POST" enctype="multipart/form-data">
 						@csrf
 						@method('put')
 						
@@ -63,7 +63,7 @@
 					
 					<div class="form-group">
 						<label for="">Email</label>
-						<input type="text" name="email" id="" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email" readonly value="{{Auth::user()->email}}">
+						<input type="email" name="email" id="" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email" readonly value="{{Auth::user()->email}}">
 						@error('logo')
 							<span class="text-danger text-bold">{{ $message }}</span>
 						@enderror
@@ -87,7 +87,7 @@
 					
 					<div class="form-group">
 						<label for="">Address</label>
-						<input type="text" name="address" id="" class="form-control @error('address') is-invalid @enderror" placeholder="Enter address" value="{{$company->address}}">
+						<textarea name="address" id="" cols="3" rows="3" placeholder="Enter address" class="form-control @error('address') is-invalid @enderror">{{$company->address}}</textarea>
 						@error('address')
 								<span class="text-danger text-bold">{{ $message }}</span>
 						@enderror
@@ -118,8 +118,8 @@
 					</div>
 					
 					<div class="form-group">
-						<input class="btn btn-primary btn-rounded btn-icon text-white px-5 py-2" value="Update Profile" type="submit" data-toggle="tooltip"><i class="fa fa-eye"></i>
-						<a href="{{ url('company/dashboard')}}" class="px-3 py-2 btn btn-secondary btn-rounded btn-icon float-right" ><i class="fa fa-trash-alt" style=" color: #fff;">Cancel</i></a>
+						<input type="submit" value="Update Profile" class="btn btn-primary">
+						<a href="{{ route('company.dashboard') }}" class="btn btn-secondary float-right">Cancel</a>
 					</div>
 				</form>
 			</div>
