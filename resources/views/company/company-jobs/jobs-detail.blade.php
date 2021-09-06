@@ -41,7 +41,7 @@
                     <div class="section mb-3">
                         <h5>Salary</h5>
                         <ul>
-                            <li>{{$job->salary}} MMK</li>
+                            <li>{{number_format($job->salary)}} MMK</li>
                         </ul>
                     </div>
                     <div class="section mb-3">

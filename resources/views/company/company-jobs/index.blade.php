@@ -34,7 +34,7 @@
                                         @endif
                                     </td>
                                     <td>{{$job->category->name}}</td>
-                                    <td>{{$job->salary}}</td>
+                                    <td>{{number_format($job->salary)}}MMK</td>
                                     <td>{{$job->working_hour}}</td>
                                     <td>{{$job->contact_information}}</td>
                                     <td>{{$job->employment_status}}</td>
