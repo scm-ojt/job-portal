@@ -10,7 +10,7 @@
                     @if($job->company->logo)
                         <img src="{{asset('storage/company-logos/'.$job->company->logo)}}" alt="" width="200" height="150" class="ml-5 mr-3 rounded float-left">
                     @else
-                        <img src="{{asset('images/user.png')}}" alt="" width="200" height="150" class="ml-5 mr-3 rounded float-left">
+                        <img src="{{asset('images/company.png')}}" alt="" width="200" height="150" class="ml-5 mr-3 rounded float-left">
                     @endif
                     <ul style="list-style: none;">
                         <li><h4><b>{{$job->title}}</b></h4></li>

@@ -26,7 +26,7 @@
 							@if($company->logo)
 								<img src="{{asset('storage/company-logos/'.$company->logo)}}" alt="" width="100" height="100" class="mb-3 ml-3" id="preview-img">
 							@else
-								<img src="{{asset('images/user.png')}}" alt="" width="100" height="100" class="mb-2 ml-5" id="preview-img">
+								<img src="{{asset('images/company.png')}}" alt="" width="100" height="100" class="mb-2 ml-5" id="preview-img">
 							@endif
 							<input type="file" name="logo" id="profile" class="form-control-file @error('logo') is-invalid @enderror">
 							@error('logo')
