@@ -7,8 +7,13 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::get('admin/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('admin/{id}/edit', [App\Http\Controllers\Admin\ProfileController::class, 'edit'])->name('admin.edit');
     Route::put('admin/{id}', [App\Http\Controllers\Admin\ProfileController::class, 'update'])->name('admin.update');
-    Route::put('admin/users/upload-photo/{id}', [\App\Http\Controllers\Admin\UserController::class, 'uploadFile'])->name('admin.uploadPhoto');
+
+    //change password
+    Route::get('admin/{id}/showPassword', [App\Http\Controllers\Admin\ChangePasswordController::class, 'index'])->name('admin.showPassword');
+    Route::post('admin/{id}/changePassword', [App\Http\Controllers\Admin\ChangePasswordController::class, 'changePassword'])->name('admin.changePassword');
+   
     //user
+    Route::put('admin/users/upload-photo/{id}', [\App\Http\Controllers\Admin\UserController::class, 'uploadFile'])->name('admin.uploadPhoto');
     Route::get('admin/users', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('admin.users');
     Route::get('admin/users/{id}/edit', [App\Http\Controllers\Admin\UserController::class, 'edit'])->name('admin.users.edit');
     Route::put('admin/users/{id}', [App\Http\Controllers\Admin\UserController::class, 'update'])->name('admin.users.update');

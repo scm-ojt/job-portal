@@ -28,9 +28,9 @@
                                 <td>{{$category->name}}</td>
                                 <td>
                                     @if($category->image)
-                                        <img src="{{asset('storage/category-images/'.$category->image)}}" alt="category-img" width="100" height="100">
+                                        <img src="{{asset('storage/category-images/'.$category->image)}}" alt="category-img" width="50" height="50">
                                     @else
-                                        <img src="{{asset('images/category.png')}}" alt="category-img" width="100" height="100">
+                                        <img src="{{asset('images/category.png')}}" alt="category-img" width="50" height="50">
                                     @endif
                                 </td>
                                 <td>
