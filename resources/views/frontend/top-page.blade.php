@@ -24,18 +24,18 @@
                                 @if($company->logo)
                                     <img src="{{asset('storage/company-logos/'.$company->logo)}}" alt="" class="col-md-2" style="width:100px; height:70px;">
                                 @else
-                                <img src="{{asset('images/default-company-logo.png')}}" alt="" class="col-md-2" style="width:100px; height:70px;">
+                                    <img src="{{asset('images/default-company-logo.png')}}" alt="" class="col-md-2" style="width:100px; height:70px;">
                                 @endif
                             @endforeach
                            
-                            <div class="col-md-5">
+                            <div class="col-md-4">
                                 <a href="{{url('jobs/'.$job->id)}}"><h5 class="font-weight-bold" style="color: #3490DC">{{$job->title}}</h5></a>
                                 @foreach($job->user->companies as $key => $company)
                                     <a href="{{url('companies/'.$company->id)}}"><span>{{$company->name? $company->name : ''}}</span></a>
                                 @endforeach
                                 
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <h5 class="font-weight-bold">{{$job->address}}</h5>
                             </div>
                             <div class="col-md-2">
@@ -52,9 +52,9 @@
                                 <div class="col-md-3 my-3">
                                     <div class="card p-3 shadow-md border">
                                         @if($company->logo)
-                                            <img src="{{asset('storage/company-logos/'.$company->logo)}}" alt="" class="rounded" height="120px">
+                                        <a href="{{url('/companies/'.$company->id)}}"><img src="{{asset('storage/company-logos/'.$company->logo)}}" alt="" class="rounded" width="125px" height="120px"></a>
                                         @else
-                                            <img src="{{asset('images/default-company-logo.png')}}" alt="" class="rounded" height="120px">
+                                        <a href="{{url('/companies/'.$company->id)}}"><img src="{{asset('images/default-company-logo.png')}}" alt="" class="rounded" width="125px" height="120px"></a>
                                         @endif
                                          
                                         <a href="{{url('/companies/'.$company->id)}}"><h5 class="font-weight-bold mt-3 text-center" style="color: #3490DC">{{$company->name}}</h5></a>

@@ -30,7 +30,7 @@
                         {{-- @foreach($job->user->companies as $key => $company)
                             <img src="{{asset('storage/company-logos/'.$company->logo)}}" alt="" class="col-md-1 ">
                         @endforeach --}}
-                        <div class="col-md-5">
+                        <div class="col-md-4">
                             <a href="{{url('jobs/'.$job->id)}}">
                                 <h5 class="font-weight-bold" style="color: #3490DC">{{$job->title}}</h5>
                             </a>
@@ -39,7 +39,7 @@
                             @endforeach
                             
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <h5 class="font-weight-bold">{{$job->address}}</h5>
                         </div>
                         <div class="col-md-2">

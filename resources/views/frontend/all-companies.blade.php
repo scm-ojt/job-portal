@@ -18,7 +18,7 @@
             <div class="row mt-3 mb-5">
                 @foreach($companies as $company)
                 
-                <div class="col-md-3">
+                <div class="col-md-3 mb-4">
                     <div class="card p-3 shadow-md border border-dark">
                         @if($company->logo)
                             <a href="{{url('/companies/'.$company->id)}}">
