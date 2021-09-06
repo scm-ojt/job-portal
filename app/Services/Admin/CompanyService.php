@@ -24,4 +24,9 @@ class CompanyService
         $company = Company::findOrFail($id);
         return $this->companyRepository->destroy($company);
     }
+
+    public function search($searchData)
+    { 
+        return $this->companyRepository->search($searchData);
+    }
 }

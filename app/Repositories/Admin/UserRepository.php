@@ -46,4 +46,9 @@ class UserRepository
     {
         return $user->update();
     }
+
+    public function search($searchData)
+    {
+        return User::where('name', 'Like', "%$searchData%")->paginate(10);
+    }
 }

@@ -25,4 +25,9 @@ class CompanyRepository
         $company->users()->delete();
     }
 
+    public function search($searchData)
+    {
+        return Company::where('name', 'Like', "%$searchData%")->paginate(10);
+    }
+
 }

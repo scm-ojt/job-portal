@@ -29,6 +29,8 @@
                                 <td>
                                     @if($category->image)
                                         <img src="{{asset('storage/category-images/'.$category->image)}}" alt="category-img" width="100" height="100">
+                                    @else
+                                        <img src="{{asset('images/category.png')}}" alt="category-img" width="100" height="100">
                                     @endif
                                 </td>
                                 <td>
@@ -36,8 +38,8 @@
                                         @csrf
                                         @method('delete')
 
-                                        <a href="{{ route('categories.edit', $category->id) }}"  class="btn btn-warning" title="Edit" data-toggle="tooltip"><i class="fa fa-pen"></i></a>
-                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')"><i class="fa fa-trash-alt"></i></button>
+                                        <a href="{{ route('categories.edit', $category->id) }}"  class="btn btn-warning m-1" title="Edit" data-toggle="tooltip"><i class="fa fa-pen"></i></a>
+                                        <button type="submit" class="btn btn-danger m-1" onclick="return confirm('Are you sure want to delete?')"><i class="fa fa-trash-alt"></i></button>
                                     </form>
                                 </td>
                             </tr>

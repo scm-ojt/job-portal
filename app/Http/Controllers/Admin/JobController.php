@@ -99,4 +99,12 @@ class JobController extends Controller
         $this->jobService->approve($id);
         return redirect()->back();
     }
+
+    public function search(Request $request)
+    {
+        $searchData = $request->search_data;
+        $jobs = $this->jobService->search($searchData);
+
+        return view('admin.jobs.index', compact('searchData', 'jobs'));
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use App\Services\Admin\ContactService;
 
@@ -26,27 +27,6 @@ class ContactController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -54,32 +34,10 @@ class ContactController extends Controller
      */
     public function show($id)
     {
-        //
+        $contact = Contact::findOrFail($id);
+        return view('admin.contacts.contact-detail', compact('contact'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -90,5 +48,13 @@ class ContactController extends Controller
     {
         $this->contactService->destroy($id);
         return redirect('admin/contacts')->with('success', 'Contact deleted successfully!');
+    }
+
+    public function search(Request $request)
+    {
+        $searchData = $request->search_data;
+        $contacts = $this->contactService->search($searchData);
+
+        return view('admin.contacts.index', compact('searchData', 'contacts'));
     }
 }
