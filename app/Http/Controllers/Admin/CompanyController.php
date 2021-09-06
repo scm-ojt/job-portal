@@ -94,11 +94,10 @@ class CompanyController extends Controller
         return redirect('admin/companies')->with('success', 'Company has been deleted successfully!');
     }
 
-    public function companyJobs($id)
+    public function jobs($id)
     {
         $company = Company::findOrfail($id);
-        $user = $this->companyService->companyJobs($company);
-        return view('admin.companies.company-jobs', compact('company','user'));
+        return view('admin.companies.company-jobs', compact('company'));
     }
 
 }

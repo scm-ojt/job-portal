@@ -22,7 +22,9 @@ class JobRepository
     {
         $userId = Auth::user()->id;
         $user = User::findOrFail($userId);
-        return $user;
+        $companyId = $user->companies()->where('user_id', $user->id)->first()->id;
+        $company = Company::findOrFail($companyId);
+        return $company;
     }
 
     public function store($job)

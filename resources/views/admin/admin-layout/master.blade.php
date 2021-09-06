@@ -58,7 +58,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           @if(isset(Auth::user()->photo))
             <img src="{{ asset('storage/user-photos/'.Auth::user()->photo) }}" class="img-circle elevation-2" alt="User Image">
           @else
-            <img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+            <img src="{{ asset('images/user.png') }}" class="img-circle elevation-2" alt="User Image">
           @endif
         </div>
         <div class="info">
@@ -170,10 +170,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('admin/dist/js/adminlte.min.js') }}"></script>
 <!-- drop zone -->
 <script src="{{ asset('js/dropzone.js')}}"></script>
-<!-- chart js -->
-<script src="{{ asset('js/chart.min.js') }}"></script>
-<!-- custom js -->
-<script src="{{ asset('js/chart.js') }}"></script>
 <!-- preview js -->
 <script src="{{ asset('js/previewImage.js') }}"></script>
 
@@ -187,5 +183,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     }
   };
 </script>
+@yield('script')
 </body>
 </html>

@@ -11,8 +11,15 @@ class Company extends Model
 
     protected $guarded = [];
 
+    public function jobs()
+    {
+        return $this->hasMany(Job::class, 'company_id');
+    }
+    
     public function users()
     {
         return $this->belongsToMany(User::class, 'company_user', 'company_id', 'user_id');
     }
+
+   
 }

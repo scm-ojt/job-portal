@@ -20,23 +20,16 @@
             <div class="col-md-12">
                 <div class="card p-3" style="background-color: #EAEAF1">
                     <div class="row ">
-                        @foreach($job->user->companies as $key => $company)
-                                @if($company->logo)
-                                    <img src="{{asset('storage/company-logos/'.$company->logo)}}" alt="" class="col-md-1" style="height:60px;">
+                                @if($job->company->logo)
+                                    <img src="{{asset('storage/company-logos/'.$job->company->logo)}}" alt="" class="col-md-1" style="height:60px;">
                                 @else
                                     <img src="{{asset('images/default-company-logo.png')}}" alt="" class="col-md-1" style="height:60px;">
                                 @endif
-                            @endforeach
-                        {{-- @foreach($job->user->companies as $key => $company)
-                            <img src="{{asset('storage/company-logos/'.$company->logo)}}" alt="" class="col-md-1 ">
-                        @endforeach --}}
                         <div class="col-md-4">
                             <a href="{{url('jobs/'.$job->id)}}">
                                 <h5 class="font-weight-bold" style="color: #3490DC">{{$job->title}}</h5>
                             </a>
-                            @foreach ($job->user->companies as $company)
-                                <a href="{{url('/companies/'.$company->id)}}"><span>{{$company->name? $company->name : ""}}</span></a>
-                            @endforeach
+                            <a href="{{url('/companies/'.$job->company->id)}}"><span>{{$job->company->name? $job->company->name : ""}}</span></a>
                             
                         </div>
                         <div class="col-md-5">

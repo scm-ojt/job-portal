@@ -25,10 +25,4 @@ class CompanyRepository
         $company->users()->delete();
     }
 
-    public function companyJobs($company)
-    {
-        $userId = $company->users()->where('company_id', $company->id)->first()->id;
-        $user = User::findOrFail($userId);
-        return $user;
-    }
 }

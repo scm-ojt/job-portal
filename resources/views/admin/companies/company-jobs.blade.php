@@ -20,7 +20,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($user->jobs as $job)
+                            @foreach ($company->jobs as $job)
                                 <tr>
                                     <td>{{$job->title}}</td>
                                     <td>{{$job->category->name? $job->category->name : ''}}</td>

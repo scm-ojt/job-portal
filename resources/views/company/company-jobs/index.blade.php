@@ -22,10 +22,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($user->jobs as $job)
+                            @foreach ($company->jobs as $job)
                                 <tr>
                                     <td>{{$job->title}}</td>
-                                    <td>{{$job->user->name}}</td>
+                                    <td>{{$job->company->name}}</td>
                                     <td>
                                         @if($job->approve_status == 0)
                                             <span class="badge badge-primary">Waiting Approve</span>

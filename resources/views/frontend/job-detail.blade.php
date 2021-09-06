@@ -9,15 +9,15 @@
     <div class="row">
         <div class="col-md-12">
             <div class="d-flex justify-content-start mt-5">
-                @if($company->logo)
-                    <a href="{{url('companies/'.$company->id)}}"><img src="{{asset('storage/company-logos/'.$company->logo)}}"   style="width:140px; height:120px;" alt="" class="rounded img-thumbnail"></a>
+                @if($job->company->logo)
+                    <a href="{{url('companies/'.$job->company->id)}}"><img src="{{asset('storage/company-logos/'.$job->company->logo)}}"   style="width:140px; height:120px;" alt="" class="rounded img-thumbnail"></a>
                 @else
-                    <a href="{{url('companies/'.$company->id)}}"><img src="{{asset('images/default-company-logo.png')}}"   style="width:140px; height:120px;" alt="" class="rounded img-thumbnail"></a>
+                    <a href="{{url('companies/'.$job->company->id)}}"><img src="{{asset('images/default-company-logo.png')}}"   style="width:140px; height:120px;" alt="" class="rounded img-thumbnail"></a>
                 @endif
         
                 <div class="ml-5" > 
                     <h3 class="pb-2 " style=" font-weight:bold">{{$job->title}}</h3>
-                    <a href="{{url('companies/'.$company->id)}}" style="color: #0BA5A9;"><h5 class="pb-2 " style="">{{$company->name}}</h5></a>
+                    <a href="{{url('companies/'.$job->company->id)}}" style="color: #0BA5A9;"><h5 class="pb-2 " style="">{{$job->company->name}}</h5></a>
                     <div class="d-flex flex-row ">
                         <h6 class="p-2 pr-4" style=""><i class="fa fa-clock pr-2"></i>{{$job->employment_status}}</h6>
                         <h6 class="p-2" style=""><i class="fa fa-home pr-2"></i>{{$job->address}}</h6>

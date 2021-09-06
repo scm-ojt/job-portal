@@ -50,8 +50,7 @@ class JobController extends Controller
     public function show($id)
     {
         $job = Job::findOrFail($id);
-        $company = $job->user->companies()->where('user_id', $job->user->id)->first();
-        return view('frontend.job-detail', compact('job','company'));
+        return view('frontend.job-detail', compact('job'));
     }
 
     /**
