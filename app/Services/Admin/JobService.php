@@ -2,6 +2,7 @@
 
 namespace App\Services\Admin;
 
+use App\Models\Job;
 use App\Repositories\Admin\JobRepository;
 
 class JobService
@@ -20,11 +21,13 @@ class JobService
 
     public function destroy($id)
     {
-        return $this->jobRepository->destroy($id);
+        $job = Job::findOrFail($id);
+        return $this->jobRepository->destroy($job);
     }
 
-    public function approve($request)
+    public function approve($id)
     {
-        return $this->jobRepository->approve($request);
+        $job = Job::findOrFail($id);
+        return $this->jobRepository->approve($job);
     }
 }

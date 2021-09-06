@@ -16,21 +16,16 @@ class JobRepository
 
     public function index()
     {
-        return $this->job->paginate(10);
+        return $this->job->orderBy('id', 'DESC')->paginate(10);
     }
 
-    public function destroy($id)
+    public function destroy($job)
     {
-        $job = Job::findOrFail($id);
-        $job->delete();
-        return $job;
+        return $job->delete();
     }
 
-    public function approve($request)
+    public function approve($job)
     {
-        $id = $request->job_id;
-        $job = Job::findOrFail($id);
-
         if($job->approve_status == 1) {
             $job->approve_status = 0;
             $job->approved_user_id = Auth::user()->id;
