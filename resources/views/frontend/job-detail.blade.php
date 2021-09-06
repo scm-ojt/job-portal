@@ -10,9 +10,9 @@
         <div class="col-md-12">
             <div class="d-flex justify-content-start mt-5">
                 @if($company->logo)
-                    <img src="{{asset('storage/company-logos/'.$company->logo)}}"   style="width:100px; height:100px;" alt="" class="rounded img-thumbnail">
+                    <a href="{{url('companies/'.$company->id)}}"><img src="{{asset('storage/company-logos/'.$company->logo)}}"   style="width:140px; height:120px;" alt="" class="rounded img-thumbnail"></a>
                 @else
-                    <img src="{{asset('images/logo.png')}}"   style="width:100px; height:100px;" alt="" class="rounded img-thumbnail">
+                    <a href="{{url('companies/'.$company->id)}}"><img src="{{asset('images/default-company-logo.png')}}"   style="width:140px; height:120px;" alt="" class="rounded img-thumbnail"></a>
                 @endif
         
                 <div class="ml-5" > 
@@ -32,7 +32,7 @@
     <div class="section mb-5 ml-5">
         <h3>Job Requirements</h3>
         <ul>
-            <li>{{$job->requirement}}</li>
+            <li>{{$job->requirement}}</li>    
         </ul>
     </div>
     <div class="section mb-5 ml-5">
@@ -51,6 +51,12 @@
         <h3>Job Category</h3>
         <p class="ml-4">
             {{$job->category->name}}
+        </p>
+    </div>
+    <div class="section mb-5 ml-5">
+        <h3>Contact Information</h3>
+        <p class="ml-4">
+            {{$job->contact_information}}
         </p>
     </div>
 </div>

@@ -8,7 +8,15 @@
         <div class="section mb-5">
             <div class="row mt-3">
                 <div class="col-md-8">
-                <h3>Top Jobs</h3>
+                    
+                    <h3 class="text-center">
+                        <i class="fa fa-star fa-xs" style="color: #F28602"></i>
+                        <i class="fa fa-star fa-xs" style="color: #F28602"></i>
+                        Top Jobs
+                        <i class="fa fa-star fa-xs" style="color: #F28602"></i>
+                        <i class="fa fa-star fa-xs" style="color: #F28602"></i>
+                    </h3>
+                
                 @foreach($jobs as $job)
                     <div class="card py-3 my-3" style="background-color: #EAEAF1">
                         <div class="row px-3">
@@ -36,7 +44,7 @@
                         </div>
                     </div>
                 @endforeach
-                <div class="row justify-content-center">{{ $jobs->links() }}</div>
+                <div class="row justify-content-center">{{$jobs->appends(['companies' => $companies->currentPage()])->links()}}</div>
                     <div class="mt-5">
                         <h3>Companies</h3>
                         <div class="row mt-3">
@@ -54,12 +62,12 @@
                                 </div>
                             @endforeach   
                         </div>
-                        <div class="row justify-content-center">{{ $companies->links() }}</div> 
+                        <div class="row justify-content-center">{{$companies->appends(['jobs' => $jobs->currentPage()])->links()}}</div> 
                     </div>
                 </div>
 
                 <div class="col-md-4">
-                    <h3> Categories </h3>
+                    <h3 class="text-center"> Categories </h3>
                     <div class="card shadow-md border mt-3" >
                         
                         <ul class="list-group list-group-flush px-4">

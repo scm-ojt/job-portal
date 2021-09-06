@@ -45,6 +45,7 @@
                         <li class="nav-item">
                             <a class="navbar-brand" style="color: #0BA5A9"  href="{{url('/companies')}}">Companies</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="navbar-brand" style="color: #0BA5A9" href="{{url('/about-us')}}">About Us</a>
                         </li>

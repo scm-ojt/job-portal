@@ -11,10 +11,11 @@ use App\Models\Category;
 class PageController extends Controller
 {
     public function index()
-    {
-        $jobs = Job::where('approve_status',1)->orderBy('created_at','DESC')->paginate(8);
-        $companies = Company::orderBy('created_at','DESC')->paginate(8);
+    {  
+        $jobs = Job::where('approve_status',1)->orderBy('created_at','DESC')->paginate(8, ['*'], 'jobs');
+        $companies = Company::orderBy('created_at','DESC')->paginate(8, ['*'], 'companies');
         $categories = Category::all();
         return view('frontend.top-page', compact('jobs','companies','categories'));
     }
+    
 }

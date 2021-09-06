@@ -5,10 +5,10 @@
     <img src="{{ asset('images/bg.jpg') }}" alt="" style="width:100%; height: 350px">
 </div>
 <div class="container">
-    <div style="position: absolute; top:160px; left: 250px" class="text-white">
-        <h1>Contact Us</h1>
-        <a href="{{url('/')}}" class="text-white">HOME</a> >
-        <a href="{{url('contact-us')}}" class="text-white">CONTACT US</a>
+    <div style="position: absolute; top:160px; left: 250px; color: #0BA5A9;" >
+        <h1 style="color: #0BA5A9;">Contact Us</h1>
+        <a href="{{url('/')}}" style="color: #0BA5A9;">HOME</a> >
+        <a href="{{url('contact-us')}}" style="color: #0BA5A9;">CONTACT US</a>
     </div>
 </div> 
     <div class="container py-5">

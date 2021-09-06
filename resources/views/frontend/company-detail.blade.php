@@ -9,11 +9,11 @@
         <div class="col-md-12">
             <div class="d-flex justify-content-start">
                 @if($company->logo)
-                    <img src="{{asset('storage/company-logos/'.$company->logo)}}"   style="width:100px; height:100px;" alt="" class="rounded img-thumbnail">
+                    <img src="{{asset('storage/company-logos/'.$company->logo)}}"   style="width:140px; height:120px;" alt="" class="rounded img-thumbnail">
                 @else
-                    <img src="{{asset('images/default-company-logo.png')}}"   style="width:100px; height:100px;" alt="" class="rounded img-thumbnail">
+                    <img src="{{asset('images/default-company-logo.png')}}"   style="width:140px; height:120px;" alt="" class="rounded img-thumbnail">
                 @endif
-                <ul style="list-style: none;">
+                <ul style="list-style: none; font-size:15px;">
                     <li><h2>{{$company->name}}</h2></li>
                     <li>Company Type: {{$company->company_type}}</li>
                     <li>No of Employee : {{$company->no_of_employee}}</li>

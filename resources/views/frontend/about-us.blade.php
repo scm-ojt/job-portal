@@ -5,7 +5,7 @@
     <img src="{{ asset('images/bg.jpg') }}" alt="" style="width:100%; height: 350px">
 </div>
 <div class="container">
-    <div style="position: absolute; top:160px; left: 250px" >
+    <div style="position: absolute; top:160px; left: 250px; color: #0BA5A9;" >
         <h1 style="color: #0BA5A9;">About Us</h1>
         <a href="{{url('/')}}" class="" style="color: #0BA5A9;">HOME</a> >
         <a href="{{url('about-us')}}" class="" style="color: #0BA5A9;">ABOUT US</a>
