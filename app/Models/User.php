@@ -22,6 +22,8 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
+        'photo',
+        'active_status'
     ];
 
     /**
@@ -53,8 +55,4 @@ class User extends Authenticatable
         return $this->belongsToMany(Company::class, 'company_user', 'user_id', 'company_id');
     }
 
-    public function jobs()
-    {
-        return $this->hasMany(Job::class);
-    }
 }

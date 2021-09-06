@@ -30,12 +30,12 @@
                                     <td>{{$job->title}}</td>
                                     <td>
                                         <span class="badge badge-success">
-                                           {{$job->user->name? $job->user->name : ''}}
+                                           {{$job->company->name? $job->company->name : ''}}
                                         </span>
                                     </td>
                                 <td>{{$job->category->name? $job->category->name : ''}}</td>
                                     <td>{{$job->employment_status}}</td>
-                                    <td>{{$job->salary}}</td>
+                                    <td>{{ number_format($job->salary) }}</td>
                                     <td>{{$job->working_hour}}</td>
                                     <td>
                                         <form action="{{ route('admin.jobs.approve', $job->id) }}" method="post">

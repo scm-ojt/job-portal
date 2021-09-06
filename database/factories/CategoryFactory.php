@@ -23,7 +23,7 @@ class CategoryFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'image' => $this->faker->image,
+            'image' => 'category.png',
         ];
     }
 }

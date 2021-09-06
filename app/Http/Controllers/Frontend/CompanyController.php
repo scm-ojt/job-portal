@@ -49,8 +49,7 @@ class CompanyController extends Controller
     public function show($id)
     {
         $company = Company::findOrFail($id);
-        $user = $company->users()->where('company_id', $company->id)->first();
-        return view('frontend.company-detail',compact('company','user'));
+        return view('frontend.company-detail',compact('company'));
     }
 
     /**

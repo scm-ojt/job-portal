@@ -6,12 +6,10 @@
     <div class="row">
         <div class="col-md-12">
             <div class="d-flex justify-content-start">
-                @foreach ($job->user->companies as $company)
-                    <img src="{{asset('storage/company-logos/'.$company->logo)}}" width="100" height="100" alt="">
-                @endforeach
+                <img src="{{asset('storage/company-logos/'.$job->company->logo)}}" width="100" height="100" alt="">
                 <ul style="list-style: none;">
                     <li><h4><b>{{$job->title}}</b></h4></li>
-                    <li>Company Name:<b> {{$job->user->name}}</b> </li>
+                    <li>Company Name:<b> {{$job->company->name}}</b> </li>
                     <li>Category: <b> {{$job->category->name}}</b> </li>
                     <li>Employment Status: <b>{{$job->employment_status}}</b></li>
                 </ul>

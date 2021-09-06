@@ -7,12 +7,10 @@
             <div class="card">
                 <div class="card-body">
                     <a href="{{ route('jobs.index') }}" class="btn btn-primary float-right mr-5"><i class="fa fa-arrow-circle-left mr-1"></i>Back</a>
-                    @foreach ($job->user->companies as $company)
-                        <img src="{{asset('storage/company-logos/'.$company->logo)}}" style="width: 25%" alt="" class=" ml-5 mr-3 rounded float-left">
-                    @endforeach
+                        <img src="{{asset('storage/company-logos/'.$job->company->logo)}}" style="width: 25%" alt="" class=" ml-5 mr-3 rounded float-left">
                     <ul style="list-style: none;">
                         <li><h4><b>{{$job->title}}</b></h4></li>
-                        <li class="mt-3">Company Name:<b> {{$job->user->name}}</b> </li>
+                        <li class="mt-3">Company Name:<b> {{$job->company->name}}</b> </li>
                         <li class="mt-3">Category: <b> {{$job->category->name}}</b> </li>
                         <li class="mt-3">Employment Status: <b>{{$job->employment_status}}</b></li>
                     </ul>

@@ -15,7 +15,7 @@ class CreateJobsTable extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->onDelete('cascade');
+            $table->foreignId('company_id')->nullable()->onDelete('cascade');
             $table->foreignId('approved_user_id')->nullable()->onDelete('cascade');
             $table->foreignId('category_id')->nullable()->onDelete('cascade');
             $table->string('title');
