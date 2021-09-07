@@ -5,7 +5,7 @@ namespace App\Services\Company;
 use App\Repositories\Company\JobRepository;
 use App\Models\Job;
 use App\Models\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class JobService
 {
@@ -51,7 +51,7 @@ class JobService
         $companyId = $user->companies()->where('user_id', $user->id)->first()->id;
 
         $job = Job::findOrFail($id);
-         $job->company_id = $companyId;
+        $job->company_id = $companyId;
         $job->category_id = $request->category_id;
         $job->title = $request->title;
         $job->employment_status = $request->employment_status;
