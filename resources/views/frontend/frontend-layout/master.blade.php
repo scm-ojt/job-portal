@@ -132,7 +132,8 @@
                         <ul class="list-unstyled" style="font-size: 17px;">
                             <li>
                                 <p class=""  style="color: #0BA5A9;">
-                                    <i class="fa fa-map-marker pr-1" style="color: #0BA5A9;"></i>
+                                    <i class="fas fa-map-marker-alt pr-1" style="color: #0BA5A9;"></i>
+                                    
                                     No.111,Botahtaung <span class="pl-3">Township,Yangon</span> 
                                 </p>
                             </li>

@@ -67,11 +67,15 @@
                     <div class="card shadow-md border mt-3" >
                         
                         <ul class="list-group list-group-flush px-4">
-                            @foreach($categories as $key => $category)
+                            @foreach($categories as $category)
                             <li class="list-group-item list-group-item-action">
                                 <a href="{{url('/categories/'.$category->id)}}" >
                                 <div class="row">
+                                    @if($category->image)
                                     <img src="{{asset('storage/category-images/'.$category->image)}}" alt="" class="col-md-3 rounded" >
+                                    @else
+                                    <img src="{{asset('images/category.png')}}" alt="" class="col-md-3 rounded" >
+                                    @endif
                                     <h5 class="font-weight-bold col-md-9" style="color: #3490DC">{{$category->name}}</h5>
                                 </div>
                                 </a>

@@ -17,11 +17,19 @@
         
                 <div class="ml-5" > 
                     <h3 class="pb-2 " style=" font-weight:bold">{{$job->title}}</h3>
-                    <a href="{{url('companies/'.$job->company->id)}}" style="color: #0BA5A9;"><h5 class="pb-2 " style="">{{$job->company->name}}</h5></a>
+                    <div class="d-flex flex-row ">
+                        <span> Company Name : </span>
+                        <a href="{{url('companies/'.$job->company->id)}}" style="color: #0BA5A9;"><h5 class="pb-2 " style="">{{$job->company->name}}</h5></a>
+                    </div>
+                    <div class="d-flex flex-row">
+                        <span> Category : </span>
+                        <a href="{{url('categories/'.$job->category->id)}}" style="color: #0BA5A9;"><h5 class="pb-2 " style="">{{$job->category->name}}</h5></a>
+                    </div>
                     <div class="d-flex flex-row ">
                         <h6 class="p-2 pr-4" style=""><i class="fa fa-clock pr-2"></i>{{$job->employment_status}}</h6>
                         <h6 class="p-2" style=""><i class="fa fa-home pr-2"></i>{{$job->address}}</h6>
                     </div>
+        
                 </div>
             </div>
         </div>
@@ -37,25 +45,24 @@
     </div>
     <div class="section mb-5 ml-5">
         <h3>Working Hour</h3>
+        
         <p class="ml-4">
+            <i class="far fa-clock pr-2"></i>
             {{$job->working_hour}} hours
         </p>
     </div>
     <div class="section mb-5 ml-5">
         <h3>Salary</h3>
         <p class="ml-4">
-            * {{$job->salary}} MMK
+            <i class="fas fa-dollar-sign pr-2"></i>
+            {{number_format($job->salary)}} MMK
         </p>
     </div>
-    <div class="section mb-5 ml-5">
-        <h3>Job Category</h3>
-        <p class="ml-4">
-            {{$job->category->name}}
-        </p>
-    </div>
+
     <div class="section mb-5 ml-5">
         <h3>Contact Information</h3>
         <p class="ml-4">
+            <i class="fas fa-envelope-open pr-2"></i>
             {{$job->contact_information}}
         </p>
     </div>
