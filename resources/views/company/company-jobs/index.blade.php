@@ -1,7 +1,7 @@
 @extends('company.company-layout.master')
 
 @section('company-content')
-    <div class="container fluid">
+    <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <a href="{{route('jobs.create')}}" class="px-5 py-2 btn btn-primary float-right">Post Job</a>
