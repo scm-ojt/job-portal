@@ -173,16 +173,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- preview js -->
 <script src="{{ asset('js/previewImage.js') }}"></script>
 
-<script>
-  Dropzone.options.myDropzone = {
-    acceptedFiles: '.jpg, .jpeg, .png, .bmp',
-    init: function() {
-      this.on('success', function(){
-              location.reload();
-        });
-    }
-  };
-</script>
 @yield('script')
 </body>
 </html>

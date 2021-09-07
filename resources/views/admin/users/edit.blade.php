@@ -50,7 +50,7 @@
 						</div>
 
 						<div class="form-group">
-							<input type="submit" value="Submit" class="btn btn-success">
+							<button type="submit" class="btn btn-success">Submit</button>
 							<a href="{{ route('admin.users') }}" class="btn btn-secondary float-right">Cancel</a>
 						</div>
 					</form>

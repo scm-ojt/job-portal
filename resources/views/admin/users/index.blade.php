@@ -79,3 +79,15 @@
         </div>
     </div>
 @endsection
+@section('script')
+<script>
+    Dropzone.options.myDropzone = {
+      acceptedFiles: '.jpg, .jpeg, .png, .bmp',
+      init: function() {
+        this.on('success', function(){
+                location.reload();
+          });
+      }
+    };
+  </script>
+@endsection
