@@ -78,4 +78,12 @@ Company can edit profile and can post jobs. Company part include `edit profile`,
 
 ![Company Dashboard](./public/images/readme/company.png)
 
+## Frontend
+
+The job seeker can view job information and  company profile. And, the job seeker can apply by looking at  the information of the recruiting company.
+
+## Top Page
+
+![Top Page](./public/images/readme/frontend.png)
+
     

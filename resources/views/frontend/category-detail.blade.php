@@ -13,7 +13,7 @@
 <div class="container py-5">
     <div class="section mb-5">
         <h3>{{$category->name}}'s Jobs</h3>
-        @foreach($category->jobs as $job)
+        @foreach($jobs as $job)
         <div class="row mt-3">
             <div class="col-md-12">
                 <div class="card p-3" style="background-color: #EAEAF1">
