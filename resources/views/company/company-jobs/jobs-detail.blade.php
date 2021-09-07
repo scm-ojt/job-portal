@@ -23,31 +23,31 @@
             <div class="card">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="section mb-3">
+                        <div class="section mb-3 ml-4">
                             <h5 class="ml-5 mt-5">Job Requirements</h5>
                             <ul>
                                 <li class="ml-5">{{$job->requirement}}</li>
                             </ul>
                         </div>
-                        <div class="section mb-3">
+                        <div class="section mb-3 ml-4">
                             <h5 class="ml-5">Working Hour</h5>
                             <ul>
                                 <li class="ml-5">{{$job->working_hour}}</li>
                             </ul>
                         </div>
-                        <div class="section mb-3">
+                        <div class="section mb-3 ml-4">
                             <h5 class="ml-5">Salary</h5>
                             <ul>
                                 <li class="ml-5">{{number_format($job->salary)}} MMK</li>
                             </ul>
                         </div>
-                        <div class="section mb-3">
+                        <div class="section mb-3 ml-4">
                             <h5 class="ml-5">Working Address</h5>
                             <ul>
                                 <li class="ml-5">{{$job->address}}</li>
                             </ul>
                         </div>
-                        <div class="section mb-3">
+                        <div class="section mb-3 ml-4">
                             <h5 class="ml-5">Contact Information</h5>
                             <ul>
                                 <li class="ml-5">{{$job->contact_information}}</li>

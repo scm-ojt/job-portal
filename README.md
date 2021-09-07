@@ -71,4 +71,11 @@ Admin can manage the users, companies, and jobs. Admin part include `User Authen
 
 ![Admin Dashboard](./public/images/readme/admin.png)
 
+## Company
+Company can edit profile and can post jobs. Company part include `edit profile`, `create jobs`, `edit jobs`, `delete jobs`.
+
+## Company Dashboard
+
+![Company Dashboard](./public/images/readme/company.png)
+
     

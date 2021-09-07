@@ -88,7 +88,7 @@
 						</div>
 						
 						<div class="form-group">
-							<input class="btn btn-primary btn-rounded btn-icon text-white px-5 py-2" value="Post Job" type="submit" data-toggle="tooltip">
+							<button type="submit" class="btn btn-rounded btn-primary btn-icon text-white px-5 py-2" data-toggle="tooltip">Update Job</button>
 							<a href="{{route('jobs.index')}}" class="px-3 py-2 btn btn-secondary btn-rounded btn-icon float-right" title="Cancel"><i class="fa fa-trash-alt" style=" color: #fff;">Cancel</i></a>
 						</div>
 					</form>
