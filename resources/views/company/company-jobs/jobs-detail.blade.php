@@ -5,16 +5,21 @@
     <a href="{{ route('jobs.index') }}" class="btn btn-primary float-right mr-5"><i class="fa fa-arrow-circle-left mr-1"></i>Back</a>
     <div class="row">
         <div class="col-md-12">
-            <div class="d-flex justify-content-start">
-                @foreach ($job->user->companies as $company)
-                    <img src="{{asset('storage/company-logos/'.$company->logo)}}" style="width: 25%" alt="">
-                @endforeach
-                <ul style="list-style: none;">
-                    <li><h4><b>{{$job->title}}</b></h4></li>
-                    <li>Company Name:<b> {{$job->user->name}}</b> </li>
-                    <li>Category: <b> {{$job->category->name}}</b> </li>
-                    <li>Employment Status: <b>{{$job->employment_status}}</b></li>
-                </ul>
+            <div class="card">
+                <div class="card-body">
+                    <a href="{{ route('jobs.index') }}" class="btn btn-primary float-right mr-5"><i class="fa fa-arrow-circle-left mr-1"></i>Back</a>
+                    @if($job->company->logo)
+                        <img src="{{asset('storage/company-logos/'.$job->company->logo)}}" alt="" width="200" height="150" class="ml-5 mr-3 rounded float-left">
+                    @else
+                        <img src="{{asset('images/company.png')}}" alt="" width="200" height="150" class="ml-5 mr-3 rounded float-left">
+                    @endif
+                    <ul style="list-style: none;">
+                        <li><h4><b>{{$job->title}}</b></h4></li>
+                        <li class="mt-3">Company Name:<b> {{$job->company->name}}</b> </li>
+                        <li class="mt-3">Category: <b> {{$job->category->name}}</b> </li>
+                        <li class="mt-3">Employment Status: <b>{{$job->employment_status}}</b></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div> 
