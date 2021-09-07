@@ -48,7 +48,8 @@ class CategoryController extends Controller
     public function show($id)
     {
         $category = Category::findOrFail($id);
-        return view('frontend.category-detail',compact('category'));
+        $jobs = $category->jobs()->where('approve_status', 1)->get();
+        return view('frontend.category-detail',compact('category','jobs'));
     }
 
     /**
