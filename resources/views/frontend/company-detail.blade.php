@@ -26,6 +26,7 @@
         <div class="col-md-12">
             <h4>Histroy</h4>
             <p>
+                <i class="fas fa-history pr-2"></i>
                {{$company->history}}
             </p>
         </div>
@@ -42,6 +43,7 @@
         <div class="col-md-12">
             <h4>Address</h4>
             <p>
+                <i class="fa fa-home pr-2"></i>
                 {{$company->address}}
             </p>
         </div>
@@ -50,6 +52,7 @@
         <div class="col-md-12">
             <h4>Contact Information</h4>
             <p>
+                <i class="fas fa-envelope-open pr-2"></i>
                 {{$company->contact_information}}
             </p>
         </div>
@@ -75,11 +78,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                               @foreach ($company->jobs as $job)
+                               @foreach ($jobs as $job)
                                     <tr>
                                         <td>{{$job->title}}</td>
                                         <td>{{$job->category->name}}</td>
-                                        <td>{{$job->salary}} MMK</td>
+                                        <td>{{number_format($job->salary)}} MMK</td>
                                         <td>{{$job->working_hour}}</td>
                                         <td>{{$job->contact_information}}</td>
                                         <td>{{$job->requirement}}</td>

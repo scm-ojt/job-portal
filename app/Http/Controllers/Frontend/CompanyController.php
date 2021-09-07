@@ -49,7 +49,8 @@ class CompanyController extends Controller
     public function show($id)
     {
         $company = Company::findOrFail($id);
-        return view('frontend.company-detail',compact('company'));
+        $jobs = $company->jobs()->where('approve_status', 1)->get();
+        return view('frontend.company-detail',compact('company', 'jobs'));
     }
 
     /**
