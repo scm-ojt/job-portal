@@ -4,7 +4,6 @@ namespace App\Services\Company;
 
 use App\Repositories\Company\JobRepository;
 use App\Models\Job;
-use App\Models\User;
 use Auth;
 
 class JobService
@@ -28,11 +27,8 @@ class JobService
 
     public function store($request)
     {
-        $user = User::findOrFail(Auth::user()->id);
-        $companyId = $user->companies()->where('user_id', $user->id)->first()->id;
-
         $job = new Job;
-        $job->company_id = $companyId;
+        $job->user_id = Auth::user()->id;
         $job->category_id = $request->category_id;
         $job->title = $request->title;
         $job->employment_status = $request->employment_status;
@@ -47,11 +43,8 @@ class JobService
 
     public function update($request, $id)
     {
-        $user = User::findOrFail(Auth::user()->id);
-        $companyId = $user->companies()->where('user_id', $user->id)->first()->id;
-
         $job = Job::findOrFail($id);
-        $job->company_id = $companyId;
+        $job->user_id = Auth::user()->id;
         $job->category_id = $request->category_id;
         $job->title = $request->title;
         $job->employment_status = $request->employment_status;

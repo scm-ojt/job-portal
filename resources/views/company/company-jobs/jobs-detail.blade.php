@@ -1,7 +1,8 @@
 @extends('company.company-layout.master')
 
 @section('company-content')
-<div class="container fluid">
+<div class="container-fluid">
+    <a href="{{ route('jobs.index') }}" class="btn btn-primary float-right mr-5"><i class="fa fa-arrow-circle-left mr-1"></i>Back</a>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -24,39 +25,36 @@
     </div> 
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
-                <div class="card-body ml-5">
-                    <div class="section mb-3">
-                        <h5>Job Requirements</h5>
-                        <ul>
-                            <li>{{$job->requirement}}</li>
-                        </ul>
-                    </div>
-                    <div class="section mb-3">
-                        <h5>Working Hour</h5>
-                        <ul>
-                            <li>{{$job->working_hour}}</li>
-                        </ul>
-                    </div>
-                    <div class="section mb-3">
-                        <h5>Salary</h5>
-                        <ul>
-                            <li>{{number_format($job->salary)}} MMK</li>
-                        </ul>
-                    </div>
-                    <div class="section mb-3">
-                        <h5>Working Address</h5>
-                        <ul>
-                            <li>{{$job->address}}</li>
-                        </ul>
-                    </div>
-                    <div class="section mb-3">
-                        <h5>Contact Information</h5>
-                        <ul>
-                            <li>{{$job->contact_information}}</li>
-                        </ul>
-                    </div>
-                </div>
+            <hr>
+            <div class="section mb-3">
+                <h5>Job Requirements</h5>
+                <ul>
+                    <li>{{$job->requirement}}</li>
+                </ul>
+            </div>
+            <div class="section mb-3">
+                <h5>Working Hour</h5>
+                <ul>
+                    <li>{{$job->working_hour}}</li>
+                </ul>
+            </div>
+            <div class="section mb-3">
+                <h5>Salary</h5>
+                <ul>
+                    <li>{{$job->salary}} MMK</li>
+                </ul>
+            </div>
+            <div class="section mb-3">
+                <h5>Working Address</h5>
+                <ul>
+                    <li>{{$job->address}}</li>
+                </ul>
+            </div>
+            <div class="section mb-3">
+                <h5>Contact Information</h5>
+                <ul>
+                    <li>{{$job->contact_information}}</li>
+                </ul>
             </div>
         </div>
     </div>
