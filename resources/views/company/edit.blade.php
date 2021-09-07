@@ -118,7 +118,7 @@
 					</div>
 					
 					<div class="form-group">
-						<input type="submit" value="Update Profile" class="btn btn-primary">
+						<button type="submit" class="btn btn-rounded btn-primary btn-icon text-white px-5 py-2">Update Profile</button>
 						<a href="{{ route('company.dashboard') }}" class="btn btn-secondary float-right">Cancel</a>
 					</div>
 				</form>

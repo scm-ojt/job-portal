@@ -76,7 +76,7 @@
 
             <div class="form-group">
 							<label for="">Address</label>
-							<textarea name="address" id="" cols="3" rows="3" placeholder="Enter address" class="form-control @error('address') is-invalid @enderror">{{$company->address}}</textarea>
+							<textarea name="address" id="" cols="3" rows="3" placeholder="Enter address" class="form-control @error('address') is-invalid @enderror">{{$job->address}}</textarea>
 							@error('address')
 							 	<span class="text-danger text-bold">{{ $message }}</span>
 							@enderror
@@ -91,7 +91,7 @@
 						</div>
 
 						<div class="form-group">
-							<input class="btn btn-rounded btn-icon text-white px-5 py-2" value="Update Job" type="submit" data-toggle="tooltip" style="background-color: #0fcce6;">
+							<button type="submit" class="btn btn-rounded btn-primary btn-icon text-white px-5 py-2" data-toggle="tooltip">Update Job</button>
 							<a href="{{route('jobs.index')}}" class="px-3 py-2 btn btn-secondary btn-rounded btn-icon float-right" ><i class="fa fa-trash-alt" style=" color: #fff;">Cancel</i></a>
 						</div>
 					</form>
