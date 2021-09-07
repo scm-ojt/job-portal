@@ -24,4 +24,9 @@ class ContactService
         $contact = Contact::findOrFail($id);
         return $this->contactRepository->destroy($contact);
     }
+
+    public function search($searchData)
+    {
+        return $this->contactRepository->search($searchData);
+    }
 }

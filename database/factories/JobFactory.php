@@ -3,8 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Category;
+use App\Models\Company;
 use App\Models\Job;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class JobFactory extends Factory
@@ -24,16 +24,18 @@ class JobFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory()->create(),
+            'company_id' => Company::factory()->create(),
             'approved_user_id' => 1,
             'category_id' => Category::factory()->create(),
             'title' => $this->faker->name(),
             'employment_status' => $this->faker->name(),
             'address' => $this->faker->text(100),
-            'salary' => $this->faker->numberBetween(1,9),
+            'salary' => $this->faker->numberBetween(11111,99999),
             'working_hour' => $this->faker->text(50),
             'requirement' => $this->faker->text(50),
             'contact_information' => $this->faker->text(50),
+            'approve_status' => $this->faker->numberBetween(0,1),
+            'created_at' => $this->faker->dateTimeThisYear(),
         ];
     }
 }

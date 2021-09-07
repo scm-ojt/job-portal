@@ -4,7 +4,17 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-12">
+                <form action="{{ route('admin.users.search') }}" method="get" class="form-inline float-right">
+                    @csrf
+                    <div class="input-group">
+                        <input name="search_data" class="form-control" type="search" placeholder="Search" aria-label="Search" value="{{ isset($searchData) ? $searchData : '' }}">
+                        <div class="input-group-append">
+                            <button class="btn btn-success" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
                 <h4>All Users</h4>
+                
                 <div class="table-responsive mt-4">
                     @if($message = Session::get('success'))
                         <div class="alert alert-info">
@@ -55,8 +65,8 @@
                                             @csrf
                                             @method('delete')
 
-                                            <a href="{{ route('admin.users.edit', $user->id) }}"  class="btn btn-warning" title="Edit" data-toggle="tooltip"><i class="fa fa-pen"></i></a>
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')"><i class="fa fa-trash-alt" style=" color: #fff;"></i></button>
+                                            <a href="{{ route('admin.users.edit', $user->id) }}"  class="btn btn-warning m-1" title="Edit" data-toggle="tooltip"><i class="fa fa-pen"></i></a>
+                                            <button type="submit" class="btn btn-danger m-1" onclick="return confirm('Are you sure want to delete?')"><i class="fa fa-trash-alt" style=" color: #fff;"></i></button>
                                         </form>
                                     </td>
                                 </tr>

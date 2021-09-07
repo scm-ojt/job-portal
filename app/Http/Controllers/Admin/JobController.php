@@ -25,28 +25,6 @@ class JobController extends Controller
         $jobs = $this->jobService->index();
         return view('admin.jobs.index', compact('jobs'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
     /**
      * Display the specified resource.
      *
@@ -57,29 +35,6 @@ class JobController extends Controller
     {
         $job = Job::findOrFail($id);
         return view('admin.jobs.job-detail', compact('job'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
     }
 
     /**
@@ -98,5 +53,13 @@ class JobController extends Controller
     {
         $this->jobService->approve($id);
         return redirect()->back();
+    }
+
+    public function search(Request $request)
+    {
+        $searchData = $request->search_data;
+        $jobs = $this->jobService->search($searchData);
+
+        return view('admin.jobs.index', compact('searchData', 'jobs'));
     }
 }

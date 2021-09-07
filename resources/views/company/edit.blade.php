@@ -26,7 +26,7 @@
 							@if($company->logo)
 								<img src="{{asset('storage/company-logos/'.$company->logo)}}" alt="" width="100" height="100" class="mb-3 ml-3" id="preview-img">
 							@else
-								<img src="{{asset('images/avatar_01.png')}}" alt="" width="100" height="100" class="mb-2 ml-5" id="preview-img">
+								<img src="{{asset('images/company.png')}}" alt="" width="100" height="100" class="mb-2 ml-5" id="preview-img">
 							@endif
 							<input type="file" name="logo" id="profile" class="form-control-file @error('logo') is-invalid @enderror">
 							@error('logo')
@@ -63,7 +63,7 @@
 					
 					<div class="form-group">
 						<label for="">Email</label>
-						<input type="text" name="email" id="" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email" readonly value="{{Auth::user()->email}}">
+						<input type="email" name="email" id="" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email" readonly value="{{Auth::user()->email}}">
 						@error('logo')
 							<span class="text-danger text-bold">{{ $message }}</span>
 						@enderror
@@ -87,7 +87,7 @@
 					
 					<div class="form-group">
 						<label for="">Address</label>
-						<input type="text" name="address" id="" class="form-control @error('address') is-invalid @enderror" placeholder="Enter address" value="{{$company->address}}">
+						<textarea name="address" id="" cols="3" rows="3" placeholder="Enter address" class="form-control @error('address') is-invalid @enderror">{{$company->address}}</textarea>
 						@error('address')
 								<span class="text-danger text-bold">{{ $message }}</span>
 						@enderror

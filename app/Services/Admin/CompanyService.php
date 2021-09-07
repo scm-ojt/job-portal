@@ -25,8 +25,8 @@ class CompanyService
         return $this->companyRepository->destroy($company);
     }
 
-    public function companyJobs($company)
-    {
-        return $this->companyRepository->companyJobs($company);
+    public function search($searchData)
+    { 
+        return $this->companyRepository->search($searchData);
     }
 }

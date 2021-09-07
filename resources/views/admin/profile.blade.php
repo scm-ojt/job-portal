@@ -6,7 +6,8 @@
 		<div class="col-md-10">
 			<div class="card">
 				<div class="card-header">
-					<h4>My Profile</h4>
+					<a href="{{ route('admin.showPassword', $user->id) }}" class="btn btn-primary float-right"><i class="fa fa-key mr-2"></i>Change Password</a>
+					<h4>My Profile</h4> 
 				</div>
 				<div class="card-body">
 					<form action="{{ route('admin.update', $user->id) }}" method="post" enctype="multipart/form-data">
@@ -34,7 +35,7 @@
 							@if($user->photo)
 								<img src="{{asset('storage/user-photos/'.$user->photo)}}" alt="" width="100" height="100" class="mb-2 ml-3" id="preview-img">
 							@else
-								<img src="{{asset('images/avatar_01.png')}}" alt="" width="100" height="100" class="mb-2 ml-3" id="preview-img">
+								<img src="{{asset('images/user.png')}}" alt="" width="100" height="100" class="mb-2 ml-3" id="preview-img">
 							@endif
 							<input type="file" name="photo" id="profile" class="form-control-file @error('photo') is-invalid @enderror">
 							@error('photo')

@@ -20,12 +20,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($user->jobs as $job)
+                            @foreach ($company->jobs as $job)
                                 <tr>
                                     <td>{{$job->title}}</td>
                                     <td>{{$job->category->name? $job->category->name : ''}}</td>
                                     <td>{{$job->employment_status}}</td>
-                                    <td>{{$job->salary}}</td>
+                                    <td>{{ number_format($job->salary) }}</td>
                                     <td>{{$job->working_hour}}</td>
                                     <td>
                                         <form action="{{ route('admin.jobs.approve', $job->id) }}" method="post">
@@ -40,8 +40,8 @@
                                             @csrf
                                             @method('delete')
 
-                                            <a href="{{ route('admin.jobs.show', $job->id) }}"  class="btn btn-info" title="Detail" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')"><i class="fa fa-trash-alt"></i></button>
+                                            <a href="{{ route('admin.jobs.show', $job->id) }}"  class="btn btn-info m-1" title="Detail" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                            <button type="submit" class="btn btn-danger m-1" onclick="return confirm('Are you sure want to delete?')"><i class="fa fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>

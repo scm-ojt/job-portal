@@ -108,7 +108,7 @@
                             <label for="address" class="col-md-4 col-form-label text-md-right">Address</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus placeholder="Enter company address">
+                                <textarea name="address" id="" cols="3" rows="2"  autofocus placeholder="Enter company address" class="form-control @error('address') is-invalid @enderror">{{ old('address') }}</textarea>
 
                                 @error('address')
                                     <span class="invalid-feedback" role="alert">
@@ -122,7 +122,7 @@
                             <label for="no_of_employee" class="col-md-4 col-form-label text-md-right">Number of Employee</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control @error('no_of_employee') is-invalid @enderror" name="no_of_employee" value="{{ old('no_of_employee') }}" required autocomplete="no_of_employee" autofocus placeholder="Enter number of employee">
+                                <input type="number" class="form-control @error('no_of_employee') is-invalid @enderror" name="no_of_employee" value="{{ old('no_of_employee') }}" required autocomplete="no_of_employee" autofocus placeholder="Enter number of employee">
 
                                 @error('no_of_employee')
                                     <span class="invalid-feedback" role="alert">

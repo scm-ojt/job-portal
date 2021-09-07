@@ -25,10 +25,9 @@ class CompanyRepository
         $company->users()->delete();
     }
 
-    public function companyJobs($company)
+    public function search($searchData)
     {
-        $userId = $company->users()->where('company_id', $company->id)->first()->id;
-        $user = User::findOrFail($userId);
-        return $user;
+        return Company::where('name', 'Like', "%$searchData%")->paginate(10);
     }
+
 }

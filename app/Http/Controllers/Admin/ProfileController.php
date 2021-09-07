@@ -16,12 +16,6 @@ class ProfileController extends Controller
     {
         $this->profileService = $profileService;
     }
-    public function dashboard()
-    {
-        $companyArr = $this->profileService->companyCount();
-        $jobArr = $this->profileService->jobCount();
-        return view('admin.admin-dashboard', compact('companyArr','jobArr'));
-    }
 
     public function edit($id)
     {

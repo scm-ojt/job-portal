@@ -3,11 +3,17 @@
 use App\Http\Controllers\Frontend\PageController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [PageController::class, 'landing']);
-Route::get('/jobs', [PageController::class, 'allJobs']);
-Route::get('/jobs/{id}', [PageController::class, 'jobDetail']);
-Route::get('/companies', [PageController::class, 'allCompanies']);
-Route::get('/companies/{id}', [PageController::class, 'companyDetail']);
-Route::get('/about-us', [PageController::class, 'about']);
-Route::get('/contact-us', [PageController::class, 'contact']);
-Route::post('/contact-us', [PageController::class, 'contactStore']);
+Route::get('/', [App\Http\Controllers\Frontend\PageController::class, 'index']);
+
+Route::get('jobs', [App\Http\Controllers\Frontend\JobController::class, 'index']);
+Route::get('jobs/{id}', [App\Http\Controllers\Frontend\JobController::class, 'show']);
+
+Route::get('companies', [App\Http\Controllers\Frontend\CompanyController::class, 'index']);
+Route::get('companies/{id}', [App\Http\Controllers\Frontend\CompanyController::class, 'show']);
+
+Route::get('about-us', [App\Http\Controllers\Frontend\AboutController::class, 'index']);
+
+Route::get('contact-us', [App\Http\Controllers\Frontend\ContactController::class, 'index']);
+Route::post('contact-us', [App\Http\Controllers\Frontend\ContactController::class, 'store']);
+
+Route::get('categories/{id}', [App\Http\Controllers\Frontend\CategoryController::class, 'show']);

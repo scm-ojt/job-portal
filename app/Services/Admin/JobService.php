@@ -30,4 +30,9 @@ class JobService
         $job = Job::findOrFail($id);
         return $this->jobRepository->approve($job);
     }
+
+    public function search($searchData)
+    {
+        return $this->jobRepository->search($searchData);
+    }
 }

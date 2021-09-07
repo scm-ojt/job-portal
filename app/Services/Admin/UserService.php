@@ -69,4 +69,9 @@ class UserService
         }
         return $this->userRepository->uploadFile($user);
     }
+
+    public function search($searchData)
+    {
+        return $this->userRepository->search($searchData);
+    }
 }
