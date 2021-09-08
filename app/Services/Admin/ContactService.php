@@ -19,14 +19,14 @@ class ContactService
         return $this->contactRepository->index();
     }
 
+    public function getContactId($id)
+    {
+        return Contact::findOrFail($id);
+    }
+    
     public function destroy($id)
     {
-        $contact = Contact::findOrFail($id);
+        $contact = $this->getContactId($id);
         return $this->contactRepository->destroy($contact);
-    }
-
-    public function search($searchData)
-    {
-        return $this->contactRepository->search($searchData);
     }
 }

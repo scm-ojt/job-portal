@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryStoreRequest;
 use App\Http\Requests\CategoryUpdateRequest;
-use App\Models\Category;
 use App\Services\Admin\CategoryService;
 
 class CategoryController extends Controller
@@ -58,7 +57,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::findOrFail($id);
+        $category = $this->categoryService->getCategoryId($id);
         return view('admin.categories.edit', compact('category'));
     }
 
@@ -81,9 +80,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        $this->categoryService->destroy($category);
+        $this->categoryService->destroy($id);
         return redirect('admin/categories')->with('success', 'Category deleted successfully!');
     }
 }

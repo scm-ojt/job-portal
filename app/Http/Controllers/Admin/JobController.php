@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Job;
-use Illuminate\Http\Request;
 use App\Services\Admin\JobService;
 
 class JobController extends Controller
@@ -33,7 +31,7 @@ class JobController extends Controller
      */
     public function show($id)
     {
-        $job = Job::findOrFail($id);
+        $job = $this->jobService->getJobId($id);
         return view('admin.jobs.job-detail', compact('job'));
     }
 
@@ -55,11 +53,4 @@ class JobController extends Controller
         return redirect()->back();
     }
 
-    public function search(Request $request)
-    {
-        $searchData = $request->search_data;
-        $jobs = $this->jobService->search($searchData);
-
-        return view('admin.jobs.index', compact('searchData', 'jobs'));
-    }
 }

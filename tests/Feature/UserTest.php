@@ -24,7 +24,7 @@ class UserTest extends TestCase
 
     public function test_an_admin_can_see_all_users()
     {
-        $this->get(route('admin.users'))
+        $this->get(route('admin.users.index'))
              ->assertStatus(200);
     }
 
@@ -58,7 +58,7 @@ class UserTest extends TestCase
 
         $this->post(route('admin.users.active', $user->id));
             
-        $this->get(route('admin.users'))
+        $this->get(route('admin.users.index'))
             ->assertSee($user->name);
     }
 }

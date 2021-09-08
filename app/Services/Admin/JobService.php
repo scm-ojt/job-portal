@@ -19,20 +19,20 @@ class JobService
         return $this->jobRepository->index();
     }
 
+    public function getJobId($id)
+    {
+        return Job::findOrfail($id);
+    }
+
     public function destroy($id)
     {
-        $job = Job::findOrFail($id);
+        $job = $this->getJobId($id);
         return $this->jobRepository->destroy($job);
     }
 
     public function approve($id)
     {
-        $job = Job::findOrFail($id);
+        $job = $this->getJobId($id);
         return $this->jobRepository->approve($job);
-    }
-
-    public function search($searchData)
-    {
-        return $this->jobRepository->search($searchData);
     }
 }

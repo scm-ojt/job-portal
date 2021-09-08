@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Contact;
-use Illuminate\Http\Request;
 use App\Services\Admin\ContactService;
 
 class ContactController extends Controller
@@ -34,7 +32,7 @@ class ContactController extends Controller
      */
     public function show($id)
     {
-        $contact = Contact::findOrFail($id);
+        $contact = $this->contactService->getContactId($id);
         return view('admin.contacts.contact-detail', compact('contact'));
     }
     
@@ -48,13 +46,5 @@ class ContactController extends Controller
     {
         $this->contactService->destroy($id);
         return redirect('admin/contacts')->with('success', 'Contact deleted successfully!');
-    }
-
-    public function search(Request $request)
-    {
-        $searchData = $request->search_data;
-        $contacts = $this->contactService->search($searchData);
-
-        return view('admin.contacts.index', compact('searchData', 'contacts'));
     }
 }

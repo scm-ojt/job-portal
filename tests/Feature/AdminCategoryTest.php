@@ -50,8 +50,11 @@ class AdminCategoryTest extends TestCase
     {
         $category = Category::factory()->create();
 
-        $this->post(route('categories.update', $category->id))
-             ->assertSee($category->name);
+        $this->put(route('categories.update', $category->id));
+
+        $this->get(route('categories.index'))
+            ->assertSee($category->name);
+
     }
 
     public function test_an_admin_can_delete_category()

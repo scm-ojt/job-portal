@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserUpdateRequest;
-use App\Models\Role;
-use App\Models\User;
 use App\Services\Admin\ProfileService;
 
 class ProfileController extends Controller
@@ -19,9 +17,8 @@ class ProfileController extends Controller
 
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-        $roles = Role::all();
-        return view('admin.profile', compact('user','roles'));
+        $user = $this->profileService->getUserId($id);
+        return view('admin.profile', compact('user'));
     }
 
     public function update(UserUpdateRequest $request, $id)

@@ -2,8 +2,8 @@
 
 namespace App\Repositories\Admin;
 
+use App\Models\Role;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 
 class UserRepository 
 {
@@ -16,7 +16,8 @@ class UserRepository
 
     public function index()
     {
-       return $this->user->where('id', '!=', Auth::user()->id)->orderBy('id', 'DESC')->paginate(10);
+       return $this->user->where('name', 'Like', "%".request('search')."%")
+       ->where('role_id', Role::COMPANY)->orderBy('id', 'DESC')->paginate(10);
     }
 
     public function update($user, $company)
@@ -47,8 +48,4 @@ class UserRepository
         return $user->update();
     }
 
-    public function search($searchData)
-    {
-        return User::where('name', 'Like', "%$searchData%")->paginate(10);
-    }
 }

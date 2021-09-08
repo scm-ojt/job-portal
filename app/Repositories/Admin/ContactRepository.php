@@ -15,16 +15,11 @@ class ContactRepository
 
     public function index()
     {
-        return $this->contact->orderBy('id', 'DESC')->paginate(10);
+        return $this->contact->where('name', 'Like', "%".request('search')."%")->orderBy('id', 'DESC')->paginate(10);
     }
 
     public function destroy($contact)
     {
         $contact->delete();
-    }
-
-    public function search($searchData)
-    {
-        return Contact::where('name', 'Like', "%$searchData%")->paginate(10);
     }
 }

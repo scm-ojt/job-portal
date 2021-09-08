@@ -15,17 +15,17 @@
         </div>
     </div>
 </div>
-  
+
 @endsection
 @section('script')
-    
-    <script>
-        var companies = @json(array_values($companies));
-        var jobs = @json(array_values($jobs));
-    </script>
-    
-    <!-- chart js -->
-    <script src="{{ asset('js/chart.min.js') }}"></script>
-    <!-- custom js -->
-    <script src="{{ asset('js/chart.js') }}"></script>
+
+<script>
+    var companies = @json(array_values($companies));
+    var jobs = @json(array_values($jobs));
+</script>
+
+<!-- chart js -->
+<script src="{{ asset('js/chart.min.js') }}"></script>
+<!-- custom js -->
+<script src="{{ asset('js/chart.js') }}"></script>
 @endsection
