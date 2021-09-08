@@ -13,8 +13,7 @@
                     <a href="{{url('companies/'.$job->company->id)}}"><img src="{{asset('storage/company-logos/'.$job->company->logo)}}"   style="width:140px; height:120px;" alt="" class="rounded img-thumbnail"></a>
                 @else
                     <a href="{{url('companies/'.$job->company->id)}}"><img src="{{asset('images/default-company-logo.png')}}"   style="width:140px; height:120px;" alt="" class="rounded img-thumbnail"></a>
-                @endif
-        
+                @endif        
                 <div class="ml-5" > 
                     <h3 class="pb-2 " style=" font-weight:bold">{{$job->title}}</h3>
                     <div class="d-flex flex-row ">
@@ -29,7 +28,6 @@
                         <h6 class="p-2 pr-4" style=""><i class="fa fa-clock pr-2"></i>{{$job->employment_status}}</h6>
                         <h6 class="p-2" style=""><i class="fa fa-home pr-2"></i>{{$job->address}}</h6>
                     </div>
-        
                 </div>
             </div>
         </div>
@@ -58,7 +56,6 @@
             {{number_format($job->salary)}} MMK
         </p>
     </div>
-
     <div class="section mb-5 ml-5">
         <h3>Contact Information</h3>
         <p class="ml-4">

@@ -3,18 +3,22 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Job;
-use App\Models\Company;
-use App\Models\Category;
+use App\Services\Frontend\PageService;
 
 class PageController extends Controller
 {
+    private $pageService;
+
+    public function __construct(PageService $pageService)
+    {
+        $this->pageService = $pageService;
+    }
+
     public function index()
     {  
-        $jobs = Job::where('approve_status',1)->orderBy('created_at','DESC')->paginate(8, ['*'], 'jobs');
-        $companies = Company::orderBy('created_at','DESC')->paginate(8, ['*'], 'companies');
-        $categories = Category::all();
+        $jobs = $this->pageService->jobs();
+        $companies = $this->pageService->companies();
+        $categories = $this->pageService->categories();
         return view('frontend.top-page', compact('jobs','companies','categories'));
     }
     

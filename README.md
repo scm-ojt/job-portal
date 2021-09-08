@@ -76,6 +76,7 @@ Company can edit profile and can post jobs. Company part include `edit profile`,
 
 ## Company Dashboard
 
+
 ![Company Dashboard](./public/images/readme/company.png)
 
 ## Frontend
