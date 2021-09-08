@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ChangePasswordRequest;
-use App\Models\User;
 use App\Services\Admin\ChangePasswordService;
 
 class ChangePasswordController extends Controller
