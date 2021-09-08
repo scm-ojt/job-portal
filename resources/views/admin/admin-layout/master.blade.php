@@ -74,7 +74,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                with font-awesome or any other icon font library -->
             
           <li class="nav-item">
-            <a href="{{ route('admin.users') }}" class="nav-link">
+            <a href="{{ route('admin.users.index') }}" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
                User
@@ -82,7 +82,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.companies') }}" class="nav-link">
+            <a href="{{ route('admin.companies.index') }}" class="nav-link">
               <i class="nav-icon fas fa-building"></i>
               <p>
                Company
@@ -98,7 +98,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.jobs') }}" class="nav-link">
+            <a href="{{ route('admin.jobs.index') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                Job
@@ -106,7 +106,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.contacts') }}" class="nav-link">
+            <a href="{{ route('admin.contacts.index') }}" class="nav-link">
               <i class="nav-icon fas fa-id-badge"></i>
               <p>
                Contact
@@ -114,7 +114,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.roles') }}" class="nav-link">
+            <a href="{{ route('admin.roles.index') }}" class="nav-link">
               <i class="nav-icon fas fa-address-card"></i>
               <p>
                Role

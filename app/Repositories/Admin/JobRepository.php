@@ -16,7 +16,7 @@ class JobRepository
 
     public function index()
     {
-        return $this->job->orderBy('id', 'DESC')->paginate(10);
+        return $this->job->where('title', 'Like', "%".request('search')."%")->orderBy('id', 'DESC')->paginate(10);
     }
 
     public function destroy($job)
@@ -37,10 +37,5 @@ class JobRepository
         }
 
         return $job;
-    }
-
-    public function search($searchData)
-    {
-        return Job::where('title', 'Like', "%$searchData%")->paginate(10);
     }
 }

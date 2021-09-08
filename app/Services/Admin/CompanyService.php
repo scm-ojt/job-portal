@@ -19,14 +19,14 @@ class CompanyService
         return $this->companyRepository->index();
     }
 
+    public function getCompanyId($id)
+    {
+        return Company::findOrFail($id);
+    }
+    
     public function destroy($id)
     {
-        $company = Company::findOrFail($id);
+        $company = $this->getCompanyId($id);
         return $this->companyRepository->destroy($company);
-    }
-
-    public function search($searchData)
-    { 
-        return $this->companyRepository->search($searchData);
     }
 }

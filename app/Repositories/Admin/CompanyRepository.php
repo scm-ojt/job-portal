@@ -3,7 +3,6 @@
 namespace App\Repositories\Admin;
 
 use App\Models\Company;
-use App\Models\User;
 
 class CompanyRepository 
 {
@@ -16,18 +15,13 @@ class CompanyRepository
 
     public function index()
     {
-        return $this->company->orderBy('id', 'DESC')->paginate(10);
+        return $this->company->where('name', 'Like', "%".request('search')."%")->orderBy('id', 'DESC')->paginate(10);
     }
 
     public function destroy($company)
     {
         $company->delete();
         $company->users()->delete();
+        $company->jobs()->delete();
     }
-
-    public function search($searchData)
-    {
-        return Company::where('name', 'Like', "%$searchData%")->paginate(10);
-    }
-
 }

@@ -25,7 +25,7 @@ class AdminContactTest extends TestCase
 
     public function test_an_admin_can_see_all_contacts()
     {
-        $this->get(route('admin.contacts'))
+        $this->get(route('admin.contacts.index'))
             ->assertStatus(200);
     }
 

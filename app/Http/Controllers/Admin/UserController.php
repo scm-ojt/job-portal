@@ -3,10 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
-use App\Models\Role;
-use App\Models\User;
 use Illuminate\Http\Request;
 use App\Services\Admin\UserService;
 
@@ -38,9 +35,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-        $roles = Role::all();
-        return view('admin.users.edit', compact('user','roles'));
+        $user = $this->userService->getUserId($id);
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -80,11 +76,4 @@ class UserController extends Controller
         return back()->with('success', 'User photo have been successfully uploaded!');
     }
 
-    public function search(Request $request)
-    {
-        $searchData = $request->search_data;
-        $users = $this->userService->search($searchData);
-
-        return view('admin.users.index', compact('searchData', 'users'));
-    }
 }

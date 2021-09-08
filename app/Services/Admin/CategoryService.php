@@ -20,6 +20,11 @@ class CategoryService
         return $this->categoryRepository->index();
     }
 
+    public function getCategoryId($id)
+    {
+        return Category::findOrFail($id);
+    }
+
     public function store($request)
     {
         $category = new Category;
@@ -36,7 +41,7 @@ class CategoryService
 
     public function update($request, $id)
     {
-        $category = Category::findOrFail($id);
+        $category = $this->getCategoryId($id);
         if($request->hasFile('image')){
             Storage::delete('/public/category-images/'.$category->image);
             $image = $request->file('image'); 
@@ -48,8 +53,9 @@ class CategoryService
         return $this->categoryRepository->update($category);
     }
 
-    public function destroy($category)
+    public function destroy($id)
     {
+        $category = $this->getCategoryId($id);
         return $this->categoryRepository->destroy($category);
     }
 }

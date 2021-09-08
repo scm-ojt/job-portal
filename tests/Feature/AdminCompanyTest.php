@@ -25,7 +25,7 @@ class AdminCompanyTest extends TestCase
 
     public function test_an_admin_can_see_all_companies()
     {
-        $this->get(route('admin.companies'))
+        $this->get(route('admin.companies.index'))
             ->assertStatus(200);
     }
 

@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Company;
-use Illuminate\Http\Request;
 use App\Services\Admin\CompanyService;
 
 class CompanyController extends Controller
@@ -34,7 +32,7 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        $company = Company::findOrFail($id);
+        $company = $this->companyService->getCompanyId($id);
         return view('admin.companies.company-detail', compact('company'));
     }
 
@@ -52,15 +50,8 @@ class CompanyController extends Controller
 
     public function jobs($id)
     {
-        $company = Company::findOrfail($id);
+        $company = $this->companyService->getCompanyId($id);
         return view('admin.companies.company-jobs', compact('company'));
-    }
-
-    public function search(Request $request)
-    {
-        $searchData = $request->search_data;
-        $companies = $this->companyService->search($searchData);
-        return view('admin.companies.index', compact('searchData', 'companies'));
     }
 
 }

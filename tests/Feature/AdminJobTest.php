@@ -26,7 +26,7 @@ class AdminJobTest extends TestCase
 
     public function test_an_admin_can_see_jobs()
     {
-        $this->get(route('admin.jobs'))
+        $this->get(route('admin.jobs.index'))
             ->assertStatus(200);
     }
 
@@ -44,7 +44,7 @@ class AdminJobTest extends TestCase
 
         $this->post(route('admin.jobs.approve', $job->id));
         
-        $this->get(route('admin.jobs'))
+        $this->get(route('admin.jobs.index'))
              ->assertStatus(200);
     }
 
