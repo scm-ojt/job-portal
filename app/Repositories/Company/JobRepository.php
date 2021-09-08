@@ -2,12 +2,11 @@
 
 namespace App\Repositories\Company;
 
+use App\Models\Category;
 use App\Models\Company;
 use App\Models\User;
 use App\Models\Job;
-use App\Models\Category;
-use Auth;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class JobRepository 
 {
@@ -25,6 +24,11 @@ class JobRepository
         $companyId = $user->companies()->where('user_id', $user->id)->first()->id;
         $company = Company::findOrFail($companyId);
         return $company;
+    }
+
+    public function getCategories()
+    {
+        return Category::all();
     }
 
     public function store($job)

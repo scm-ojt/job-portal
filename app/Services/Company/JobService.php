@@ -16,6 +16,16 @@ class JobService
         $this->jobRepository = $jobRepository;
     }
 
+    public function getJobId($id)
+    {
+        return Job::findOrFail($id);
+    }
+
+    public function getCategories()
+    {
+        return $this->jobRepository->getCategories();
+    }
+
     public function index()
     {
         return $this->jobRepository->index();
@@ -50,7 +60,7 @@ class JobService
         $user = User::findOrFail(Auth::user()->id);
         $companyId = $user->companies()->where('user_id', $user->id)->first()->id;
 
-        $job = Job::findOrFail($id);
+        $job = $this->getJobId($id);
         $job->company_id = $companyId;
         $job->category_id = $request->category_id;
         $job->title = $request->title;

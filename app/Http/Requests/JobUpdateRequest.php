@@ -29,7 +29,7 @@ class JobUpdateRequest extends FormRequest
             'title' => 'required|string|max:255',
             'employment_status' => 'nullable',
             'address' => 'nullable',
-            'salary' => 'nullable',
+            'salary' => 'nullable|integer',
             'working_hour' => 'nullable',
             'requirement' => 'nullable',
             'contact_information' => 'nullable',

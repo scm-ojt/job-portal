@@ -4,11 +4,7 @@ namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Job;
 use App\Models\Company;
-use App\Models\User;
-use App\Models\Category;
-use Auth;
 use App\Http\Requests\JobUpdateRequest;
 use App\Http\Requests\JobStoreRequest;
 use App\Services\Company\JobService;
@@ -38,9 +34,8 @@ class JobController extends Controller
      */
     public function create()
     {
-        $jobs = Job::all();
-        $categories = Category::all();
-        return view('company.company-jobs.create', compact('jobs','categories'));
+        $categories = $this->jobService->getCategories();
+        return view('company.company-jobs.create', compact('categories'));
     }
 
     /**
@@ -63,7 +58,7 @@ class JobController extends Controller
      */
     public function show($id)
     {
-        $job = Job::findOrFail($id);
+        $job = $this->jobService->getJobId($id);
         return view('company.company-jobs.jobs-detail', compact('job'));
     }
 
@@ -76,7 +71,7 @@ class JobController extends Controller
     public function edit($id)
     {   
         $job = $this->jobService->edit($id);   
-        $categories = Category::all();
+        $categories = $this->jobService->getCategories();
         return view('company.company-jobs.edit', compact('job','categories'));
     }
 

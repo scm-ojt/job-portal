@@ -21,14 +21,19 @@ class CompanyService
         return $this->companyRepository->index();
     }
 
-    public function edit($id)
+    public function getCompanyId($id)
     {
+        return Company::findOrFail($id);
+    }
+
+    public function edit($id)
+    {   
         return $this->companyRepository->edit($id);
     }
 
     public function update($request, $id)
     {   
-        $company = Company::findOrFail($id);
+        $company = $this->getCompanyId($id);
         $company->name = $request->name;
         $company->company_type = $request->company_type;
         $company->phone_no = $request->phone_no;
@@ -42,7 +47,7 @@ class CompanyService
             Storage::delete('/public/company-logos/'.$company->logo);
             $logo = $request->file('logo');
             $logoName = $logo->getClientOriginalName();
-            $path = $request->file('logo')->storeAs('public/company-logos',$logoName);
+            $request->file('logo')->storeAs('public/company-logos',$logoName);
             $company->logo = $logoName;
         }
 
@@ -51,10 +56,5 @@ class CompanyService
         $user->name = $request->name;
 
         return $this->companyRepository->update($company, $user);
-    }
-
-    public function destroy($company)
-    {
-        //
     }
 }
