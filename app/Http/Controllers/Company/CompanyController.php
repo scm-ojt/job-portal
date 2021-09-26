@@ -5,9 +5,6 @@ namespace App\Http\Controllers\Company;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Company;
-use App\Models\User;
-use Auth;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CompanyUpdateRequest;
 use App\Services\Company\CompanyService;
 class CompanyController extends Controller
@@ -28,17 +25,6 @@ class CompanyController extends Controller
         $company = $this->companyService->index();
         return view('company.company-dashboard', compact('company'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
     /**
      * Display the specified resource.
      *
@@ -46,8 +32,8 @@ class CompanyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        $company = $this->companyService->edit($id);
+    {   
+        $company = $this->companyService->getCompanyId($id);
         return view('company.edit', compact('company'));
     }
 

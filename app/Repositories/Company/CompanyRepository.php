@@ -4,9 +4,7 @@ namespace App\Repositories\Company;
 
 use App\Models\Company;
 use App\Models\User;
-use Auth;
-use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\Auth;
 class CompanyRepository 
 {
     protected $company;
@@ -25,18 +23,12 @@ class CompanyRepository
 
     public function edit($id)
     {   
-        $company = Company::findOrFail($id);
-        return $company;
+        return $id;
     }
 
     public function update($company, $user)
     {   
         $company->update();
         $user->update();
-    }
-
-    public function destroy($company)
-    {
-        //
     }
 }
